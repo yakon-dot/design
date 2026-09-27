@@ -1,5 +1,6 @@
 /* Freedom 50 — Case Study
-   Mobile-first editorial layout. Desktop refinements come later. */
+   Mobile-first. Art direction follows the approved mockup.
+   Product imagery uses supplied presentation assets only. */
 
 :root {
   --bg: #080b0c;
@@ -7,10 +8,13 @@
   --text-muted: #9a958c;
   --text-soft: #c4beb4;
   --accent: #e7b89b;
-  --line: rgba(242, 239, 233, 0.12);
-  --pad-x: clamp(22px, 6.4vw, 26px);
-  --measure: 38rem;
-  --radius-shot: 18px;
+  --line: rgba(242, 239, 233, 0.1);
+  --bubble: rgba(20, 24, 26, 0.88);
+  --pad-x: clamp(24px, 6.8vw, 28px);
+  --section-gap: clamp(100px, 28vw, 140px);
+  --label-gap: clamp(24px, 7vw, 32px);
+  --title-gap: clamp(24px, 7vw, 32px);
+  --visual-gap: clamp(40px, 12vw, 56px);
   --header-h: 56px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: dark;
@@ -59,10 +63,6 @@ figure {
   margin: 0;
 }
 
-blockquote {
-  margin: 0;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -75,10 +75,6 @@ button {
   border: 0;
   padding: 0;
   cursor: pointer;
-}
-
-button:disabled {
-  cursor: default;
 }
 
 .skip-link {
@@ -120,18 +116,12 @@ button:disabled {
 }
 
 .site-mark {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  margin-left: -10px;
-}
-
-.site-mark__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1;
+  padding: 0.55rem 0;
 }
 
 .menu-button {
@@ -141,7 +131,7 @@ button:disabled {
   height: 44px;
   place-content: center;
   margin-right: -10px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .menu-button__line {
@@ -154,12 +144,12 @@ button:disabled {
 /* ——— Layout ——— */
 
 .section {
-  padding-block: clamp(4.5rem, 14vw, 7rem);
+  padding-block: var(--section-gap);
 }
 
 .section--hero {
-  padding-top: clamp(2.25rem, 7vw, 3.5rem);
-  padding-bottom: clamp(5rem, 16vw, 8rem);
+  padding-top: clamp(1.75rem, 6vw, 2.75rem);
+  padding-bottom: var(--section-gap);
 }
 
 .section__inner {
@@ -172,7 +162,7 @@ button:disabled {
 /* ——— Type ——— */
 
 .eyebrow {
-  margin: 0 0 1.35rem;
+  margin: 0 0 var(--label-gap);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -181,7 +171,7 @@ button:disabled {
 }
 
 .section-label {
-  margin: 0 0 1.5rem;
+  margin: 0 0 var(--label-gap);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -200,17 +190,17 @@ button:disabled {
 }
 
 .hero__title {
-  font-size: clamp(1.85rem, 7.2vw, 2.35rem);
-  max-width: 18ch;
+  font-size: clamp(1.9rem, 7.4vw, 2.4rem);
+  max-width: 17ch;
 }
 
 .section-title {
-  font-size: clamp(1.55rem, 6.2vw, 2rem);
-  max-width: 18ch;
+  font-size: clamp(1.65rem, 6.6vw, 2.1rem);
+  max-width: 17ch;
 }
 
 .lede {
-  margin: 1.6rem 0 0;
+  margin: var(--title-gap) 0 0;
   max-width: 32ch;
   font-size: clamp(1.05rem, 3.8vw, 1.15rem);
   line-height: 1.55;
@@ -219,8 +209,8 @@ button:disabled {
 }
 
 .body-copy {
-  margin: 1.75rem 0 0;
-  max-width: var(--measure);
+  margin: var(--title-gap) 0 0;
+  max-width: 36rem;
   font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--text-soft);
@@ -228,9 +218,9 @@ button:disabled {
 }
 
 .statement {
-  margin: 2.75rem 0 0;
+  margin: var(--title-gap) 0 0;
   max-width: 15ch;
-  font-size: clamp(1.7rem, 6.8vw, 2.15rem);
+  font-size: clamp(1.75rem, 7vw, 2.2rem);
   font-weight: 600;
   letter-spacing: -0.038em;
   line-height: 1.15;
@@ -238,24 +228,33 @@ button:disabled {
   text-wrap: pretty;
 }
 
-/* ——— Emotional fragments ——— */
+.section--problem .body-copy {
+  margin-top: clamp(1.75rem, 5vw, 2.25rem);
+}
+
+/* ——— Emotional fragments (atmospheric beat) ——— */
 
 .fragments {
   display: grid;
-  gap: clamp(2.5rem, 8vw, 3.5rem);
-  margin-top: clamp(3.5rem, 12vw, 5rem);
-  padding-top: clamp(2.5rem, 8vw, 3.5rem);
-  border-top: 1px solid var(--line);
+  gap: 1.35rem;
+  width: min(92vw, 26rem);
+  margin: var(--visual-gap) auto 0;
+  padding: clamp(1.75rem, 6vw, 2.5rem) var(--pad-x);
 }
 
 .fragment {
   margin: 0;
-  max-width: 14ch;
-  font-size: clamp(1.35rem, 5.2vw, 1.65rem);
+  max-width: 17ch;
+  padding: 0.95rem 1.15rem;
+  border-radius: 1.15rem;
+  background: var(--bubble);
+  border: 1px solid rgba(242, 239, 233, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  font-size: clamp(1.05rem, 4.2vw, 1.2rem);
   font-weight: 500;
   font-style: italic;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
   color: var(--text);
   text-wrap: pretty;
 }
@@ -263,85 +262,72 @@ button:disabled {
 .fragment:nth-child(even) {
   justify-self: end;
   text-align: right;
+  border-radius: 1.15rem 1.15rem 0.35rem 1.15rem;
+}
+
+.fragment:nth-child(odd) {
+  border-radius: 1.15rem 1.15rem 1.15rem 0.35rem;
 }
 
 .fragment:nth-child(3) {
-  max-width: 10ch;
+  max-width: 11ch;
 }
 
-/* ——— Screenshots ———
-   Sized against the viewport, not the padded text column,
-   so they read as large product imagery on a phone. */
+/* ——— Presentation visuals ——— */
 
-.shot {
-  width: 90vw;
+.visual {
+  width: 100vw;
   max-width: none;
-  margin-top: clamp(2.75rem, 9vw, 4rem);
-  margin-inline: calc(50% - 45vw);
+  margin: var(--visual-gap) 0 0;
+  margin-inline: calc(50% - 50vw);
 }
 
-.shot--hero {
-  width: 90vw;
-  margin-top: clamp(3.25rem, 11vw, 4.75rem);
-  margin-inline: calc(50% - 45vw);
-}
-
-.shot--dominant {
-  width: 92vw;
-  margin-inline: calc(50% - 46vw);
-}
-
-.shot picture,
-.shot img {
+.visual img {
   width: 100%;
-  border-radius: var(--radius-shot);
+  height: auto;
+  background: var(--bg);
 }
 
-.shot img {
-  background: #101416;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+/* Hero & Idea stay edge-integrated — no card chrome */
+.visual--hero,
+.visual--idea {
+  width: 100vw;
 }
 
-.shot__caption {
-  margin-top: 0.85rem;
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-align: center;
+/* ——— Patricia crop (source = original screenshot) ———
+   Zooms the real screenshot so the glowing Patricia panel
+   is the focal point on near-black — no scenery, no device frame. */
+
+.patricia-focus {
+  position: relative;
+  width: min(92vw, 28rem);
+  aspect-ratio: 1.38 / 1;
+  margin: var(--visual-gap) auto 0;
+  overflow: hidden;
+  background: var(--bg);
 }
 
-/* ——— Pull quote ——— */
-
-.pull-quote {
-  margin-top: clamp(4.5rem, 14vw, 6.5rem);
-  margin-bottom: clamp(1rem, 4vw, 2rem);
-  padding-block: clamp(2.5rem, 8vw, 3.5rem);
-  border-block: 1px solid var(--line);
-  text-align: center;
-}
-
-.pull-quote p {
-  margin: 0 auto;
-  max-width: 14ch;
-  font-size: clamp(1.65rem, 6.5vw, 2.15rem);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.2;
-  color: var(--text);
-  text-wrap: pretty;
+.patricia-focus img {
+  position: absolute;
+  left: 52.5%;
+  top: 55%;
+  width: 158%;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -50%);
+  background: transparent;
 }
 
 /* ——— Concepts ——— */
 
 .concepts {
   display: grid;
-  gap: 1.75rem;
-  margin-top: 2.5rem;
+  gap: 1.5rem;
+  margin-top: clamp(2rem, 7vw, 2.75rem);
 }
 
 .concept {
-  padding-top: 1.25rem;
+  padding-top: 1.15rem;
   border-top: 1px solid var(--line);
 }
 
@@ -363,11 +349,7 @@ button:disabled {
 }
 
 .section--sides .body-copy {
-  margin-top: 2.25rem;
-}
-
-.section--sides .shot {
-  margin-top: clamp(3rem, 10vw, 4.5rem);
+  margin-top: clamp(2rem, 6vw, 2.5rem);
 }
 
 /* ——— Footer ——— */
@@ -394,7 +376,7 @@ button:disabled {
 
 .js-ready .reveal {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(12px);
   transition:
     opacity 0.7s var(--ease-out),
     transform 0.7s var(--ease-out);
@@ -413,20 +395,19 @@ button:disabled {
   }
 }
 
-/* Light scaffolding for later desktop work — not a full desktop design */
+/* Light scaffolding for later desktop work */
 @media (min-width: 768px) {
   .section__inner {
     max-width: 48rem;
   }
 
-  .shot,
-  .shot--hero {
-    width: min(90vw, 26rem);
+  .visual--hero,
+  .visual--idea {
+    width: min(100vw, 28rem);
     margin-inline: auto;
   }
 
-  .shot--dominant {
-    width: min(92vw, 26rem);
-    margin-inline: auto;
+  .patricia-focus {
+    width: min(94vw, 28rem);
   }
 }
