@@ -319,7 +319,7 @@ button {
 
 .fragment:nth-child(2) {
   max-width: 9.5ch;
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .fragment:nth-child(3) {
@@ -328,7 +328,7 @@ button {
 
 .fragment:nth-child(4) {
   max-width: 15ch;
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 /* ——— Presentation visuals ——— */
