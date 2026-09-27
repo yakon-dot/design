@@ -234,7 +234,7 @@ button {
 
 /* Problem section: compact close after the bubble group */
 .section--problem {
-  padding-bottom: clamp(70px, 20vw, 90px);
+  padding-bottom: clamp(76px, 21vw, 90px);
 }
 
 /* ——— Emotional fragments (speech bubbles) ——— */
