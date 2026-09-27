@@ -301,7 +301,7 @@ button {
 .patricia-focus {
   position: relative;
   width: min(92vw, 28rem);
-  aspect-ratio: 1.38 / 1;
+  aspect-ratio: 1.32 / 1;
   margin: var(--visual-gap) auto 0;
   overflow: hidden;
   background: var(--bg);
@@ -310,7 +310,7 @@ button {
 .patricia-focus img {
   position: absolute;
   left: 52.5%;
-  top: 55%;
+  top: 53%;
   width: 158%;
   max-width: none;
   height: auto;
