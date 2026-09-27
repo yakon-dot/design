@@ -232,9 +232,10 @@ button {
   margin-top: clamp(1.75rem, 5vw, 2.25rem);
 }
 
-/* Problem section: 64px below the bubble group */
+/* Problem section: 64px below final bubble to next section label */
 .section--problem {
-  padding-bottom: 64px;
+  padding-bottom: 0;
+  margin-bottom: calc(64px - var(--section-gap));
 }
 
 /* ——— Emotional fragments (centred vertical stack) ——— */
