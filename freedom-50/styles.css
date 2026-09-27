@@ -470,9 +470,11 @@ button {
 }
 
 .visual--companions,
-.visual--note {
-  width: 92vw;
-  margin-inline: calc(50% - 46vw);
+.visual--note,
+.visual--life {
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
   margin-top: 0;
 }
 
@@ -638,12 +640,6 @@ button {
   font-style: italic;
 }
 
-.visual--life {
-  width: 92vw;
-  margin-inline: calc(50% - 46vw);
-  margin-top: 0;
-}
-
 .section__split--life {
   gap: var(--visual-gap);
 }
@@ -656,17 +652,60 @@ button {
   max-width: 22ch;
 }
 
-/* Mobile: enlarge Demo Mode onboarding to match sticky-note impact */
+/*
+  Mobile: major mockups match Overview — edge-to-edge breakout.
+  Landscape assets gain height via cover so phones/UI stay large.
+*/
 @media (max-width: 767.98px) {
+  .visual--companions,
+  .visual--note,
+  .visual--life,
+  .visual--japan,
   .visual--demo-onboarding {
     width: 100vw;
+    max-width: none;
     margin-inline: calc(50% - 50vw);
+  }
+
+  .visual--companions img,
+  .visual--note img {
+    width: 100%;
+    height: auto;
+  }
+
+  .visual--demo-onboarding {
     height: min(138vw, 560px);
     overflow: hidden;
     background: var(--bg);
   }
 
   .visual--demo-onboarding img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .visual--japan {
+    height: min(125vw, 520px);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .visual--japan img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .visual--life {
+    height: min(115vw, 480px);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .visual--life img {
     width: 100%;
     height: 100%;
     object-fit: cover;
