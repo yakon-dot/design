@@ -249,6 +249,17 @@ button {
   padding-bottom: calc(var(--section-gap) / 2);
 }
 
+/* Part two: match Section 01 vertical rhythm */
+.section--companions,
+.section--privacy,
+.section--demo,
+.section--personality,
+.section--process,
+.section--role {
+  padding-top: calc(var(--section-gap) / 2);
+  padding-bottom: calc(var(--section-gap) / 2);
+}
+
 /* ——— Emotional fragments (centred vertical stack) ——— */
 
 .fragments {
@@ -387,10 +398,6 @@ button {
   margin-top: clamp(2rem, 6vw, 2.5rem);
 }
 
-.section--companions {
-  padding-top: calc(var(--section-gap) / 2);
-}
-
 /* ——— Second half ——— */
 
 .support-line {
@@ -434,10 +441,6 @@ button {
   margin-top: clamp(3rem, 10vw, 4.5rem);
 }
 
-.section--privacy {
-  padding-block: clamp(7rem, 22vw, 10rem);
-}
-
 .section__split {
   display: flex;
   flex-direction: column;
@@ -476,6 +479,11 @@ button {
 .visual--landscape {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
+  margin-top: var(--visual-gap);
+}
+
+/* Demo onboarding: larger mobile impact via cover crop */
+.visual--demo-onboarding {
   margin-top: var(--visual-gap);
 }
 
@@ -617,6 +625,55 @@ button {
   outline: none;
 }
 
+/* Life happens (within Section 07) */
+.life-happens {
+  margin-top: clamp(4rem, 12vw, 5.5rem);
+  padding-top: clamp(3rem, 9vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+
+.phrase-em {
+  font-weight: 600;
+  color: var(--text);
+  font-style: italic;
+}
+
+.visual--life {
+  width: 92vw;
+  margin-inline: calc(50% - 46vw);
+  margin-top: 0;
+}
+
+.section__split--life {
+  gap: var(--visual-gap);
+}
+
+.section__split--life .section__copy .body-copy:first-of-type {
+  margin-top: var(--title-gap);
+}
+
+.section__split--life .support-line {
+  max-width: 22ch;
+}
+
+/* Mobile: enlarge Demo Mode onboarding to match sticky-note impact */
+@media (max-width: 767.98px) {
+  .visual--demo-onboarding {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    height: min(138vw, 560px);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .visual--demo-onboarding img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
 /* ——— Footer ——— */
 
 .site-footer {
@@ -687,10 +744,27 @@ button {
     margin-inline: auto;
   }
 
+  .visual--life {
+    width: min(92vw, 40rem);
+    margin-inline: auto;
+  }
+
   .visual--landscape,
   .visual--japan {
     width: min(92vw, 56rem);
     margin-inline: auto;
+  }
+
+  .visual--demo-onboarding {
+    width: min(92vw, 56rem);
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .visual--demo-onboarding img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .process-list {
@@ -749,6 +823,18 @@ button {
 
   .section__split--personality {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  .section__split--life {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+    align-items: center;
+  }
+
+  .section__split--life .visual--life {
+    width: 100%;
+    max-width: 36rem;
+    margin-inline: 0;
+    justify-self: end;
   }
 
   .section__inner--personality {
