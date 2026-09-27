@@ -232,24 +232,31 @@ button {
   margin-top: clamp(1.75rem, 5vw, 2.25rem);
 }
 
-/* ——— Emotional fragments (atmospheric beat) ——— */
+/* Problem section: tighter close after the bubble group */
+.section--problem {
+  padding-bottom: clamp(80px, 22vw, 100px);
+}
+
+/* ——— Emotional fragments (speech bubbles) ——— */
 
 .fragments {
   display: grid;
-  gap: 1.35rem;
+  gap: clamp(24px, 7vw, 36px);
   width: min(92vw, 26rem);
-  margin: var(--visual-gap) auto 0;
-  padding: clamp(1.75rem, 6vw, 2.5rem) var(--pad-x);
+  margin: clamp(32px, 9vw, 44px) auto 0;
+  padding: 0 var(--pad-x);
 }
 
 .fragment {
+  position: relative;
   margin: 0;
+  width: max-content;
   max-width: 17ch;
-  padding: 0.95rem 1.15rem;
-  border-radius: 1.15rem;
+  padding: 0.85rem 1.05rem;
+  border-radius: 1.05rem;
   background: var(--bubble);
   border: 1px solid rgba(242, 239, 233, 0.08);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
   font-size: clamp(1.05rem, 4.2vw, 1.2rem);
   font-weight: 500;
   font-style: italic;
@@ -259,18 +266,57 @@ button {
   text-wrap: pretty;
 }
 
+/* Speech-bubble tail — rotated square, matching fill + border */
+.fragment::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--bubble);
+  border-right: 1px solid rgba(242, 239, 233, 0.08);
+  border-bottom: 1px solid rgba(242, 239, 233, 0.08);
+  transform: rotate(45deg);
+}
+
+/* Left bubbles — tail from lower-left */
+.fragment:nth-child(odd) {
+  justify-self: start;
+  text-align: left;
+  border-radius: 1.05rem 1.05rem 1.05rem 0.35rem;
+}
+
+.fragment:nth-child(odd)::after {
+  left: 16px;
+}
+
+/* Right bubbles — tail from lower-right */
 .fragment:nth-child(even) {
   justify-self: end;
   text-align: right;
-  border-radius: 1.15rem 1.15rem 0.35rem 1.15rem;
+  border-radius: 1.05rem 1.05rem 0.35rem 1.05rem;
 }
 
-.fragment:nth-child(odd) {
-  border-radius: 1.15rem 1.15rem 1.15rem 0.35rem;
+.fragment:nth-child(even)::after {
+  right: 16px;
+  left: auto;
+}
+
+/* Natural widths by line length */
+.fragment:nth-child(1) {
+  max-width: 16.5ch;
+}
+
+.fragment:nth-child(2) {
+  max-width: 9.5ch;
 }
 
 .fragment:nth-child(3) {
-  max-width: 11ch;
+  max-width: 8.5ch;
+}
+
+.fragment:nth-child(4) {
+  max-width: 15ch;
 }
 
 /* ——— Presentation visuals ——— */
