@@ -232,20 +232,20 @@ button {
   margin-top: clamp(1.75rem, 5vw, 2.25rem);
 }
 
-/* Problem section: compact close after the bubble group */
+/* Problem section: 64px below the bubble group */
 .section--problem {
-  padding-bottom: clamp(76px, 21vw, 90px);
+  padding-bottom: 64px;
 }
 
-/* ——— Emotional fragments (speech bubbles) ——— */
+/* ——— Emotional fragments (centred vertical stack) ——— */
 
 .fragments {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  width: min(92vw, 26rem);
-  margin: clamp(28px, 8vw, 40px) auto 0;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin: 64px 0 0;
   padding: 0 var(--pad-x);
   min-height: 0;
   height: auto;
@@ -256,7 +256,7 @@ button {
   position: relative;
   margin: 0;
   width: max-content;
-  max-width: 17ch;
+  max-width: min(17ch, 100%);
   padding: 0.85rem 1.05rem;
   border-radius: 1.05rem;
   background: var(--bubble);
@@ -268,58 +268,33 @@ button {
   letter-spacing: -0.02em;
   line-height: 1.35;
   color: var(--text);
+  text-align: center;
   text-wrap: pretty;
+  align-self: center;
 }
 
-/* Compact conversation rhythm: ~16–20px between bubbles */
-.fragment + .fragment {
-  margin-top: 18px;
-}
-
-/* Speech-bubble tail — rotated square, matching fill + border */
+/* Speech-bubble tail — bottom centre */
 .fragment::after {
   content: "";
   position: absolute;
   bottom: -5px;
+  left: 50%;
   width: 10px;
   height: 10px;
+  margin-left: -5px;
   background: var(--bubble);
   border-right: 1px solid rgba(242, 239, 233, 0.08);
   border-bottom: 1px solid rgba(242, 239, 233, 0.08);
   transform: rotate(45deg);
 }
 
-/* Left bubbles — tail from lower-left */
-.fragment:nth-child(odd) {
-  align-self: flex-start;
-  text-align: left;
-  border-radius: 1.05rem 1.05rem 1.05rem 0.35rem;
-}
-
-.fragment:nth-child(odd)::after {
-  left: 16px;
-}
-
-/* Right bubbles — tail from lower-right */
-.fragment:nth-child(even) {
-  align-self: flex-end;
-  text-align: right;
-  border-radius: 1.05rem 1.05rem 0.35rem 1.05rem;
-}
-
-.fragment:nth-child(even)::after {
-  right: 16px;
-  left: auto;
-}
-
-/* Natural widths by line length */
+/* Natural widths by line length — all centred */
 .fragment:nth-child(1) {
   max-width: 16.5ch;
 }
 
 .fragment:nth-child(2) {
   max-width: 9.5ch;
-  margin-top: 16px;
 }
 
 .fragment:nth-child(3) {
@@ -328,7 +303,6 @@ button {
 
 .fragment:nth-child(4) {
   max-width: 15ch;
-  margin-top: 16px;
 }
 
 /* ——— Presentation visuals ——— */
