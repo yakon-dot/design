@@ -1,0 +1,422 @@
+/* Freedom 50 — Case Study
+   Mobile-first editorial layout. Desktop refinements come later. */
+
+:root {
+  --bg: #080b0c;
+  --text: #f2efe9;
+  --text-muted: #9a958c;
+  --text-soft: #c4beb4;
+  --accent: #e7b89b;
+  --line: rgba(242, 239, 233, 0.12);
+  --pad-x: clamp(22px, 6.4vw, 26px);
+  --measure: 38rem;
+  --radius-shot: 18px;
+  --header-h: 56px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: var(--pad-x);
+  z-index: 100;
+  padding: 0.65rem 0.9rem;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 0 0 6px 6px;
+  transform: translateY(-120%);
+  transition: transform 0.2s var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ——— Header ——— */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  padding: 0 var(--pad-x);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.site-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: -10px;
+}
+
+.site-mark__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.menu-button {
+  display: grid;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  place-content: center;
+  margin-right: -10px;
+  opacity: 0.85;
+}
+
+.menu-button__line {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text);
+}
+
+/* ——— Layout ——— */
+
+.section {
+  padding-block: clamp(4.5rem, 14vw, 7rem);
+}
+
+.section--hero {
+  padding-top: clamp(2.25rem, 7vw, 3.5rem);
+  padding-bottom: clamp(5rem, 16vw, 8rem);
+}
+
+.section__inner {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-inline: var(--pad-x);
+}
+
+/* ——— Type ——— */
+
+.eyebrow {
+  margin: 0 0 1.35rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section-label {
+  margin: 0 0 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero__title,
+.section-title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.hero__title {
+  font-size: clamp(1.85rem, 7.2vw, 2.35rem);
+  max-width: 18ch;
+}
+
+.section-title {
+  font-size: clamp(1.55rem, 6.2vw, 2rem);
+  max-width: 18ch;
+}
+
+.lede {
+  margin: 1.6rem 0 0;
+  max-width: 32ch;
+  font-size: clamp(1.05rem, 3.8vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--text-soft);
+  text-wrap: pretty;
+}
+
+.body-copy {
+  margin: 1.75rem 0 0;
+  max-width: var(--measure);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+  text-wrap: pretty;
+}
+
+.statement {
+  margin: 2.25rem 0 0;
+  max-width: 16ch;
+  font-size: clamp(1.45rem, 5.6vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+/* ——— Emotional fragments ——— */
+
+.fragments {
+  display: grid;
+  gap: clamp(2.5rem, 8vw, 3.5rem);
+  margin-top: clamp(3.5rem, 12vw, 5rem);
+  padding-top: clamp(2.5rem, 8vw, 3.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.fragment {
+  margin: 0;
+  max-width: 14ch;
+  font-size: clamp(1.35rem, 5.2vw, 1.65rem);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.fragment:nth-child(even) {
+  justify-self: end;
+  text-align: right;
+}
+
+.fragment:nth-child(3) {
+  max-width: 10ch;
+}
+
+/* ——— Screenshots ——— */
+
+.shot {
+  width: 90%;
+  margin-inline: auto;
+  margin-top: clamp(2.75rem, 9vw, 4rem);
+}
+
+.shot--hero {
+  width: 90%;
+  margin-top: clamp(3.25rem, 11vw, 4.75rem);
+}
+
+.shot--dominant {
+  width: 92%;
+}
+
+.shot picture,
+.shot img {
+  width: 100%;
+  border-radius: var(--radius-shot);
+}
+
+.shot img {
+  background: #101416;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.shot__caption {
+  margin-top: 0.85rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ——— Pull quote ——— */
+
+.pull-quote {
+  margin-top: clamp(4.5rem, 14vw, 6.5rem);
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  padding-block: clamp(2.5rem, 8vw, 3.5rem);
+  border-block: 1px solid var(--line);
+  text-align: center;
+}
+
+.pull-quote p {
+  margin: 0 auto;
+  max-width: 14ch;
+  font-size: clamp(1.65rem, 6.5vw, 2.15rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+/* ——— Concepts ——— */
+
+.concepts {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.concept {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.concept__label {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.concept__text {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  color: var(--text);
+  letter-spacing: -0.015em;
+}
+
+.section--sides .body-copy {
+  margin-top: 2.25rem;
+}
+
+.section--sides .shot {
+  margin-top: clamp(3rem, 10vw, 4.5rem);
+}
+
+/* ——— Footer ——— */
+
+.site-footer {
+  padding-block: 3rem 4.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer__note {
+  margin: 0;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ——— Reveal motion ——— */
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+}
+
+.js-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Light scaffolding for later desktop work — not a full desktop design */
+@media (min-width: 768px) {
+  .section__inner {
+    max-width: 48rem;
+  }
+
+  .shot,
+  .shot--hero,
+  .shot--dominant {
+    max-width: 26rem;
+  }
+}
