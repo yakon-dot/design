@@ -269,21 +269,26 @@ button:disabled {
   max-width: 10ch;
 }
 
-/* ——— Screenshots ——— */
+/* ——— Screenshots ———
+   Sized against the viewport, not the padded text column,
+   so they read as large product imagery on a phone. */
 
 .shot {
-  width: 90%;
-  margin-inline: auto;
+  width: 90vw;
+  max-width: none;
   margin-top: clamp(2.75rem, 9vw, 4rem);
+  margin-inline: calc(50% - 45vw);
 }
 
 .shot--hero {
-  width: 90%;
+  width: 90vw;
   margin-top: clamp(3.25rem, 11vw, 4.75rem);
+  margin-inline: calc(50% - 45vw);
 }
 
 .shot--dominant {
-  width: 92%;
+  width: 92vw;
+  margin-inline: calc(50% - 46vw);
 }
 
 .shot picture,
@@ -415,8 +420,13 @@ button:disabled {
   }
 
   .shot,
-  .shot--hero,
+  .shot--hero {
+    width: min(90vw, 26rem);
+    margin-inline: auto;
+  }
+
   .shot--dominant {
-    max-width: 26rem;
+    width: min(92vw, 26rem);
+    margin-inline: auto;
   }
 }
