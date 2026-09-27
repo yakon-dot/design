@@ -294,28 +294,17 @@ button {
   width: 100vw;
 }
 
-/* ——— Patricia crop (source = original screenshot) ———
-   Zooms the real screenshot so the glowing Patricia panel
-   is the focal point on near-black — no scenery, no device frame. */
-
-.patricia-focus {
-  position: relative;
-  width: min(92vw, 28rem);
-  aspect-ratio: 1.32 / 1;
-  margin: var(--visual-gap) auto 0;
-  overflow: hidden;
-  background: var(--bg);
+/* Patricia cinematic mockup — full image, natural proportions */
+.visual--patricia {
+  width: 92vw;
+  margin-top: var(--visual-gap);
+  margin-inline: calc(50% - 46vw);
 }
 
-.patricia-focus img {
-  position: absolute;
-  left: 52.5%;
-  top: 53%;
-  width: 158%;
-  max-width: none;
+.visual--patricia img {
+  width: 100%;
   height: auto;
-  transform: translate(-50%, -50%);
-  background: transparent;
+  background: var(--bg);
 }
 
 /* ——— Concepts ——— */
@@ -407,7 +396,14 @@ button {
     margin-inline: auto;
   }
 
-  .patricia-focus {
-    width: min(94vw, 28rem);
+  .visual--patricia {
+    width: min(42vw, 26rem);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1100px) {
+  .visual--patricia {
+    width: min(36vw, 28rem);
   }
 }
