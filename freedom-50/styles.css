@@ -232,19 +232,24 @@ button {
   margin-top: clamp(1.75rem, 5vw, 2.25rem);
 }
 
-/* Problem section: tighter close after the bubble group */
+/* Problem section: compact close after the bubble group */
 .section--problem {
-  padding-bottom: clamp(80px, 22vw, 100px);
+  padding-bottom: clamp(70px, 20vw, 90px);
 }
 
 /* ——— Emotional fragments (speech bubbles) ——— */
 
 .fragments {
-  display: grid;
-  gap: clamp(24px, 7vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
   width: min(92vw, 26rem);
-  margin: clamp(32px, 9vw, 44px) auto 0;
+  margin: clamp(28px, 8vw, 40px) auto 0;
   padding: 0 var(--pad-x);
+  min-height: 0;
+  height: auto;
+  justify-content: flex-start;
 }
 
 .fragment {
@@ -266,6 +271,11 @@ button {
   text-wrap: pretty;
 }
 
+/* Compact conversation rhythm: ~16–20px between bubbles */
+.fragment + .fragment {
+  margin-top: 18px;
+}
+
 /* Speech-bubble tail — rotated square, matching fill + border */
 .fragment::after {
   content: "";
@@ -281,7 +291,7 @@ button {
 
 /* Left bubbles — tail from lower-left */
 .fragment:nth-child(odd) {
-  justify-self: start;
+  align-self: flex-start;
   text-align: left;
   border-radius: 1.05rem 1.05rem 1.05rem 0.35rem;
 }
@@ -292,7 +302,7 @@ button {
 
 /* Right bubbles — tail from lower-right */
 .fragment:nth-child(even) {
-  justify-self: end;
+  align-self: flex-end;
   text-align: right;
   border-radius: 1.05rem 1.05rem 0.35rem 1.05rem;
 }
@@ -309,6 +319,7 @@ button {
 
 .fragment:nth-child(2) {
   max-width: 9.5ch;
+  margin-top: 14px;
 }
 
 .fragment:nth-child(3) {
@@ -317,6 +328,7 @@ button {
 
 .fragment:nth-child(4) {
   max-width: 15ch;
+  margin-top: 14px;
 }
 
 /* ——— Presentation visuals ——— */
