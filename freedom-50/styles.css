@@ -351,11 +351,12 @@ button {
   width: 100vw;
 }
 
-/* Patricia cinematic mockup — full image, natural proportions */
+/* Patricia cinematic mockup — full-bleed on mobile like Overview */
 .visual--patricia {
-  width: 92vw;
+  width: 100vw;
+  max-width: none;
   margin-top: var(--visual-gap);
-  margin-inline: calc(50% - 46vw);
+  margin-inline: calc(50% - 50vw);
 }
 
 .visual--patricia img {
