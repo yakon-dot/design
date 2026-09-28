@@ -221,31 +221,31 @@
 
 .panel--soot {
   background: var(--plate-soot);
-  color: #14110f;
+  color: #f2efe9;
 }
 
 .panel--soot .panel__tags {
-  color: rgba(20, 17, 15, 0.62);
+  color: rgba(242, 239, 233, 0.78);
   opacity: 1;
 }
 
 .panel--food {
   background: var(--plate-food);
-  color: #0c1214;
+  color: #f2efe9;
 }
 
 .panel--food .panel__tags {
-  color: rgba(12, 18, 20, 0.62);
+  color: rgba(242, 239, 233, 0.78);
   opacity: 1;
 }
 
 .panel--punkt {
   background: var(--plate-punkt);
-  color: #14110f;
+  color: #f2efe9;
 }
 
 .panel--punkt .panel__tags {
-  color: rgba(20, 17, 15, 0.62);
+  color: rgba(242, 239, 233, 0.78);
   opacity: 1;
 }
 
