@@ -74,6 +74,11 @@
   flex: 0 0 auto;
 }
 
+.about-icon--img {
+  stroke: none;
+  object-fit: contain;
+}
+
 /* ——— 01 Hero ——— */
 
 .about-hero {
