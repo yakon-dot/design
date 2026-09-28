@@ -462,6 +462,11 @@
   stroke-linejoin: round;
 }
 
+.app-icon--img {
+  object-fit: contain;
+  stroke: none;
+}
+
 .app-icon__mark {
   fill: var(--accent);
   stroke: none;
