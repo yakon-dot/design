@@ -65,8 +65,8 @@
   let first = true;
 
   const schedule = () => {
-    // First peek arrives quickly so it’s noticeable; then every 5–8s
-    const delay = first ? 1200 + Math.random() * 800 : 5000 + Math.random() * 3000;
+    // First peek ~1s after load so it’s obvious; then every 5–8s
+    const delay = first ? 1000 : 5000 + Math.random() * 3000;
     first = false;
     timer = window.setTimeout(peek, delay);
   };
