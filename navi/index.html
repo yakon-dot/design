@@ -14,26 +14,39 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../freedom-50/styles.css?v=accent-dividers-2" />
-    <link rel="stylesheet" href="theme.css?v=accent-dividers-2" />
+    <link rel="stylesheet" href="../freedom-50/styles.css?v=nav-1" />
+    <link rel="stylesheet" href="theme.css?v=nav-1" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-mark" href="#top">Dot.</a>
+        <a class="site-mark" href="../about/">Dot.</a>
         <button
           class="menu-button"
           type="button"
           aria-label="Menu"
           aria-expanded="false"
-          aria-disabled="true"
+          aria-controls="site-nav"
         >
           <span class="menu-button__line" aria-hidden="true"></span>
           <span class="menu-button__line" aria-hidden="true"></span>
         </button>
       </div>
+      <nav id="site-nav" class="site-nav" aria-label="Projects" aria-hidden="true">
+        <ul class="site-nav__list">
+          <li>
+            <a class="site-nav__link" href="../freedom-50/">Freedom</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="./" aria-current="page">Navi</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="../selected-work/">Selected Work</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main id="main">
@@ -325,6 +338,6 @@
       </div>
     </footer>
 
-    <script src="../freedom-50/main.js" defer></script>
+    <script src="../freedom-50/main.js?v=nav-1" defer></script>
   </body>
 </html>

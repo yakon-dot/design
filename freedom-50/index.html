@@ -5,41 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Freedom 50 — a product design case study. Designing a finance app for people who don't want to live in a finance app."
+      content="Freedom — a product design case study. Designing a finance app for people who don't want to live in a finance app."
     />
-    <title>Freedom 50 — Case Study</title>
+    <title>Freedom — Case Study</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=accent-dividers-2" />
+    <link rel="stylesheet" href="styles.css?v=nav-1" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-mark" href="#top">Dot.</a>
+        <a class="site-mark" href="../about/">Dot.</a>
         <button
           class="menu-button"
           type="button"
           aria-label="Menu"
           aria-expanded="false"
-          aria-disabled="true"
+          aria-controls="site-nav"
         >
           <span class="menu-button__line" aria-hidden="true"></span>
           <span class="menu-button__line" aria-hidden="true"></span>
         </button>
       </div>
+      <nav id="site-nav" class="site-nav" aria-label="Projects" aria-hidden="true">
+        <ul class="site-nav__list">
+          <li>
+            <a class="site-nav__link" href="./" aria-current="page">Freedom</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="../navi/">Navi</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="../selected-work/">Selected Work</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main id="main">
       <!-- HERO -->
       <section class="section section--hero" id="top" aria-labelledby="hero-title">
         <div class="section__inner">
-          <p class="eyebrow reveal">Freedom 50</p>
+          <p class="eyebrow reveal">Freedom</p>
           <h1 class="hero__title reveal" id="hero-title">
             Designing a finance app for people who don’t want to live in a
             finance app.
@@ -492,10 +505,10 @@
 
     <footer class="site-footer">
       <div class="section__inner">
-        <p class="site-footer__note">Freedom 50</p>
+        <p class="site-footer__note">Freedom</p>
       </div>
     </footer>
 
-    <script src="main.js" defer></script>
+    <script src="main.js?v=nav-1" defer></script>
   </body>
 </html>

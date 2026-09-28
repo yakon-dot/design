@@ -132,6 +132,8 @@ button {
   place-content: center;
   margin-right: -10px;
   opacity: 0.9;
+  position: relative;
+  z-index: 52;
 }
 
 .menu-button__line {
@@ -139,6 +141,71 @@ button {
   width: 18px;
   height: 1.5px;
   background: var(--text);
+  transition: transform 0.25s var(--ease-out), opacity 0.2s var(--ease-out);
+}
+
+.menu-button[aria-expanded="true"] .menu-button__line:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.menu-button[aria-expanded="true"] .menu-button__line:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* ——— Site nav (burger) ——— */
+
+.site-nav {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  z-index: 48;
+  background: var(--bg);
+  padding: clamp(2.25rem, 9vw, 3.75rem) var(--pad-x) clamp(3rem, 10vw, 4.5rem);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.28s var(--ease-out),
+    visibility 0.28s var(--ease-out);
+}
+
+.site-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.site-nav__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 72rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.15rem, 4vw, 1.6rem);
+}
+
+.site-nav__link {
+  display: inline-block;
+  font-size: clamp(1.85rem, 8vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--text);
+  transition: color 0.2s var(--ease-out);
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
+.site-nav__link[aria-current="page"] {
+  color: var(--accent);
+}
+
+body.nav-open {
+  overflow: hidden;
 }
 
 /* ——— Layout ——— */
