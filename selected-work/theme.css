@@ -90,8 +90,8 @@
 .plate--boochos,
 .plate--soot,
 .plate--punkt {
-  min-height: min(92vh, 40rem);
-  padding-block: clamp(2.75rem, 11vh, 5.5rem);
+  min-height: min(92vh, 48rem);
+  padding-block: clamp(3rem, 12vh, 6rem);
 }
 
 .plate--boochos {
@@ -117,8 +117,8 @@
 /* Wicked Bun is photographic — expand turquoise environment around it */
 .plate--wicked {
   background: var(--plate-wicked);
-  min-height: min(78vh, 34rem);
-  padding: clamp(2rem, 8vh, 3.75rem) clamp(1.15rem, 4.5vw, 1.75rem);
+  min-height: min(82vh, 38rem);
+  padding: clamp(2.25rem, 9vh, 4rem) clamp(1.15rem, 4.5vw, 1.75rem);
 }
 
 .plate--wicked img {
