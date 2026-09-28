@@ -1,0 +1,187 @@
+/* Selected Work — yellow Dot accent + showcase rhythm.
+   Base system: ../freedom-50/styles.css */
+
+:root {
+  --accent: #f4c542;
+}
+
+/* ——— Showcase visuals ——— */
+
+.work-visual {
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  margin-inline: calc(50% - 50vw);
+}
+
+.work-visual img,
+.work-visual video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--bg);
+  object-fit: contain;
+}
+
+/* Opening hero — dominant */
+.work-visual--hero {
+  margin-top: clamp(2.5rem, 8vw, 4rem);
+}
+
+/* Mid-scale pieces */
+.work-visual--mid {
+  margin-top: 0;
+}
+
+/* Large landscape beats (vehicles, retail) */
+.work-visual--feature {
+  margin-top: 0;
+}
+
+/* Portrait campaign — narrower on all viewports */
+.work-visual--portrait {
+  width: min(100vw - (var(--pad-x) * 2), 22rem);
+  margin-inline: auto;
+}
+
+/* Motion slots — invisible until a video is dropped inside */
+.work-motion:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.work-motion:not(:empty) {
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  margin-inline: calc(50% - 50vw);
+}
+
+.work-motion video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--bg);
+  object-fit: contain;
+}
+
+/* Intro → gallery: short pause, then work */
+.section--selected-hero {
+  padding-top: clamp(1.75rem, 6vw, 2.75rem);
+  padding-bottom: clamp(2.5rem, 8vw, 3.5rem);
+}
+
+.section--selected-hero .hero__title {
+  max-width: 10ch;
+  font-size: clamp(2.35rem, 10vw, 3.25rem);
+  line-height: 1.05;
+}
+
+.section--selected-hero .lede {
+  max-width: 34ch;
+}
+
+.section--work {
+  padding-block: 0;
+}
+
+.work-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 5vw, 2.5rem);
+  padding-bottom: clamp(3.5rem, 12vw, 5.5rem);
+}
+
+/* Tighter gaps inside paired beats; larger between beats */
+.work-pair {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 4vw, 1.75rem);
+}
+
+.work-beat {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ending nav spacing — match Freedom/Navi rhythm without oversized gaps */
+.section--selected-end {
+  padding-top: calc(var(--section-gap) / 2);
+  padding-bottom: calc(var(--section-gap) / 2);
+}
+
+/* Mobile: mid pieces inset for large→smaller→large rhythm; heroes full-bleed */
+@media (max-width: 767.98px) {
+  .work-visual--mid {
+    width: calc(100vw - (var(--pad-x) * 2));
+    margin-inline: auto;
+  }
+}
+
+/* ——— Desktop rhythm ——— */
+@media (min-width: 768px) {
+  .work-visual {
+    margin-inline: auto;
+  }
+
+  .work-visual--hero {
+    width: min(92vw, 56rem);
+  }
+
+  .work-visual--mid {
+    width: min(48vw, 26rem);
+  }
+
+  .work-visual--feature {
+    width: min(88vw, 48rem);
+  }
+
+  .work-visual--portrait {
+    width: min(36vw, 26rem);
+  }
+
+  .work-motion:not(:empty) {
+    width: min(88vw, 48rem);
+    margin-inline: auto;
+  }
+
+  .work-stack {
+    gap: clamp(2.5rem, 6vw, 4rem);
+    align-items: center;
+  }
+
+  /* Contrasting pairs — two columns, each piece still substantial */
+  .work-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    width: min(92vw, 56rem);
+    align-items: start;
+  }
+
+  .work-pair .work-visual {
+    width: 100%;
+    margin-inline: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .work-visual--hero {
+    width: min(78vw, 60rem);
+  }
+
+  .work-visual--feature {
+    width: min(72vw, 52rem);
+  }
+
+  .work-visual--portrait {
+    width: min(28vw, 24rem);
+  }
+
+  .work-pair {
+    width: min(78vw, 58rem);
+  }
+}
