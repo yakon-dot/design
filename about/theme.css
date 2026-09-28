@@ -452,16 +452,18 @@
   height: 2.35rem;
   stroke: var(--accent);
   fill: none;
-  stroke-width: 1.5;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .app-icon__mark {
   fill: var(--accent);
   stroke: none;
-  font-family: "Instrument Sans", system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
 .visually-hidden {
