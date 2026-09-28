@@ -368,48 +368,6 @@
   color: var(--about-muted);
 }
 
-/* ——— 07 Thinking ——— */
-
-.thinking {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.1rem;
-  max-width: 22rem;
-}
-
-.thinking__title {
-  margin: 0;
-  font-size: clamp(1.85rem, 7vw, 2.35rem);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  color: var(--about-ink);
-}
-
-.thinking__sub {
-  margin: 0.2rem 0 0;
-  font-size: 0.98rem;
-  color: var(--accent);
-  letter-spacing: -0.01em;
-}
-
-.thinking__list {
-  list-style: none;
-  margin: 0.85rem 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.thinking__list li {
-  font-size: 1.02rem;
-  line-height: 1.4;
-  letter-spacing: -0.015em;
-  color: var(--about-soft);
-}
-
 /* ——— 08 AI ——— */
 
 .ai-copy {
@@ -536,13 +494,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2.5rem, 5vw, 4rem);
-  }
-
-  .thinking {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 1.35rem;
-    max-width: 28rem;
   }
 
   .about-quote__text {
