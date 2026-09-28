@@ -14,38 +14,51 @@
 
 .section--selected-hero {
   position: relative;
-  padding-top: clamp(1.5rem, 5vw, 2.5rem);
-  padding-bottom: clamp(3rem, 10vw, 4.5rem);
+  /* Mobile: one viewport of black below sticky header; hard cut into pink */
+  min-height: calc(100svh - var(--header-h));
+  padding: 0;
+  margin: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-stage {
   position: relative;
+  flex: 1 1 auto;
   width: 100%;
   max-width: 72rem;
   margin: 0 auto;
   padding-inline: var(--pad-x);
-  min-height: clamp(36rem, 120vw, 42rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
 }
 
 .hero-stage__copy {
   position: relative;
   z-index: 2;
   max-width: 16.5rem;
+  /* Sit in the lower half — space above, room for monster below/beside */
+  margin-top: auto;
+  margin-bottom: clamp(7.5rem, 28vw, 10rem);
+  padding-top: 0;
 }
 
 .section--selected-hero .lede {
   max-width: 18ch;
-  margin-top: clamp(1.25rem, 4vw, 1.75rem);
+  margin-top: clamp(1.15rem, 3.5vw, 1.5rem);
   text-align: left;
 }
 
+/* Lower-right peek — both eyes/mouth visible; cropped by right + bottom */
 .hero-monster-wrap {
   position: absolute;
-  right: -6%;
-  bottom: 0;
-  width: min(50vw, 13.4rem);
-  height: min(55vw, 17rem);
+  right: -14%;
+  bottom: -6%;
+  width: min(46vw, 12rem);
+  height: min(58vw, 15.5rem);
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
@@ -350,13 +363,24 @@
 /* ——— Desktop ——— */
 
 @media (min-width: 768px) {
+  .section--selected-hero {
+    min-height: 0;
+    padding-top: clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(3rem, 8vw, 4.5rem);
+    display: block;
+  }
+
   .hero-stage {
     min-height: clamp(26rem, 38vw, 34rem);
     padding-inline: clamp(2rem, 6vw, 4rem);
+    display: block;
+    flex: none;
   }
 
   .hero-stage__copy {
     max-width: 28rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .section--selected-hero .hero__title {
@@ -365,6 +389,7 @@
 
   .hero-monster-wrap {
     right: -2%;
+    bottom: 0;
     width: min(31vw, 20.5rem);
     height: min(38vw, 24rem);
   }
