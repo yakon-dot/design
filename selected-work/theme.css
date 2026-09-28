@@ -67,9 +67,10 @@
 
 .hero-monster {
   position: absolute;
-  right: -32%;
-  top: 42%;
-  width: min(54vw, 14.5rem);
+  right: -10%;
+  bottom: 0;
+  top: auto;
+  width: min(50vw, 13.4rem);
   height: auto;
   z-index: 1;
   pointer-events: none;
@@ -119,11 +120,11 @@
 
 .panel__name {
   margin: 0 0 0.35rem;
-  font-size: clamp(1.15rem, 4.2vw, 1.35rem);
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: clamp(1.35rem, 5.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .panel__desc {
@@ -152,7 +153,8 @@
   opacity: 1;
 }
 
-/* Boochos trailer — larger hero on mobile (~85–90vw), not a cropped zoom */
+/* Boochos trailer — enlarge the object itself (~90vw), not just the frame.
+   Artwork has ~66% trailer / magenta margins; scale image ~136vw and clip. */
 .panel--boochos .panel__inner {
   padding-inline: 0;
 }
@@ -162,9 +164,22 @@
 }
 
 .panel--boochos .panel__art {
-  width: 88vw;
+  width: 100%;
   max-width: none;
-  margin-inline: auto;
+  margin-inline: 0;
+  overflow: hidden;
+}
+
+.panel--boochos .panel__art picture {
+  display: block;
+  width: 136vw;
+  margin-left: calc(50% - 68vw);
+}
+
+.panel--boochos .panel__art img {
+  width: 100%;
+  max-width: none;
+  height: auto;
 }
 
 .panel--soot {
@@ -246,10 +261,16 @@
 }
 
 .edit--bperfect {
-  width: 58vw;
-  max-width: 14.5rem;
+  width: 54vw;
+  max-width: 13.5rem;
   margin-left: auto;
   margin-right: var(--pad-x);
+}
+
+.edit--bperfect .meta {
+  width: 100%;
+  max-width: none;
+  text-align: left;
 }
 
 .edit--motion:empty {
@@ -285,9 +306,9 @@
 }
 
 .meta__name {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -334,9 +355,10 @@
   }
 
   .hero-monster {
-    right: -10%;
-    top: 28%;
-    width: min(34vw, 22rem);
+    right: -4%;
+    bottom: 0;
+    top: auto;
+    width: min(31vw, 20.5rem);
   }
 
   .panel {
@@ -358,7 +380,14 @@
 
   .panel--boochos .panel__art {
     width: 100%;
+    overflow: visible;
+  }
+
+  .panel--boochos .panel__art picture {
+    width: 100%;
     max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Alternating copy/art rhythm on wider screens without breaking mobile poster feel */
