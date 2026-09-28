@@ -447,14 +447,23 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 0.85rem;
+  gap: 0.9rem;
   align-items: center;
+}
+
+.app-icons > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 2.5rem;
 }
 
 .app-icon {
   display: block;
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.5rem;
+  height: 2.5rem;
   stroke: var(--accent);
   fill: none;
   stroke-width: 2;
@@ -463,7 +472,10 @@
 }
 
 .app-icon--img {
+  width: 2.5rem;
+  height: 2.5rem;
   object-fit: contain;
+  object-position: center;
   stroke: none;
 }
 
