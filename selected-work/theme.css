@@ -1,13 +1,17 @@
-/* Selected Work — yellow Dot accent + visual hierarchy.
+/* Selected Work — yellow Dot accent, colour plates, visual hierarchy.
    Base system: ../freedom-50/styles.css */
 
 :root {
   --accent: #f4c542;
-  --band-gap: clamp(3.25rem, 10vw, 5rem);
+  --band-gap: clamp(3rem, 9vw, 4.75rem);
   --piece-gap: clamp(1.5rem, 4.5vw, 2.25rem);
+  --plate-boochos: #d6207e;
+  --plate-wicked: #00b8f8;
+  --plate-soot: #aaa3e7;
+  --plate-punkt: #fedd02;
 }
 
-/* ——— Opening (unchanged feel) ——— */
+/* ——— Opening ——— */
 
 .section--selected-hero {
   padding-top: clamp(1.75rem, 6vw, 2.75rem);
@@ -24,7 +28,7 @@
   max-width: 34ch;
 }
 
-/* ——— Bands (light section markers, not case-study chapters) ——— */
+/* ——— Bands ——— */
 
 .band {
   display: flex;
@@ -55,62 +59,121 @@
 }
 
 .piece img,
-.piece video {
+.piece video,
+.plate img {
   display: block;
   width: 100%;
   height: auto;
-  background: var(--bg);
+  background: transparent;
   object-fit: contain;
 }
 
-/* Major moments — edge to edge on mobile */
+/* ——— Colour plates (extend flat artwork environments) ——— */
+
+.plate {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* No shadow, border, radius, gradient */
+  border: 0;
+  box-shadow: none;
+}
+
+.plate picture {
+  display: block;
+  width: 100%;
+}
+
+/* Flat-field artworks: full-bleed image + vertical colour extension = seamless */
+.plate--boochos,
+.plate--soot,
+.plate--punkt {
+  min-height: min(92vh, 40rem);
+  padding-block: clamp(2.75rem, 11vh, 5.5rem);
+}
+
+.plate--boochos {
+  background: var(--plate-boochos);
+}
+
+.plate--soot {
+  background: var(--plate-soot);
+}
+
+.plate--punkt {
+  background: var(--plate-punkt);
+}
+
+/* Trailer/van/hoodie stay contained — environment grows, not the object */
+.plate--boochos img,
+.plate--soot img,
+.plate--punkt img {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Wicked Bun is photographic — expand turquoise environment around it */
+.plate--wicked {
+  background: var(--plate-wicked);
+  min-height: min(78vh, 34rem);
+  padding: clamp(2rem, 8vh, 3.75rem) clamp(1.15rem, 4.5vw, 1.75rem);
+}
+
+.plate--wicked img {
+  width: 100%;
+}
+
+/* Derma — photography provides its own environment */
 .piece--feature {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
 }
 
-.piece--feature .meta--pad,
-.piece--feature .piece__context {
-  padding-inline: var(--pad-x);
+.piece--feature > picture {
+  display: block;
+  width: 100%;
 }
 
-.piece__context--before {
-  order: -1;
-}
-
-/* Supporting insets — deliberately smaller */
+/* Supporting / contained — quieter on black */
 .piece--support,
 .piece--contained {
   width: calc(100vw - (var(--pad-x) * 2));
   margin-inline: auto;
 }
 
-/* Botanic slightly narrower / left-biased feel on mobile */
 .piece--support-a {
   width: calc(100vw - (var(--pad-x) * 2.6));
   margin-left: var(--pad-x);
   margin-right: auto;
 }
 
-/* Wicked Bun a touch wider inset, right-biased */
 .piece--support-b {
-  width: calc(100vw - (var(--pad-x) * 2));
-  margin-inline: auto;
+  /* Wicked plate is full-bleed; meta stays inset */
+  width: 100%;
+  margin-inline: 0;
+}
+
+.piece--support-b .plate--wicked {
+  /* keep full-width plate even inside support column on mobile */
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 
 .support-row {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.35rem, 4vw, 1.85rem);
+  gap: clamp(1.5rem, 5vw, 2.25rem);
 }
 
-/* Punkt — more presence than a quiet product shot */
-.piece--punkt {
-  width: calc(100vw - (var(--pad-x) * 1.35));
+/* Food delivery — supporting, contained */
+.piece--contained {
+  width: calc(100vw - (var(--pad-x) * 2));
   margin-inline: auto;
 }
 
-/* BPerfect — supporting portrait, ~65–70% width on mobile */
+/* BPerfect — ~65–70%, offset */
 .piece--minor {
   width: 68vw;
   max-width: 16.5rem;
@@ -118,7 +181,7 @@
   margin-right: var(--pad-x);
 }
 
-/* Motion — hidden until video present */
+/* Motion placeholders */
 .piece--motion:empty {
   display: none;
   margin: 0;
@@ -132,10 +195,10 @@
 }
 
 .band--motion:not(:has(.piece--motion:not(:empty))) {
-  padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+  padding-bottom: clamp(1.25rem, 4vw, 2rem);
 }
 
-/* ——— Compact project metadata ——— */
+/* ——— Metadata ——— */
 
 .meta {
   display: flex;
@@ -143,6 +206,10 @@
   gap: 0.18rem;
   margin: 0;
   max-width: 28rem;
+}
+
+.meta--inset {
+  padding-inline: var(--pad-x);
 }
 
 .meta__name {
@@ -167,9 +234,15 @@
   color: var(--text-muted);
 }
 
-.section--selected-end {
-  padding-top: calc(var(--section-gap) / 3);
+/* ——— Summary ending (Freedom / Navi system) ——— */
+
+.section--summary {
+  padding-top: calc(var(--section-gap) / 2);
   padding-bottom: calc(var(--section-gap) / 2);
+}
+
+.section--summary .section-title {
+  max-width: 14ch;
 }
 
 /* ——— Desktop ——— */
@@ -182,19 +255,41 @@
     padding-inline: 0;
   }
 
+  .meta--inset {
+    padding-inline: 0;
+    width: min(92vw, 58rem);
+    margin-inline: auto;
+  }
+
+  .plate--boochos,
+  .plate--soot,
+  .plate--punkt {
+    min-height: 0;
+    width: min(92vw, 58rem);
+    margin-inline: auto;
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .plate--wicked {
+    min-height: 0;
+    width: 100%;
+    margin-inline: 0;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .piece--support-b .plate--wicked {
+    width: 100%;
+    margin-inline: 0;
+  }
+
   .piece--feature {
     width: min(92vw, 58rem);
     margin-inline: auto;
   }
 
-  .piece--feature .meta--pad,
-  .piece--feature .piece__context {
-    padding-inline: 0;
-  }
-
   .support-row {
     display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
+    grid-template-columns: 0.9fr 1.1fr;
     gap: clamp(1.5rem, 3vw, 2.5rem);
     width: min(78vw, 48rem);
     margin-inline: auto;
@@ -202,36 +297,23 @@
   }
 
   .piece--support,
-  .piece--support-a,
-  .piece--support-b {
+  .piece--support-a {
     width: 100%;
     margin-inline: 0;
-  }
-
-  .piece--support-a {
-    margin-top: 0;
   }
 
   .piece--support-b {
     margin-top: clamp(2rem, 5vw, 3.5rem);
   }
 
-  /* Food delivery — contained, less than Soot */
   .piece--contained {
-    width: min(62vw, 38rem);
+    width: min(58vw, 36rem);
     margin-left: clamp(4rem, 16vw, 12rem);
     margin-right: auto;
   }
 
-  /* Punkt — stronger mid-feature */
-  .piece--punkt {
-    width: min(72vw, 44rem);
-    margin-inline: auto;
-  }
-
-  /* BPerfect — small portrait in negative space */
   .piece--minor {
-    width: min(22vw, 16rem);
+    width: min(20vw, 15rem);
     max-width: none;
     margin-left: clamp(6rem, 28vw, 22rem);
     margin-right: auto;
@@ -250,7 +332,14 @@
 }
 
 @media (min-width: 1100px) {
+  .plate--boochos,
+  .plate--soot,
+  .plate--punkt,
   .piece--feature {
+    width: min(78vw, 62rem);
+  }
+
+  .meta--inset {
     width: min(78vw, 62rem);
   }
 
@@ -259,15 +348,11 @@
   }
 
   .piece--contained {
-    width: min(48vw, 36rem);
-  }
-
-  .piece--punkt {
-    width: min(56vw, 42rem);
+    width: min(46vw, 34rem);
   }
 
   .piece--minor {
-    width: min(18vw, 15rem);
+    width: min(16vw, 14rem);
   }
 }
 
