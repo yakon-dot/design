@@ -31,7 +31,7 @@
 .hero-stage__copy {
   position: relative;
   z-index: 2;
-  max-width: 22rem;
+  max-width: 18rem;
 }
 
 .section--selected-hero .hero__title {
@@ -60,15 +60,16 @@
 }
 
 .section--selected-hero .lede {
-  max-width: 30ch;
+  max-width: 22ch;
   margin-top: clamp(1.25rem, 4vw, 1.75rem);
+  text-align: left;
 }
 
 .hero-monster {
   position: absolute;
-  right: -22%;
-  top: 22%;
-  width: min(52vw, 14rem);
+  right: -32%;
+  top: 42%;
+  width: min(54vw, 14.5rem);
   height: auto;
   z-index: 1;
   pointer-events: none;
@@ -151,6 +152,21 @@
   opacity: 1;
 }
 
+/* Boochos trailer — larger hero on mobile (~85–90vw), not a cropped zoom */
+.panel--boochos .panel__inner {
+  padding-inline: 0;
+}
+
+.panel--boochos .panel__copy {
+  padding-inline: var(--pad-x);
+}
+
+.panel--boochos .panel__art {
+  width: 88vw;
+  max-width: none;
+  margin-inline: auto;
+}
+
 .panel--soot {
   background: var(--plate-soot);
   color: #14110f;
@@ -217,17 +233,21 @@
 }
 
 .edit--derma {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
+  width: calc(100vw - (var(--pad-x) * 2));
+  margin-inline: auto;
 }
 
 .edit--derma img {
-  border-radius: 0;
+  border-radius: var(--edit-radius);
+}
+
+.edit--derma .meta {
+  padding-inline: 0;
 }
 
 .edit--bperfect {
-  width: 68vw;
-  max-width: 16.5rem;
+  width: 58vw;
+  max-width: 14.5rem;
   margin-left: auto;
   margin-right: var(--pad-x);
 }
@@ -314,8 +334,8 @@
   }
 
   .hero-monster {
-    right: -6%;
-    top: 0;
+    right: -10%;
+    top: 28%;
     width: min(34vw, 22rem);
   }
 
@@ -326,6 +346,19 @@
   .panel__inner {
     padding-inline: clamp(2rem, 6vw, 4rem);
     gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .panel--boochos .panel__inner {
+    padding-inline: clamp(2rem, 6vw, 4rem);
+  }
+
+  .panel--boochos .panel__copy {
+    padding-inline: 0;
+  }
+
+  .panel--boochos .panel__art {
+    width: 100%;
+    max-width: 56rem;
   }
 
   /* Alternating copy/art rhythm on wider screens without breaking mobile poster feel */
@@ -377,10 +410,10 @@
   }
 
   .edit--bperfect {
-    width: min(18vw, 14rem);
+    width: min(16vw, 13rem);
     max-width: none;
-    margin-left: clamp(8rem, 30vw, 24rem);
-    margin-right: auto;
+    margin-left: auto;
+    margin-right: clamp(3rem, 10vw, 7rem);
   }
 }
 
