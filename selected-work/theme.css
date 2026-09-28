@@ -66,9 +66,9 @@
 
 .hero-monster {
   position: absolute;
-  right: -18%;
-  top: 8%;
-  width: min(58vw, 15rem);
+  right: -22%;
+  top: 22%;
+  width: min(52vw, 14rem);
   height: auto;
   z-index: 1;
   pointer-events: none;
