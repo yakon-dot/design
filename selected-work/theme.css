@@ -80,6 +80,31 @@
   z-index: 1;
   pointer-events: none;
   user-select: none;
+  will-change: transform, opacity;
+}
+
+/* Entrance: start just off the right edge; final pose is transform none */
+.js-ready .hero-monster-wrap {
+  opacity: 0.8;
+  transform: translate3d(calc(100% + 12vw), 0, 0);
+}
+
+.js-ready .hero-monster-wrap.is-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 0.8s ease-out,
+    opacity 0.8s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-ready .hero-monster-wrap,
+  .js-ready .hero-monster-wrap.is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
 }
 
 .section--selected-hero .hero__title {
