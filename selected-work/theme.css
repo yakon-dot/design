@@ -3,10 +3,11 @@
 
 :root {
   --accent: #f4c542;
+  /* Plate fills match artwork edge colour so images merge (no inset rectangle). */
   --plate-boochos: #e92689;
-  --plate-soot: #c9aef9;
-  --plate-food: #19d5da;
-  --plate-punkt: #fee103;
+  --plate-soot: #a9a2e6;
+  --plate-food: #31c8d9;
+  --plate-punkt: #fddc02;
   --edit-radius: 14px;
 }
 
@@ -142,6 +143,18 @@
 
 .panel__art {
   width: 100%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.panel__art picture {
+  display: block;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
 }
 
 .panel__art img {
@@ -149,6 +162,9 @@
   width: 100%;
   height: auto;
   background: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
 }
 
 .panel__copy {
@@ -229,6 +245,36 @@
   opacity: 1;
 }
 
+/* Full-bleed art — same treatment as Boochos, no inset frame */
+.panel--soot .panel__inner,
+.panel--food .panel__inner,
+.panel--punkt .panel__inner {
+  padding-inline: 0;
+}
+
+.panel--soot .panel__copy,
+.panel--food .panel__copy,
+.panel--punkt .panel__copy {
+  padding-inline: var(--pad-x);
+}
+
+.panel--soot .panel__art,
+.panel--food .panel__art,
+.panel--punkt .panel__art {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background: transparent;
+}
+
+.panel--soot .panel__art img,
+.panel--food .panel__art img,
+.panel--punkt .panel__art img {
+  width: 100%;
+  max-width: none;
+  background: transparent;
+}
+
 .panel--food {
   background: var(--plate-food);
   color: #fcef07;
@@ -241,52 +287,26 @@
 
 .panel--punkt {
   background: var(--plate-punkt);
-  color: #85a32d;
+  color: #007c83;
 }
 
 .panel--punkt .panel__tags {
-  color: #85a32d;
+  color: #007c83;
   opacity: 1;
 }
 
 /* ——— Black editorial ——— */
 
-/*
-  Mobile: horizontal swipe rail. Desktop restores the stacked layout
-  in the min-width: 768px block below.
-*/
 .editorial {
   background: var(--bg);
+  padding: clamp(3.5rem, 12vw, 5.5rem) 0 clamp(2.5rem, 8vw, 4rem);
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  gap: clamp(0.85rem, 3.2vw, 1.1rem);
-  padding-block: clamp(2.75rem, 10vw, 4rem);
-  padding-inline: var(--pad-x);
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--pad-x);
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.editorial::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
+  flex-direction: column;
+  gap: clamp(2.75rem, 9vw, 4rem);
 }
 
 .edit {
   margin: 0;
-  flex: 0 0 80vw;
-  width: 80vw;
-  max-width: 80vw;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -300,14 +320,19 @@
   background: var(--bg);
 }
 
-/* Uniform rail slides — override per-piece mobile widths/margins */
-.edit--botanic,
-.edit--wicked,
-.edit--derma,
-.edit--bperfect {
-  width: 80vw;
-  max-width: 80vw;
-  margin: 0;
+.edit--botanic {
+  width: calc(100vw - (var(--pad-x) * 2.4));
+  margin-inline: auto;
+}
+
+.edit--wicked {
+  width: calc(100vw - (var(--pad-x) * 2));
+  margin-inline: auto;
+}
+
+.edit--derma {
+  width: calc(100vw - (var(--pad-x) * 2));
+  margin-inline: auto;
 }
 
 .edit--derma img {
@@ -316,6 +341,13 @@
 
 .edit--derma .meta {
   padding-inline: 0;
+}
+
+.edit--bperfect {
+  width: 54vw;
+  max-width: 13.5rem;
+  margin-left: auto;
+  margin-right: var(--pad-x);
 }
 
 .edit--bperfect .meta {
@@ -328,17 +360,11 @@
   display: none;
   height: 0;
   margin: 0;
-  flex: none;
-  width: 0;
-  max-width: 0;
 }
 
 .edit--motion:not(:empty) {
-  flex: 0 0 80vw;
-  width: 80vw;
-  max-width: 80vw;
-  margin: 0;
-  scroll-snap-align: start;
+  width: calc(100vw - (var(--pad-x) * 2));
+  margin-inline: auto;
 }
 
 .edit--motion:not(:empty) video {
@@ -356,6 +382,10 @@
   margin: 0;
   max-width: 28rem;
   padding-inline: 0;
+}
+
+.edit--derma .meta {
+  padding-inline: var(--pad-x);
 }
 
 .meta__name {
@@ -463,7 +493,9 @@
 
   /* Alternating copy/art rhythm on wider screens without breaking mobile poster feel */
   .panel--soot .panel__inner,
+  .panel--food .panel__inner,
   .panel--punkt .panel__inner {
+    padding-inline: 0;
     align-items: flex-end;
   }
 
@@ -473,6 +505,15 @@
     text-align: right;
   }
 
+  .panel--soot .panel__art,
+  .panel--food .panel__art,
+  .panel--punkt .panel__art {
+    max-width: none;
+    margin-inline: 0;
+    width: 100%;
+    background: transparent;
+  }
+
   .panel__art {
     max-width: 56rem;
     margin-inline: auto;
@@ -480,42 +521,24 @@
   }
 
   .editorial {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: stretch;
     gap: clamp(3.5rem, 7vw, 5.5rem);
     padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem);
-    padding-inline: 0;
-    overflow-x: visible;
-    overflow-y: visible;
-    scroll-snap-type: none;
-    scroll-padding-inline: 0;
-  }
-
-  .edit {
-    flex: none;
-    width: auto;
-    max-width: none;
-    scroll-snap-align: none;
   }
 
   .edit--botanic {
     width: min(48vw, 28rem);
-    max-width: none;
     margin-left: clamp(3rem, 12vw, 8rem);
     margin-right: auto;
   }
 
   .edit--wicked {
     width: min(52vw, 32rem);
-    max-width: none;
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
   }
 
   .edit--derma {
     width: min(88vw, 56rem);
-    max-width: none;
     margin-inline: auto;
   }
 
@@ -532,14 +555,6 @@
     max-width: none;
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
-  }
-
-  .edit--motion:not(:empty) {
-    flex: none;
-    width: min(88vw, 56rem);
-    max-width: none;
-    margin-inline: auto;
-    scroll-snap-align: none;
   }
 }
 
