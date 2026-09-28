@@ -1,0 +1,513 @@
+/* About — Dot. portfolio page
+   Extends ../freedom/styles.css with pink CV accent. */
+
+.page-about {
+  --accent: #f04b8d;
+  --about-ink: #f2efe9;
+  --about-muted: #9a958c;
+  --about-soft: #c4beb4;
+}
+
+.page-about .site-mark[aria-current="page"] {
+  cursor: default;
+  pointer-events: none;
+}
+
+.about-wrap {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-inline: var(--pad-x);
+}
+
+.about-wrap--wide {
+  max-width: 56rem;
+}
+
+/* Shared section rhythm */
+.about-section {
+  padding-block: clamp(3.5rem, 12vw, 5.5rem);
+}
+
+.about-kicker {
+  margin: 0 0 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--about-ink);
+}
+
+.about-rule {
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin: 0 0 clamp(1.75rem, 6vw, 2.5rem);
+  background: var(--accent);
+  border: 0;
+}
+
+.about-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-icon--lg {
+  width: 4.5rem;
+  height: 4.5rem;
+  stroke-width: 1.35;
+}
+
+/* ——— 01 Hero ——— */
+
+.about-hero {
+  padding-top: clamp(1.25rem, 5vw, 2rem);
+  padding-bottom: clamp(2.5rem, 9vw, 4rem);
+}
+
+.about-hero__portrait {
+  margin: 0 0 clamp(1.75rem, 6vw, 2.5rem);
+  display: flex;
+  justify-content: center;
+}
+
+.about-hero__portrait picture,
+.about-hero__portrait img {
+  display: block;
+  width: min(88vw, 22rem);
+  height: auto;
+  background: transparent;
+}
+
+.about-hero__hello {
+  margin: 0 0 0.15rem;
+  font-size: clamp(2.6rem, 12vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  color: var(--about-ink);
+}
+
+.about-hero__name {
+  margin: 0 0 clamp(1.35rem, 5vw, 1.85rem);
+  font-size: clamp(2.6rem, 12vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  color: var(--about-ink);
+}
+
+.about-hero__name .dot-accent {
+  color: var(--accent);
+}
+
+.about-hero__lede {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  color: var(--about-soft);
+  max-width: 36ch;
+}
+
+.about-hero__body {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+  color: var(--about-muted);
+  max-width: 38ch;
+}
+
+/* ——— 02 Snapshot ——— */
+
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(242, 239, 233, 0.12);
+  border-left: 1px solid rgba(242, 239, 233, 0.12);
+}
+
+.snapshot-item {
+  margin: 0;
+  padding: clamp(1.25rem, 4.5vw, 1.65rem);
+  border-right: 1px solid rgba(242, 239, 233, 0.12);
+  border-bottom: 1px solid rgba(242, 239, 233, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-height: 100%;
+}
+
+.snapshot-item__stat {
+  margin: 0;
+  font-size: clamp(1.85rem, 8vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--about-ink);
+}
+
+.snapshot-item__label {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--about-muted);
+}
+
+/* ——— 03 Expertise ——— */
+
+.expertise-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 9vw, 3.5rem);
+}
+
+.expertise-block {
+  margin: 0;
+}
+
+.expertise-block__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 1.15rem;
+}
+
+.expertise-block__title {
+  margin: 0;
+  font-size: clamp(1.15rem, 4.5vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--about-ink);
+  text-transform: uppercase;
+}
+
+.expertise-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.expertise-list li {
+  font-size: 1rem;
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--about-soft);
+  padding-left: 0.9rem;
+  position: relative;
+}
+
+.expertise-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.85;
+}
+
+/* ——— 04 Personality ——— */
+
+.about-quote {
+  padding-block: clamp(4.5rem, 16vw, 7rem);
+}
+
+.about-quote__mark {
+  display: block;
+  margin: 0 0 clamp(1rem, 4vw, 1.5rem);
+  font-size: clamp(4.5rem, 22vw, 7rem);
+  font-weight: 600;
+  line-height: 0.7;
+  letter-spacing: -0.06em;
+  color: var(--accent);
+}
+
+.about-quote__text {
+  margin: 0;
+  max-width: 14ch;
+  font-size: clamp(1.85rem, 8vw, 2.65rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  color: var(--about-ink);
+}
+
+/* ——— 05 Career / timeline ——— */
+
+.career-timeline {
+  position: relative;
+  padding-left: 1.65rem;
+}
+
+.career-timeline__rail {
+  position: absolute;
+  left: 0.35rem;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 1.5px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.career-timeline__dot {
+  position: absolute;
+  left: calc(0.35rem + 0.75px);
+  top: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+  transform: translate3d(-50%, 0, 0);
+  will-change: transform;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.career-entry {
+  margin: 0 0 clamp(2.5rem, 9vw, 3.5rem);
+  padding-top: 0.15rem;
+}
+
+.career-entry:last-child {
+  margin-bottom: 0;
+}
+
+.career-entry__dates {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.career-entry__role {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.05rem, 4vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--about-ink);
+}
+
+.career-entry__summary {
+  margin: 0 0 0.9rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+  color: var(--about-soft);
+}
+
+.career-entry__list {
+  margin: 0;
+  padding: 0 0 0 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.career-entry__list li {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--about-muted);
+}
+
+.career-entry--freelance .career-entry__role {
+  margin-bottom: 0.65rem;
+}
+
+/* ——— 06 Education ——— */
+
+.edu-title {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.15rem, 4.5vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--about-ink);
+}
+
+.edu-meta {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--about-soft);
+}
+
+.edu-dates {
+  margin: 0.45rem 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--about-muted);
+}
+
+/* ——— 07 Thinking ——— */
+
+.thinking {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.thinking__title {
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--about-ink);
+}
+
+.thinking__sub {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.thinking__list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.thinking__list li {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--about-soft);
+}
+
+/* ——— 08 AI ——— */
+
+.ai-copy {
+  margin: 0;
+  font-size: clamp(1.05rem, 3.8vw, 1.2rem);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  color: var(--about-soft);
+  max-width: 34ch;
+}
+
+.ai-copy strong {
+  display: inline;
+  font-weight: 600;
+  color: var(--about-ink);
+}
+
+/* ——— 09 Tools ——— */
+
+.tools-note {
+  margin: 0 0 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--about-muted);
+  max-width: 34ch;
+}
+
+.tools-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.15rem;
+}
+
+.tools-list li {
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  color: var(--about-soft);
+}
+
+/* ——— 10 Contact ——— */
+
+.connect-copy {
+  margin: 0;
+  font-size: clamp(1.2rem, 4.5vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  color: var(--about-ink);
+  max-width: 18ch;
+}
+
+/* ——— Desktop ——— */
+
+@media (min-width: 768px) {
+  .about-hero {
+    display: grid;
+    grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: end;
+    max-width: 56rem;
+    margin-inline: auto;
+    padding-inline: var(--pad-x);
+  }
+
+  .about-hero__portrait {
+    margin: 0;
+    justify-content: flex-start;
+  }
+
+  .about-hero__portrait picture,
+  .about-hero__portrait img {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .about-hero__copy {
+    padding-bottom: 0.5rem;
+  }
+
+  .snapshot-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .expertise-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .thinking {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .about-quote__text {
+    max-width: 16ch;
+  }
+
+  .career-timeline {
+    padding-left: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-timeline__dot {
+    transition: none !important;
+  }
+}
