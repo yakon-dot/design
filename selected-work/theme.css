@@ -14,8 +14,12 @@
 
 .section--selected-hero {
   position: relative;
-  /* Mobile: one viewport of black below sticky header; hard cut into pink */
-  min-height: calc(100svh - var(--header-h));
+  /*
+    Mobile: black must fill the first screen completely.
+    Use dvh + a small buffer so browser chrome / safe areas never reveal pink.
+  */
+  min-height: calc(100dvh - var(--header-h) + 1.25rem);
+  min-height: calc(100svh - var(--header-h) + 1.25rem);
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -32,10 +36,10 @@
   padding-inline: var(--pad-x);
   display: flex;
   flex-direction: column;
-  /* Less top void than before; still editorial breathing room */
   justify-content: flex-start;
   padding-top: clamp(3.25rem, 12vw, 4.5rem);
-  padding-bottom: clamp(5.5rem, 20vw, 7.5rem);
+  /* Keep copy clear of the bottom-anchored monster */
+  padding-bottom: clamp(10.5rem, 42vw, 14rem);
   min-height: 0;
   box-sizing: border-box;
 }
@@ -55,11 +59,14 @@
   text-align: left;
 }
 
-/* Lower-right peek — more body visible; black strip remains below before pink */
+/*
+  Monster: anchored to hero bottom, cropped by the edge —
+  peeks up from below/right into the black field.
+*/
 .hero-monster-wrap {
   position: absolute;
   right: -8%;
-  bottom: clamp(2.75rem, 9vw, 3.75rem);
+  bottom: 0;
   width: min(52vw, 13.25rem);
   height: min(66vw, 17.5rem);
   overflow: hidden;
