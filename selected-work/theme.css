@@ -3,11 +3,10 @@
 
 :root {
   --accent: #f4c542;
-  /* Plate fills match artwork edge colour so images merge (no inset rectangle). */
   --plate-boochos: #e92689;
-  --plate-soot: #a9a2e6;
-  --plate-food: #31c8d9;
-  --plate-punkt: #fddc02;
+  --plate-soot: #c9aef9;
+  --plate-food: #19d5da;
+  --plate-punkt: #fee103;
   --edit-radius: 14px;
 }
 
