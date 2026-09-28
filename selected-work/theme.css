@@ -15,12 +15,13 @@
 .section--selected-hero {
   position: relative;
   /*
-    Mobile: black must fill the first screen completely.
-    Use dvh + a small buffer so browser chrome / safe areas never reveal pink.
+    Mobile: first composition is black only; generous padding below
+    the stage delays pink until a later scroll.
   */
-  min-height: calc(100dvh - var(--header-h) + 1.25rem);
-  min-height: calc(100svh - var(--header-h) + 1.25rem);
+  min-height: 0;
   padding: 0;
+  /* Substantial uninterrupted black before Boochos */
+  padding-bottom: clamp(22rem, 78vw, 28rem);
   margin: 0;
   overflow: hidden;
   display: flex;
@@ -29,7 +30,7 @@
 
 .hero-stage {
   position: relative;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   width: 100%;
   max-width: 72rem;
   margin: 0 auto;
@@ -38,9 +39,14 @@
   flex-direction: column;
   justify-content: flex-start;
   padding-top: clamp(3.25rem, 12vw, 4.5rem);
-  /* Keep copy clear of the bottom-anchored monster */
-  padding-bottom: clamp(10.5rem, 42vw, 14rem);
-  min-height: 0;
+  /*
+    One mobile screen for the opening composition so the full
+    blob body can sit in view; section padding below supplies
+    the long black lead-in to pink.
+  */
+  min-height: calc(100dvh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  padding-bottom: clamp(20rem, 82vw, 26rem);
   box-sizing: border-box;
 }
 
@@ -60,16 +66,17 @@
 }
 
 /*
-  Monster: anchored to hero bottom, cropped by the edge —
-  peeks up from below/right into the black field.
+  Monster: original artwork, full rounded body visible.
+  Right-edge peek only — never cropped against the hero bottom.
+  Sits above a clear black band so the blob base reads complete.
 */
 .hero-monster-wrap {
   position: absolute;
-  right: -8%;
-  bottom: 0;
-  width: min(52vw, 13.25rem);
-  height: min(66vw, 17.5rem);
-  overflow: hidden;
+  right: -24%;
+  bottom: clamp(5rem, 18vw, 6.5rem);
+  width: min(66vw, 16.75rem);
+  height: auto;
+  overflow: visible;
   z-index: 1;
   pointer-events: none;
   user-select: none;
@@ -101,12 +108,10 @@
 }
 
 .hero-monster {
-  position: absolute;
-  right: 0;
-  top: 0;
+  position: relative;
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
 }
 
 /* ——— Colour run — panels touch ——— */
@@ -404,6 +409,7 @@
     bottom: 0;
     width: min(31vw, 20.5rem);
     height: min(38vw, 24rem);
+    overflow: hidden;
   }
 
   .hero-monster {
