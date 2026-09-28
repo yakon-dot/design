@@ -104,7 +104,13 @@
 }
 
 .about-hero__name .dot-accent {
-  color: var(--accent);
+  display: inline-block;
+  width: 0.28em;
+  height: 0.28em;
+  margin-right: 0.02em;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 0.08em;
 }
 
 .about-hero__lede {
