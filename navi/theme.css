@@ -57,6 +57,7 @@
 .section--challenge,
 .section--pair,
 .section--tools,
+.section--day,
 .section--role {
   padding-top: calc(var(--section-gap) / 2);
   padding-bottom: calc(var(--section-gap) / 2);
