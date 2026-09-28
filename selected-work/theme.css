@@ -383,10 +383,6 @@
   padding-inline: 0;
 }
 
-.edit--derma .meta {
-  padding-inline: var(--pad-x);
-}
-
 .meta__name {
   font-size: 0.8125rem;
   font-weight: 700;
