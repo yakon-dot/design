@@ -25,13 +25,31 @@
   max-width: 72rem;
   margin: 0 auto;
   padding-inline: var(--pad-x);
-  min-height: clamp(28rem, 95vw, 34rem);
+  min-height: clamp(34rem, 112vw, 40rem);
 }
 
 .hero-stage__copy {
   position: relative;
   z-index: 2;
-  max-width: 18rem;
+  max-width: 16.5rem;
+}
+
+.section--selected-hero .lede {
+  max-width: 18ch;
+  margin-top: clamp(1.25rem, 4vw, 1.75rem);
+  text-align: left;
+}
+
+.hero-monster-wrap {
+  position: absolute;
+  right: -6%;
+  bottom: 0;
+  width: min(50vw, 13.4rem);
+  height: min(62vw, 19rem);
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .section--selected-hero .hero__title {
@@ -57,24 +75,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.section--selected-hero .lede {
-  max-width: 22ch;
-  margin-top: clamp(1.25rem, 4vw, 1.75rem);
-  text-align: left;
-}
-
-.hero-monster-wrap {
-  position: absolute;
-  right: -8%;
-  bottom: 0;
-  width: min(50vw, 13.4rem);
-  height: min(58vw, 18rem);
-  overflow: hidden;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
 }
 
 .hero-monster {
