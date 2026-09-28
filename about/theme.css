@@ -92,12 +92,89 @@
   justify-content: center;
 }
 
-.about-hero__portrait picture,
-.about-hero__portrait img {
+.portrait-stage {
+  position: relative;
   display: block;
   width: min(88vw, 22rem);
+  line-height: 0;
+}
+
+.portrait-stage picture,
+.portrait-stage__photo {
+  display: block;
+  width: 100%;
   height: auto;
   background: transparent;
+}
+
+/* Full-frame overlays match the portrait exactly */
+.portrait-monster-blocker,
+.portrait-pocket {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.portrait-monster-blocker {
+  z-index: 1;
+}
+
+.portrait-pocket {
+  z-index: 3;
+}
+
+/*
+  Isolated monster locked to the baked-in pocket monster.
+  Percentages derived from eye-matched placement on the source portrait.
+*/
+.portrait-monster {
+  position: absolute;
+  left: 68.3986%;
+  top: 78.8563%;
+  z-index: 2;
+  display: block;
+  width: 8.1772%;
+  height: auto;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  transform-origin: 50% 22%;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+@keyframes pocket-monster-peek {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  18% {
+    transform: translate3d(0.6px, -3px, 0) rotate(-1.2deg);
+  }
+  38% {
+    transform: translate3d(-1.2px, -8px, 0) rotate(2.4deg);
+  }
+  55% {
+    transform: translate3d(1px, -7px, 0) rotate(-2deg);
+  }
+  72% {
+    transform: translate3d(-0.6px, -3px, 0) rotate(1deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+.portrait-monster.is-peeking {
+  animation: pocket-monster-peek 1.3s cubic-bezier(0.4, 0.05, 0.35, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-monster.is-peeking {
+    animation: none;
+  }
 }
 
 .about-hero__hello {
@@ -476,8 +553,7 @@
     justify-content: flex-start;
   }
 
-  .about-hero__portrait picture,
-  .about-hero__portrait img {
+  .portrait-stage {
     width: 100%;
     max-width: 22rem;
   }

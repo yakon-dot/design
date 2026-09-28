@@ -14,8 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../freedom/styles.css?v=about-16" />
-    <link rel="stylesheet" href="theme.css?v=about-16" />
+    <link rel="stylesheet" href="../freedom/styles.css?v=about-17" />
+    <link rel="stylesheet" href="theme.css?v=about-17" />
   </head>
   <body class="page-about">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -53,17 +53,53 @@
       <!-- 01 INTRO -->
       <section class="about-hero" id="top" aria-labelledby="about-title">
         <figure class="about-hero__portrait reveal">
-          <picture>
-            <source srcset="images/dot-portrait.webp" type="image/webp" />
+          <div class="portrait-stage">
+            <picture>
+              <source srcset="images/dot-portrait.webp" type="image/webp" />
+              <img
+                class="portrait-stage__photo"
+                src="images/dot-portrait.png"
+                alt="Dot., black-and-white portrait with a yellow monster peeking from a shirt pocket."
+                width="1174"
+                height="1329"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </picture>
+            <!-- Hides the baked-in monster so the animated overlay can move cleanly -->
             <img
-              src="images/dot-portrait.png"
-              alt="Dot., black-and-white portrait with a yellow monster peeking from a shirt pocket."
+              class="portrait-monster-blocker"
+              src="images/monster-blocker.webp"
+              alt=""
               width="1174"
               height="1329"
               decoding="async"
-              fetchpriority="high"
+              aria-hidden="true"
+              draggable="false"
             />
-          </picture>
+            <img
+              class="portrait-monster"
+              src="images/pocket-monster.webp"
+              alt=""
+              width="96"
+              height="163"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false"
+              data-pocket-monster
+            />
+            <!-- Pocket lip/fabric sits above the monster -->
+            <img
+              class="portrait-pocket"
+              src="images/pocket-front.webp"
+              alt=""
+              width="1174"
+              height="1329"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false"
+            />
+          </div>
         </figure>
         <div class="about-hero__copy about-wrap">
           <p class="about-hero__hello reveal">Hi,</p>
@@ -572,7 +608,7 @@
       </div>
     </footer>
 
-    <script src="../freedom/main.js?v=about-16" defer></script>
-    <script src="about.js?v=about-16" defer></script>
+    <script src="../freedom/main.js?v=about-17" defer></script>
+    <script src="about.js?v=about-17" defer></script>
   </body>
 </html>
