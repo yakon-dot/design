@@ -3,10 +3,10 @@
 
 :root {
   --accent: #f4c542;
-  --plate-boochos: #d6207e;
-  --plate-soot: #aaa3e7;
-  --plate-food: #33c8d9;
-  --plate-punkt: #fedd02;
+  --plate-boochos: #e92689;
+  --plate-soot: #c9aef9;
+  --plate-food: #19d5da;
+  --plate-punkt: #fee103;
   --edit-radius: 14px;
 }
 
@@ -179,14 +179,14 @@
   opacity: 0.72;
 }
 
-/* Contrast per panel — not portfolio yellow */
+/* Contrast per panel — vibrant editorial palette */
 .panel--boochos {
   background: var(--plate-boochos);
-  color: #f2efe9;
+  color: #fcea94;
 }
 
 .panel--boochos .panel__tags {
-  color: rgba(242, 239, 233, 0.78);
+  color: #fcea94;
   opacity: 1;
 }
 
@@ -221,31 +221,31 @@
 
 .panel--soot {
   background: var(--plate-soot);
-  color: #f2efe9;
+  color: #f54e20;
 }
 
 .panel--soot .panel__tags {
-  color: rgba(242, 239, 233, 0.78);
+  color: #f54e20;
   opacity: 1;
 }
 
 .panel--food {
   background: var(--plate-food);
-  color: #f2efe9;
+  color: #fcef07;
 }
 
 .panel--food .panel__tags {
-  color: rgba(242, 239, 233, 0.78);
+  color: #fcef07;
   opacity: 1;
 }
 
 .panel--punkt {
   background: var(--plate-punkt);
-  color: #f2efe9;
+  color: #85a32d;
 }
 
 .panel--punkt .panel__tags {
-  color: rgba(242, 239, 233, 0.78);
+  color: #85a32d;
   opacity: 1;
 }
 
