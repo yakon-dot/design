@@ -62,9 +62,12 @@
   if (reduceMotion) return;
 
   let timer = 0;
+  let first = true;
 
   const schedule = () => {
-    const delay = 5000 + Math.random() * 3000; // 5–8s
+    // First peek arrives quickly so it’s noticeable; then every 5–8s
+    const delay = first ? 1200 + Math.random() * 800 : 5000 + Math.random() * 3000;
+    first = false;
     timer = window.setTimeout(peek, delay);
   };
 
