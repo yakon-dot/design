@@ -25,7 +25,7 @@
   max-width: 72rem;
   margin: 0 auto;
   padding-inline: var(--pad-x);
-  min-height: clamp(26rem, 88vw, 32rem);
+  min-height: clamp(28rem, 95vw, 34rem);
 }
 
 .hero-stage__copy {
@@ -65,16 +65,25 @@
   text-align: left;
 }
 
-.hero-monster {
+.hero-monster-wrap {
   position: absolute;
-  right: -10%;
+  right: -8%;
   bottom: 0;
-  top: auto;
   width: min(50vw, 13.4rem);
-  height: auto;
+  height: min(58vw, 18rem);
+  overflow: hidden;
   z-index: 1;
   pointer-events: none;
   user-select: none;
+}
+
+.hero-monster {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ——— Colour run — panels touch ——— */
@@ -354,11 +363,14 @@
     font-size: clamp(3.5rem, 7vw, 5rem);
   }
 
-  .hero-monster {
-    right: -4%;
-    bottom: 0;
-    top: auto;
+  .hero-monster-wrap {
+    right: -2%;
     width: min(31vw, 20.5rem);
+    height: min(38vw, 24rem);
+  }
+
+  .hero-monster {
+    width: 100%;
   }
 
   .panel {
@@ -447,9 +459,10 @@
 }
 
 @media (min-width: 1100px) {
-  .hero-monster {
-    right: 2%;
-    width: min(28vw, 24rem);
+  .hero-monster-wrap {
+    right: 4%;
+    width: min(28vw, 22rem);
+    height: min(32vw, 26rem);
   }
 
   .panel__art {
