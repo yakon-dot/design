@@ -32,17 +32,20 @@
   padding-inline: var(--pad-x);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  /* Less top void than before; still editorial breathing room */
+  justify-content: flex-start;
+  padding-top: clamp(3.25rem, 12vw, 4.5rem);
+  padding-bottom: clamp(5.5rem, 20vw, 7.5rem);
   min-height: 0;
+  box-sizing: border-box;
 }
 
 .hero-stage__copy {
   position: relative;
   z-index: 2;
   max-width: 16.5rem;
-  /* Sit in the lower half — space above, room for monster below/beside */
-  margin-top: auto;
-  margin-bottom: clamp(7.5rem, 28vw, 10rem);
+  margin-top: 0;
+  margin-bottom: 0;
   padding-top: 0;
 }
 
@@ -52,13 +55,13 @@
   text-align: left;
 }
 
-/* Lower-right peek — both eyes/mouth visible; cropped by right + bottom */
+/* Lower-right peek — more body visible; black strip remains below before pink */
 .hero-monster-wrap {
   position: absolute;
-  right: -14%;
-  bottom: -6%;
-  width: min(46vw, 12rem);
-  height: min(58vw, 15.5rem);
+  right: -8%;
+  bottom: clamp(2.75rem, 9vw, 3.75rem);
+  width: min(52vw, 13.25rem);
+  height: min(66vw, 17.5rem);
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
@@ -373,6 +376,8 @@
   .hero-stage {
     min-height: clamp(26rem, 38vw, 34rem);
     padding-inline: clamp(2rem, 6vw, 4rem);
+    padding-top: 0;
+    padding-bottom: 0;
     display: block;
     flex: none;
   }
