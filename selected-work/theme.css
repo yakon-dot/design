@@ -25,7 +25,7 @@
   max-width: 72rem;
   margin: 0 auto;
   padding-inline: var(--pad-x);
-  min-height: clamp(34rem, 112vw, 40rem);
+  min-height: clamp(36rem, 120vw, 42rem);
 }
 
 .hero-stage__copy {
@@ -45,7 +45,7 @@
   right: -6%;
   bottom: 0;
   width: min(50vw, 13.4rem);
-  height: min(62vw, 19rem);
+  height: min(55vw, 17rem);
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
