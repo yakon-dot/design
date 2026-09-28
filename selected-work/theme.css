@@ -1,214 +1,266 @@
-/* Selected Work — yellow Dot accent, colour plates, visual hierarchy.
-   Base system: ../freedom-50/styles.css */
+/* Selected Work — final direction: expressive opening, colour run, black editorial.
+   Base: ../freedom-50/styles.css */
 
 :root {
   --accent: #f4c542;
-  --band-gap: clamp(3rem, 9vw, 4.75rem);
-  --piece-gap: clamp(1.5rem, 4.5vw, 2.25rem);
   --plate-boochos: #d6207e;
-  --plate-wicked: #00b8f8;
   --plate-soot: #aaa3e7;
+  --plate-food: #33c8d9;
   --plate-punkt: #fedd02;
+  --edit-radius: 14px;
 }
 
 /* ——— Opening ——— */
 
 .section--selected-hero {
-  padding-top: clamp(1.75rem, 6vw, 2.75rem);
-  padding-bottom: clamp(2.25rem, 7vw, 3.25rem);
+  position: relative;
+  padding-top: clamp(1.5rem, 5vw, 2.5rem);
+  padding-bottom: clamp(3rem, 10vw, 4.5rem);
+  overflow: hidden;
+}
+
+.hero-stage {
+  position: relative;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: var(--pad-x);
+  min-height: clamp(22rem, 72vw, 28rem);
+}
+
+.hero-stage__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 22rem;
 }
 
 .section--selected-hero .hero__title {
   max-width: 10ch;
-  font-size: clamp(2.35rem, 10vw, 3.25rem);
-  line-height: 1.05;
+  font-size: clamp(2.75rem, 13vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.hero__selected {
+  color: var(--text);
+}
+
+/* Editorial gradient on “Work” — yellow → warm → soft lilac from the colour run */
+.hero__work {
+  background: linear-gradient(
+    115deg,
+    #f4c542 0%,
+    #f0a45a 42%,
+    #d6207e 78%,
+    #aaa3e7 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .section--selected-hero .lede {
-  max-width: 34ch;
+  max-width: 30ch;
+  margin-top: clamp(1.25rem, 4vw, 1.75rem);
 }
 
-/* ——— Bands ——— */
+.hero-monster {
+  position: absolute;
+  right: -18%;
+  top: 8%;
+  width: min(58vw, 15rem);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
 
-.band {
+/* ——— Colour run — panels touch ——— */
+
+.colour-run {
   display: flex;
   flex-direction: column;
-  gap: var(--piece-gap);
-  padding-bottom: var(--band-gap);
-}
-
-.band__label {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 42rem;
-  padding-inline: var(--pad-x);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-/* ——— Pieces ——— */
-
-.piece {
+  gap: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  padding: 0;
 }
 
-.piece img,
-.piece video,
-.plate img {
+.panel {
+  width: 100%;
+  margin: 0;
+  padding: clamp(2rem, 7vw, 3rem) 0 clamp(2.25rem, 8vw, 3.25rem);
+}
+
+.panel__inner {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: var(--pad-x);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 4vw, 1.75rem);
+}
+
+.panel__art {
+  width: 100%;
+}
+
+.panel__art img {
   display: block;
   width: 100%;
   height: auto;
   background: transparent;
-  object-fit: contain;
 }
 
-/* ——— Colour plates (extend flat artwork environments) ——— */
-
-.plate {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* No shadow, border, radius, gradient */
-  border: 0;
-  box-shadow: none;
+.panel__copy {
+  max-width: 28rem;
 }
 
-.plate picture {
-  display: block;
-  width: 100%;
+.panel__name {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.15rem, 4.2vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-/* Flat-field artworks: full-bleed image + vertical colour extension = seamless */
-.plate--boochos,
-.plate--soot,
-.plate--punkt {
-  min-height: min(92vh, 48rem);
-  padding-block: clamp(3rem, 12vh, 6rem);
+.panel__desc {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
 }
 
-.plate--boochos {
+.panel__tags {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  opacity: 0.72;
+}
+
+/* Contrast per panel — not portfolio yellow */
+.panel--boochos {
   background: var(--plate-boochos);
+  color: #f2efe9;
 }
 
-.plate--soot {
+.panel--boochos .panel__tags {
+  color: rgba(242, 239, 233, 0.78);
+  opacity: 1;
+}
+
+.panel--soot {
   background: var(--plate-soot);
+  color: #14110f;
 }
 
-.plate--punkt {
+.panel--soot .panel__tags {
+  color: rgba(20, 17, 15, 0.62);
+  opacity: 1;
+}
+
+.panel--food {
+  background: var(--plate-food);
+  color: #0c1214;
+}
+
+.panel--food .panel__tags {
+  color: rgba(12, 18, 20, 0.62);
+  opacity: 1;
+}
+
+.panel--punkt {
   background: var(--plate-punkt);
+  color: #14110f;
 }
 
-/* Trailer/van/hoodie stay contained — environment grows, not the object */
-.plate--boochos img,
-.plate--soot img,
-.plate--punkt img {
-  width: 100%;
-  max-width: 100%;
+.panel--punkt .panel__tags {
+  color: rgba(20, 17, 15, 0.62);
+  opacity: 1;
 }
 
-/* Wicked Bun is photographic — expand turquoise environment around it */
-.plate--wicked {
-  background: var(--plate-wicked);
-  min-height: min(82vh, 38rem);
-  padding: clamp(2.25rem, 9vh, 4rem) clamp(1.15rem, 4.5vw, 1.75rem);
-}
+/* ——— Black editorial ——— */
 
-.plate--wicked img {
-  width: 100%;
-}
-
-/* Derma — photography provides its own environment */
-.piece--feature {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-}
-
-.piece--feature > picture {
-  display: block;
-  width: 100%;
-}
-
-/* Supporting / contained — quieter on black */
-.piece--support,
-.piece--contained {
-  width: calc(100vw - (var(--pad-x) * 2));
-  margin-inline: auto;
-}
-
-.piece--support-a {
-  width: calc(100vw - (var(--pad-x) * 2.6));
-  margin-left: var(--pad-x);
-  margin-right: auto;
-}
-
-.piece--support-b {
-  /* Wicked plate is full-bleed; meta stays inset */
-  width: 100%;
-  margin-inline: 0;
-}
-
-.piece--support-b .plate--wicked {
-  /* keep full-width plate even inside support column on mobile */
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-}
-
-.support-row {
+.editorial {
+  background: var(--bg);
+  padding: clamp(3.5rem, 12vw, 5.5rem) 0 clamp(2.5rem, 8vw, 4rem);
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 5vw, 2.25rem);
+  gap: clamp(2.75rem, 9vw, 4rem);
 }
 
-/* Food delivery — supporting, contained */
-.piece--contained {
+.edit {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.edit img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--edit-radius);
+  background: var(--bg);
+}
+
+.edit--botanic {
+  width: calc(100vw - (var(--pad-x) * 2.4));
+  margin-inline: auto;
+}
+
+.edit--wicked {
   width: calc(100vw - (var(--pad-x) * 2));
   margin-inline: auto;
 }
 
-/* BPerfect — ~65–70%, offset */
-.piece--minor {
+.edit--derma {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+.edit--derma img {
+  border-radius: 0;
+}
+
+.edit--bperfect {
   width: 68vw;
   max-width: 16.5rem;
   margin-left: auto;
   margin-right: var(--pad-x);
 }
 
-/* Motion placeholders */
-.piece--motion:empty {
+.edit--motion:empty {
   display: none;
-  margin: 0;
   height: 0;
-  overflow: hidden;
+  margin: 0;
 }
 
-.piece--motion:not(:empty) {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
+.edit--motion:not(:empty) {
+  width: calc(100vw - (var(--pad-x) * 2));
+  margin-inline: auto;
 }
 
-.band--motion:not(:has(.piece--motion:not(:empty))) {
-  padding-bottom: clamp(1.25rem, 4vw, 2rem);
+.edit--motion:not(:empty) video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--edit-radius);
 }
 
-/* ——— Metadata ——— */
-
+/* Yellow accent metadata on black */
 .meta {
   display: flex;
   flex-direction: column;
   gap: 0.18rem;
   margin: 0;
   max-width: 28rem;
+  padding-inline: 0;
 }
 
-.meta--inset {
+.edit--derma .meta {
   padding-inline: var(--pad-x);
 }
 
@@ -234,7 +286,7 @@
   color: var(--text-muted);
 }
 
-/* ——— Summary ending (Freedom / Navi system) ——— */
+/* ——— Summary ——— */
 
 .section--summary {
   padding-top: calc(var(--section-gap) / 2);
@@ -248,116 +300,107 @@
 /* ——— Desktop ——— */
 
 @media (min-width: 768px) {
-  .band__label {
-    max-width: none;
-    width: min(92vw, 58rem);
-    margin-inline: auto;
-    padding-inline: 0;
+  .hero-stage {
+    min-height: clamp(26rem, 38vw, 34rem);
+    padding-inline: clamp(2rem, 6vw, 4rem);
   }
 
-  .meta--inset {
-    padding-inline: 0;
-    width: min(92vw, 58rem);
-    margin-inline: auto;
+  .hero-stage__copy {
+    max-width: 28rem;
   }
 
-  .plate--boochos,
-  .plate--soot,
-  .plate--punkt {
-    min-height: 0;
-    width: min(92vw, 58rem);
-    margin-inline: auto;
-    padding-block: clamp(2.5rem, 6vw, 4rem);
+  .section--selected-hero .hero__title {
+    font-size: clamp(3.5rem, 7vw, 5rem);
   }
 
-  .plate--wicked {
-    min-height: 0;
+  .hero-monster {
+    right: -6%;
+    top: 0;
+    width: min(34vw, 22rem);
+  }
+
+  .panel {
+    padding: clamp(2.5rem, 5vw, 3.75rem) 0;
+  }
+
+  .panel__inner {
+    padding-inline: clamp(2rem, 6vw, 4rem);
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  /* Alternating copy/art rhythm on wider screens without breaking mobile poster feel */
+  .panel--soot .panel__inner,
+  .panel--punkt .panel__inner {
+    align-items: flex-end;
+  }
+
+  .panel--soot .panel__copy,
+  .panel--punkt .panel__copy {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .panel__art {
+    max-width: 56rem;
+    margin-inline: auto;
     width: 100%;
-    margin-inline: 0;
-    padding: clamp(1.75rem, 4vw, 2.75rem);
   }
 
-  .piece--support-b .plate--wicked {
-    width: 100%;
-    margin-inline: 0;
+  .editorial {
+    gap: clamp(3.5rem, 7vw, 5.5rem);
+    padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem);
   }
 
-  .piece--feature {
-    width: min(92vw, 58rem);
-    margin-inline: auto;
-  }
-
-  .support-row {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    width: min(78vw, 48rem);
-    margin-inline: auto;
-    align-items: start;
-  }
-
-  .piece--support,
-  .piece--support-a {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  .piece--support-b {
-    margin-top: clamp(2rem, 5vw, 3.5rem);
-  }
-
-  .piece--contained {
-    width: min(58vw, 36rem);
-    margin-left: clamp(4rem, 16vw, 12rem);
+  .edit--botanic {
+    width: min(48vw, 28rem);
+    margin-left: clamp(3rem, 12vw, 8rem);
     margin-right: auto;
   }
 
-  .piece--minor {
-    width: min(20vw, 15rem);
-    max-width: none;
-    margin-left: clamp(6rem, 28vw, 22rem);
-    margin-right: auto;
+  .edit--wicked {
+    width: min(52vw, 32rem);
+    margin-left: auto;
+    margin-right: clamp(3rem, 10vw, 7rem);
   }
 
-  .piece--motion:not(:empty) {
-    width: min(78vw, 48rem);
+  .edit--derma {
+    width: min(88vw, 56rem);
     margin-inline: auto;
   }
 
-  .piece--motion-offset:not(:empty) {
-    width: min(58vw, 36rem);
-    margin-left: clamp(5rem, 20vw, 14rem);
+  .edit--derma img {
+    border-radius: var(--edit-radius);
+  }
+
+  .edit--derma .meta {
+    padding-inline: 0;
+  }
+
+  .edit--bperfect {
+    width: min(18vw, 14rem);
+    max-width: none;
+    margin-left: clamp(8rem, 30vw, 24rem);
     margin-right: auto;
   }
 }
 
 @media (min-width: 1100px) {
-  .plate--boochos,
-  .plate--soot,
-  .plate--punkt,
-  .piece--feature {
-    width: min(78vw, 62rem);
+  .hero-monster {
+    right: 2%;
+    width: min(28vw, 24rem);
   }
 
-  .meta--inset {
-    width: min(78vw, 62rem);
+  .panel__art {
+    max-width: 60rem;
   }
 
-  .support-row {
-    width: min(64vw, 50rem);
-  }
-
-  .piece--contained {
-    width: min(46vw, 34rem);
-  }
-
-  .piece--minor {
-    width: min(16vw, 14rem);
+  .edit--derma {
+    width: min(72vw, 58rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .piece--motion video {
+  .edit--motion video {
     display: none;
   }
 }
