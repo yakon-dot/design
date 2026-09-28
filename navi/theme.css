@@ -49,17 +49,20 @@
   max-width: 14ch;
 }
 
-/* Extra pause after The Challenge */
-.section--challenge {
+/*
+  Match Freedom Part Two section rhythm (half section-gap top + bottom).
+  Without this, base .section keeps full --section-gap on top, so
+  image → next label was ~1.5× Freedom (~164–221px vs ~109px).
+*/
+.section--challenge,
+.section--pair,
+.section--tools,
+.section--role {
   padding-top: calc(var(--section-gap) / 2);
-  padding-bottom: clamp(7rem, 20vw, 10rem);
-}
-
-/* Tight copy→image pairing for connecting / audience / store */
-.section--pair {
   padding-bottom: calc(var(--section-gap) / 2);
 }
 
+/* Copy→image pairing within a section (not section-to-section) */
 .section--pair .visual--bleed {
   margin-top: clamp(2rem, 6vw, 2.75rem);
 }
@@ -70,10 +73,6 @@
 
 .section--tools .section__inner .body-copy + .body-copy {
   margin-top: 1.25rem;
-}
-
-.section--role {
-  padding-top: calc(var(--section-gap) / 2);
 }
 
 /* Desktop: large editorial moments, not full browser stretch.
