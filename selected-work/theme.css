@@ -1,17 +1,17 @@
-/* Selected Work — yellow Dot accent + editorial chapter composition.
+/* Selected Work — yellow Dot accent + visual hierarchy.
    Base system: ../freedom-50/styles.css */
 
 :root {
   --accent: #f4c542;
-  --chapter-gap: clamp(4.5rem, 14vw, 7rem);
-  --piece-gap: clamp(1.75rem, 5vw, 2.75rem);
+  --band-gap: clamp(3.25rem, 10vw, 5rem);
+  --piece-gap: clamp(1.5rem, 4.5vw, 2.25rem);
 }
 
-/* ——— Opening ——— */
+/* ——— Opening (unchanged feel) ——— */
 
 .section--selected-hero {
   padding-top: clamp(1.75rem, 6vw, 2.75rem);
-  padding-bottom: clamp(2.75rem, 9vw, 4rem);
+  padding-bottom: clamp(2.25rem, 7vw, 3.25rem);
 }
 
 .section--selected-hero .hero__title {
@@ -24,69 +24,34 @@
   max-width: 34ch;
 }
 
-/* ——— Chapters ——— */
+/* ——— Bands (light section markers, not case-study chapters) ——— */
 
-.chapter {
-  position: relative;
-  padding-bottom: var(--chapter-gap);
+.band {
   display: flex;
   flex-direction: column;
   gap: var(--piece-gap);
+  padding-bottom: var(--band-gap);
 }
 
-.chapter__intro {
-  position: relative;
+.band__label {
+  margin: 0 auto;
   width: 100%;
   max-width: 42rem;
-  margin: 0 auto;
   padding-inline: var(--pad-x);
-  z-index: 1;
-}
-
-.chapter__intro .section-title {
-  max-width: 14ch;
-}
-
-.chapter__intro .body-copy {
-  max-width: 34rem;
-}
-
-/* Subtle oversized chapter numeral in negative space */
-.chapter__num {
-  position: absolute;
-  top: -0.35em;
-  right: var(--pad-x);
-  font-size: clamp(4.5rem, 22vw, 8rem);
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 0.85;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--accent);
-  opacity: 0.12;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
 }
 
-.chapter__num--inline {
-  position: static;
-  display: block;
-  font-size: clamp(3.5rem, 8vw, 6rem);
-  opacity: 0.14;
-  margin: 0 0 1.5rem;
-}
-
-.chapter__intro--shift {
-  /* Slightly different measure feel vs previous chapter */
-  max-width: 40rem;
-}
-
-/* ——— Artwork pieces ——— */
+/* ——— Pieces ——— */
 
 .piece {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
 }
 
 .piece img,
@@ -98,36 +63,62 @@
   object-fit: contain;
 }
 
-/* Full-bleed heroes / features on mobile */
-.piece--hero,
+/* Major moments — edge to edge on mobile */
 .piece--feature {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
-  padding-inline: 0;
 }
 
-.piece--hero .anno,
-.piece--feature .anno {
+.piece--feature .meta--pad,
+.piece--feature .piece__context {
   padding-inline: var(--pad-x);
 }
 
-/* Mid pieces: intentional inset on mobile for rhythm */
-.duo .piece {
+.piece__context--before {
+  order: -1;
+}
+
+/* Supporting insets — deliberately smaller */
+.piece--support,
+.piece--contained {
   width: calc(100vw - (var(--pad-x) * 2));
   margin-inline: auto;
 }
 
-.piece--secondary {
+/* Botanic slightly narrower / left-biased feel on mobile */
+.piece--support-a {
+  width: calc(100vw - (var(--pad-x) * 2.6));
+  margin-left: var(--pad-x);
+  margin-right: auto;
+}
+
+/* Wicked Bun a touch wider inset, right-biased */
+.piece--support-b {
   width: calc(100vw - (var(--pad-x) * 2));
   margin-inline: auto;
 }
 
-.piece--portrait {
-  width: min(calc(100vw - (var(--pad-x) * 2)), 22rem);
+.support-row {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.35rem, 4vw, 1.85rem);
+}
+
+/* Punkt — more presence than a quiet product shot */
+.piece--punkt {
+  width: calc(100vw - (var(--pad-x) * 1.35));
   margin-inline: auto;
 }
 
-/* Hidden until video children exist */
+/* BPerfect — supporting portrait, ~65–70% width on mobile */
+.piece--minor {
+  width: 68vw;
+  max-width: 16.5rem;
+  margin-left: auto;
+  margin-right: var(--pad-x);
+}
+
+/* Motion — hidden until video present */
 .piece--motion:empty {
   display: none;
   margin: 0;
@@ -140,17 +131,21 @@
   margin-inline: calc(50% - 50vw);
 }
 
-/* ——— Magazine annotations ——— */
+.band--motion:not(:has(.piece--motion:not(:empty))) {
+  padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+}
 
-.anno {
+/* ——— Compact project metadata ——— */
+
+.meta {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.18rem;
   margin: 0;
   max-width: 28rem;
 }
 
-.anno__name {
+.meta__name {
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -158,55 +153,18 @@
   color: var(--accent);
 }
 
-.anno__meta {
-  font-size: 0.8125rem;
+.meta__desc {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--text-soft);
+}
+
+.meta__tags {
+  font-size: 0.75rem;
   line-height: 1.4;
   letter-spacing: -0.01em;
   color: var(--text-muted);
-}
-
-/* Tiny yellow rule + aside notes */
-.aside-note {
-  margin: 0;
-  padding-inline: var(--pad-x);
-  max-width: 14ch;
-  font-size: 0.8125rem;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-  color: var(--text-muted);
-}
-
-.aside-note__rule {
-  display: block;
-  width: 1.75rem;
-  height: 2px;
-  margin-bottom: 0.65rem;
-  background: var(--accent);
-}
-
-/* ——— Duos / pairs ——— */
-
-.duo {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.5rem, 5vw, 2.25rem);
-}
-
-.asymmetric {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.campaign-split {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.75rem, 5vw, 2.5rem);
-  align-items: center;
-}
-
-.campaign-split__space {
-  display: none;
 }
 
 .section--selected-end {
@@ -214,147 +172,69 @@
   padding-bottom: calc(var(--section-gap) / 2);
 }
 
-.chapter--motion {
-  min-height: 0;
-}
-
-.chapter--motion .chapter__intro {
-  margin-bottom: 0;
-}
-
-/* If both motion slots empty, chapter still ends cleanly after copy */
-.chapter--motion:not(:has(.piece--motion:not(:empty))) {
-  padding-bottom: calc(var(--chapter-gap) * 0.65);
-}
-
-/* ——— Desktop / tablet ——— */
+/* ——— Desktop ——— */
 
 @media (min-width: 768px) {
-  .chapter__intro {
-    max-width: 48rem;
-    margin-left: clamp(2rem, 8vw, 6rem);
-    margin-right: auto;
+  .band__label {
+    max-width: none;
+    width: min(92vw, 58rem);
+    margin-inline: auto;
+    padding-inline: 0;
   }
 
-  .chapter__intro--shift {
-    margin-left: auto;
-    margin-right: clamp(2rem, 10vw, 8rem);
-    max-width: 40rem;
-  }
-
-  .chapter__num {
-    right: auto;
-    left: auto;
-    top: -0.2em;
-    /* Sit in the open margin opposite the intro */
-    margin-left: 0;
-    transform: translateX(calc(100% + 1rem));
-    right: clamp(1rem, 4vw, 3rem);
-    left: unset;
-    opacity: 0.11;
-  }
-
-  .chapter__intro--shift .chapter__num {
-    right: auto;
-    left: clamp(1rem, 6vw, 5rem);
-    transform: none;
-  }
-
-  .piece--hero {
+  .piece--feature {
     width: min(92vw, 58rem);
     margin-inline: auto;
   }
 
-  .piece--feature {
-    width: min(86vw, 52rem);
-    margin-inline: auto;
-  }
-
-  .piece--hero .anno,
-  .piece--feature .anno {
+  .piece--feature .meta--pad,
+  .piece--feature .piece__context {
     padding-inline: 0;
-    max-width: 32rem;
   }
 
-  /* Brand duo — staggered, not a flat equal grid */
-  .duo--brand {
+  .support-row {
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 0.92fr 1.08fr;
     gap: clamp(1.5rem, 3vw, 2.5rem);
-    width: min(88vw, 54rem);
+    width: min(78vw, 48rem);
     margin-inline: auto;
     align-items: start;
   }
 
-  .duo--brand .piece {
+  .piece--support,
+  .piece--support-a,
+  .piece--support-b {
     width: 100%;
     margin-inline: 0;
   }
 
-  .piece--offset-left {
+  .piece--support-a {
     margin-top: 0;
   }
 
-  .piece--offset-right {
-    margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  .piece--support-b {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
   }
 
-  /* Second vehicle — smaller, offset right */
-  .asymmetric {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(10rem, 0.55fr);
-    gap: clamp(1.5rem, 3vw, 2.75rem);
-    width: min(88vw, 54rem);
+  /* Food delivery — contained, less than Soot */
+  .piece--contained {
+    width: min(62vw, 38rem);
+    margin-left: clamp(4rem, 16vw, 12rem);
+    margin-right: auto;
+  }
+
+  /* Punkt — stronger mid-feature */
+  .piece--punkt {
+    width: min(72vw, 44rem);
     margin-inline: auto;
-    align-items: end;
   }
 
-  .piece--secondary {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  .aside-note {
-    padding-inline: 0;
-    padding-bottom: 1.5rem;
-  }
-
-  /* Merch pair */
-  .duo--merch {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(1.25rem, 2.5vw, 2rem);
-    width: min(78vw, 48rem);
-    margin-inline: auto;
-    margin-left: clamp(2rem, 12vw, 10rem);
-  }
-
-  .duo--merch .piece {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  /* Campaign: portrait + balancing space */
-  .campaign-split {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: clamp(2rem, 5vw, 4rem);
-    width: min(88vw, 56rem);
-    margin-inline: auto;
-    align-items: center;
-  }
-
-  .piece--portrait {
-    width: min(100%, 22rem);
-    margin-inline: 0;
-    justify-self: end;
-  }
-
-  .campaign-split__space {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: clamp(0.5rem, 2vw, 1.5rem);
+  /* BPerfect — small portrait in negative space */
+  .piece--minor {
+    width: min(22vw, 16rem);
+    max-width: none;
+    margin-left: clamp(6rem, 28vw, 22rem);
+    margin-right: auto;
   }
 
   .piece--motion:not(:empty) {
@@ -363,43 +243,34 @@
   }
 
   .piece--motion-offset:not(:empty) {
-    width: min(62vw, 38rem);
-    margin-left: clamp(4rem, 18vw, 14rem);
+    width: min(58vw, 36rem);
+    margin-left: clamp(5rem, 20vw, 14rem);
     margin-right: auto;
   }
 }
 
 @media (min-width: 1100px) {
-  .piece--hero {
+  .piece--feature {
     width: min(78vw, 62rem);
   }
 
-  .piece--feature {
-    width: min(70vw, 54rem);
+  .support-row {
+    width: min(64vw, 50rem);
   }
 
-  .duo--brand {
-    width: min(72vw, 58rem);
+  .piece--contained {
+    width: min(48vw, 36rem);
   }
 
-  .asymmetric {
-    width: min(72vw, 56rem);
+  .piece--punkt {
+    width: min(56vw, 42rem);
   }
 
-  .duo--merch {
-    width: min(58vw, 46rem);
-  }
-
-  .campaign-split {
-    width: min(72vw, 58rem);
-  }
-
-  .piece--portrait {
-    width: min(100%, 24rem);
+  .piece--minor {
+    width: min(18vw, 15rem);
   }
 }
 
-/* Prefer reduced motion: keep static; videos still ok muted */
 @media (prefers-reduced-motion: reduce) {
   .piece--motion video {
     display: none;
