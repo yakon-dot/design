@@ -251,16 +251,42 @@
 
 /* ——— Black editorial ——— */
 
+/*
+  Mobile: horizontal swipe rail. Desktop restores the stacked layout
+  in the min-width: 768px block below.
+*/
 .editorial {
   background: var(--bg);
-  padding: clamp(3.5rem, 12vw, 5.5rem) 0 clamp(2.5rem, 8vw, 4rem);
   display: flex;
-  flex-direction: column;
-  gap: clamp(2.75rem, 9vw, 4rem);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: clamp(0.85rem, 3.2vw, 1.1rem);
+  padding-block: clamp(2.75rem, 10vw, 4rem);
+  padding-inline: var(--pad-x);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--pad-x);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.editorial::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .edit {
   margin: 0;
+  flex: 0 0 80vw;
+  width: 80vw;
+  max-width: 80vw;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -274,19 +300,14 @@
   background: var(--bg);
 }
 
-.edit--botanic {
-  width: calc(100vw - (var(--pad-x) * 2.4));
-  margin-inline: auto;
-}
-
-.edit--wicked {
-  width: calc(100vw - (var(--pad-x) * 2));
-  margin-inline: auto;
-}
-
-.edit--derma {
-  width: calc(100vw - (var(--pad-x) * 2));
-  margin-inline: auto;
+/* Uniform rail slides — override per-piece mobile widths/margins */
+.edit--botanic,
+.edit--wicked,
+.edit--derma,
+.edit--bperfect {
+  width: 80vw;
+  max-width: 80vw;
+  margin: 0;
 }
 
 .edit--derma img {
@@ -295,13 +316,6 @@
 
 .edit--derma .meta {
   padding-inline: 0;
-}
-
-.edit--bperfect {
-  width: 54vw;
-  max-width: 13.5rem;
-  margin-left: auto;
-  margin-right: var(--pad-x);
 }
 
 .edit--bperfect .meta {
@@ -314,11 +328,17 @@
   display: none;
   height: 0;
   margin: 0;
+  flex: none;
+  width: 0;
+  max-width: 0;
 }
 
 .edit--motion:not(:empty) {
-  width: calc(100vw - (var(--pad-x) * 2));
-  margin-inline: auto;
+  flex: 0 0 80vw;
+  width: 80vw;
+  max-width: 80vw;
+  margin: 0;
+  scroll-snap-align: start;
 }
 
 .edit--motion:not(:empty) video {
@@ -336,10 +356,6 @@
   margin: 0;
   max-width: 28rem;
   padding-inline: 0;
-}
-
-.edit--derma .meta {
-  padding-inline: var(--pad-x);
 }
 
 .meta__name {
@@ -464,24 +480,42 @@
   }
 
   .editorial {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
     gap: clamp(3.5rem, 7vw, 5.5rem);
     padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem);
+    padding-inline: 0;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    scroll-padding-inline: 0;
+  }
+
+  .edit {
+    flex: none;
+    width: auto;
+    max-width: none;
+    scroll-snap-align: none;
   }
 
   .edit--botanic {
     width: min(48vw, 28rem);
+    max-width: none;
     margin-left: clamp(3rem, 12vw, 8rem);
     margin-right: auto;
   }
 
   .edit--wicked {
     width: min(52vw, 32rem);
+    max-width: none;
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
   }
 
   .edit--derma {
     width: min(88vw, 56rem);
+    max-width: none;
     margin-inline: auto;
   }
 
@@ -498,6 +532,14 @@
     max-width: none;
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
+  }
+
+  .edit--motion:not(:empty) {
+    flex: none;
+    width: min(88vw, 56rem);
+    max-width: none;
+    margin-inline: auto;
+    scroll-snap-align: none;
   }
 }
 
