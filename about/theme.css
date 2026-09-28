@@ -189,22 +189,23 @@
 .expertise-stack {
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 9vw, 3.5rem);
+  gap: clamp(2.75rem, 10vw, 4rem);
 }
 
 .expertise-block {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.expertise-block__head {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  margin-bottom: 1.15rem;
+.expertise-block .about-icon {
+  margin: 0 auto 0.95rem;
 }
 
 .expertise-block__title {
-  margin: 0;
+  margin: 0 0 1.15rem;
   font-size: clamp(1.15rem, 4.5vw, 1.35rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -219,6 +220,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.55rem;
 }
 
@@ -227,20 +229,6 @@
   line-height: 1.45;
   letter-spacing: -0.012em;
   color: var(--about-soft);
-  padding-left: 0.9rem;
-  position: relative;
-}
-
-.expertise-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.85;
 }
 
 /* ——— 04 Personality ——— */
