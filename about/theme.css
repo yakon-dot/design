@@ -29,6 +29,15 @@
   padding-block: clamp(3.5rem, 12vw, 5.5rem);
 }
 
+.about-section--tight {
+  padding-block: clamp(2.5rem, 8vw, 3.5rem);
+}
+
+.about-section--apps {
+  padding-top: clamp(1.25rem, 4vw, 1.75rem);
+  padding-bottom: clamp(2.5rem, 8vw, 3.5rem);
+}
+
 .about-kicker {
   margin: 0 0 0.85rem;
   font-size: 0.75rem;
@@ -49,19 +58,20 @@
 
 .about-icon {
   display: block;
-  width: 2rem;
-  height: 2rem;
+  width: 2.15rem;
+  height: 2.15rem;
   stroke: var(--accent);
   fill: none;
-  stroke-width: 1.6;
+  stroke-width: 1.7;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .about-icon--lg {
-  width: 4.5rem;
-  height: 4.5rem;
-  stroke-width: 1.35;
+  width: 4.25rem;
+  height: 4.25rem;
+  stroke-width: 1.55;
+  flex: 0 0 auto;
 }
 
 /* ——— 01 Hero ——— */
@@ -103,14 +113,14 @@
   color: var(--about-ink);
 }
 
-.about-hero__name .dot-accent {
-  display: inline-block;
-  width: 0.28em;
-  height: 0.28em;
-  margin-right: 0.02em;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: 0.08em;
+.about-hero__name .dot-word {
+  white-space: nowrap;
+}
+
+.about-hero__name .dot-period {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: -0.08em;
 }
 
 .about-hero__lede {
@@ -370,12 +380,14 @@
 .thinking {
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
+  align-items: flex-start;
+  gap: 1.1rem;
+  max-width: 22rem;
 }
 
 .thinking__title {
   margin: 0;
-  font-size: clamp(2rem, 9vw, 2.75rem);
+  font-size: clamp(1.85rem, 7vw, 2.35rem);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -383,23 +395,23 @@
 }
 
 .thinking__sub {
-  margin: 0.15rem 0 0;
-  font-size: 1rem;
+  margin: 0.2rem 0 0;
+  font-size: 0.98rem;
   color: var(--accent);
   letter-spacing: -0.01em;
 }
 
 .thinking__list {
   list-style: none;
-  margin: 0.5rem 0 0;
+  margin: 0.85rem 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .thinking__list li {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   line-height: 1.4;
   letter-spacing: -0.015em;
   color: var(--about-soft);
@@ -422,29 +434,46 @@
   color: var(--about-ink);
 }
 
-/* ——— 09 Tools ——— */
+/* ——— 09 App icons from CV ——— */
 
-.tools-note {
-  margin: 0 0 0.85rem;
-  font-size: 0.84rem;
-  line-height: 1.45;
-  color: var(--about-muted);
-  max-width: 34ch;
-}
-
-.tools-list {
+.app-icons {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1.15rem;
+  gap: 0.75rem 0.85rem;
+  align-items: center;
 }
 
-.tools-list li {
-  font-size: 0.92rem;
-  letter-spacing: -0.01em;
-  color: var(--about-soft);
+.app-icon {
+  display: block;
+  width: 2.35rem;
+  height: 2.35rem;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.app-icon__mark {
+  fill: var(--accent);
+  stroke: none;
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ——— 10 Contact ——— */
@@ -500,7 +529,8 @@
   .thinking {
     flex-direction: row;
     align-items: flex-start;
-    gap: clamp(2rem, 5vw, 3rem);
+    gap: 1.35rem;
+    max-width: 28rem;
   }
 
   .about-quote__text {
