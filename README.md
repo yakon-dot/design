@@ -4,10 +4,10 @@ Mobile-first case study page for the Freedom 50 product design work.
 
 ## View locally
 
-Open `freedom-50/index.html` in a browser, or serve the folder:
+Open `freedom/index.html` in a browser, or serve the folder:
 
 ```bash
-cd freedom-50 && python3 -m http.server 8080
+cd freedom && python3 -m http.server 8080
 ```
 
 Then visit `http://localhost:8080`.
