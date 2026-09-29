@@ -212,13 +212,13 @@
   background: transparent;
 }
 
-/* One-time lockup entrance — whole “Hi, I’m .dot” line as one unit */
-.js-ready .about-hero__intro[data-intro-lockup] {
+/* One-time lockup entrance — hidden until enter (avoids first-paint flash) */
+.about-hero__intro[data-intro-lockup] {
   opacity: 0;
   transform: translate3d(0, 10px, 0);
 }
 
-.js-ready .about-hero__intro[data-intro-lockup].is-entered {
+.about-hero__intro[data-intro-lockup].is-entered {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   transition:
@@ -227,8 +227,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js-ready .about-hero__intro[data-intro-lockup],
-  .js-ready .about-hero__intro[data-intro-lockup].is-entered {
+  .about-hero__intro[data-intro-lockup],
+  .about-hero__intro[data-intro-lockup].is-entered {
     opacity: 1;
     transform: none;
     transition: none;
