@@ -667,7 +667,8 @@
 
   .panel--food {
     padding-top: clamp(1.65rem, 5.5vw, 2.25rem);
-    padding-bottom: clamp(2.25rem, 8vw, 3.25rem);
+    /* Tight close before Punkt — avoid leftover turquoise slab */
+    padding-bottom: clamp(0.85rem, 3vw, 1.25rem);
   }
 
   /*
@@ -691,13 +692,20 @@
     margin-top: 0;
   }
 
+  /*
+    Shorter turquoise stage: car stays put; padding only holds the
+    cups so they sit centred under the car — connected, not floating.
+  */
   .panel__stage--food {
-    padding-bottom: clamp(11rem, 48vw, 15rem);
+    padding-bottom: clamp(5.5rem, 24vw, 7.5rem);
   }
 
-  /* Cups anchored near the bottom of the taller turquoise field */
+  /*
+    Raise cups into the van image's empty cyan so the visible mugs
+    sit in the middle of the remaining turquoise under the car.
+  */
   .panel--food .panel__float--cups {
-    bottom: clamp(1.25rem, 5vw, 2rem);
+    bottom: clamp(1.15rem, 4.5vw, 1.85rem);
   }
 
   /* Punkt → Flink — no black gap; keep yellow under tote overhang */
@@ -710,7 +718,7 @@
     gap: clamp(1.35rem, 4.5vw, 2rem);
   }
 
-  /* Flink — pink artboard containing heading + edge-to-edge artwork */
+  /* Flink — one continuous pink artboard: heading → full composite */
   .edit--merch {
     width: 100vw;
     max-width: none;
@@ -722,6 +730,15 @@
     background: var(--plate-flink);
     display: flex;
     flex-direction: column;
+    overflow: visible;
+  }
+
+  /*
+    Kill editorial black gap between pink Flink and Botanic —
+    pink artboard must meet Botanic image with zero spacer.
+  */
+  .edit--merch + .edit--botanic {
+    margin-top: calc(-1 * clamp(1.35rem, 4.5vw, 2rem));
   }
 
   .edit--merch .meta {
@@ -759,15 +776,27 @@
     display: block;
     width: 100%;
     margin: 0;
+    padding: 0;
     background: var(--plate-flink);
+    overflow: visible;
+    line-height: 0;
   }
 
+  /*
+    Full composite at natural aspect ratio — never cover, crop, or
+    zoom-to-fill. Every pixel of the uploaded showcase stays visible
+    (long lanyard tip, wristband, sweatshirt, notebook).
+  */
   .edit--merch img {
+    display: block;
     width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: none;
     border-radius: 0;
     background: var(--plate-flink);
-    object-fit: unset;
+    object-fit: contain;
+    object-position: center top;
   }
 
   /* Botanic — both images edge-to-edge */
