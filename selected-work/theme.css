@@ -534,7 +534,7 @@
   text-align: left;
 }
 
-/* Flink merch — lanyard base + floating sweatshirt */
+/* Flink merch — lanyard base + sweatshirt + wristband */
 .edit--merch {
   width: calc(100vw - (var(--pad-x) * 2));
   max-width: none;
@@ -560,17 +560,21 @@
   background: transparent;
 }
 
-.edit__merch-sweat {
+.edit__merch-sweat,
+.edit__merch-wrist {
   position: absolute;
   z-index: 2;
   pointer-events: none;
   user-select: none;
 }
 
-.edit__merch-sweat img {
+.edit__merch-sweat img,
+.edit__merch-wrist img {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 0;
+  background: transparent;
 }
 
 .edit--motion:empty {
@@ -726,7 +730,7 @@
     gap: clamp(1.35rem, 4.5vw, 2rem);
   }
 
-  /* Flink — wristband dominant; sweatshirt secondary overlap */
+  /* Flink — lanyard main; sweatshirt + wristband secondary */
   .edit--merch {
     width: 100vw;
     max-width: none;
@@ -742,7 +746,7 @@
 
   .edit__merch {
     min-height: 0;
-    padding-bottom: 0;
+    padding-bottom: clamp(1.25rem, 6vw, 2rem);
   }
 
   .edit__merch-lanyard {
@@ -753,12 +757,24 @@
     border-radius: 0;
   }
 
+  /* Sweatshirt ~35% — left, clear of the ID card */
   .edit__merch-sweat {
     top: auto;
-    bottom: 6%;
-    left: auto;
-    right: clamp(0.5rem, 3vw, 1rem);
+    bottom: 4%;
+    left: clamp(0.35rem, 2vw, 0.75rem);
+    right: auto;
     width: min(36vw, 9.5rem);
+    z-index: 3;
+  }
+
+  /* Wristband — smaller third piece, lower right */
+  .edit__merch-wrist {
+    top: auto;
+    bottom: 2%;
+    left: auto;
+    right: clamp(0.35rem, 2vw, 0.75rem);
+    width: min(34vw, 8.75rem);
+    z-index: 2;
   }
 
   /* Botanic — both images edge-to-edge */
@@ -1022,7 +1038,17 @@
   .edit__merch-sweat {
     top: clamp(-1rem, -2vw, 0.5rem);
     right: clamp(-1.5rem, -3vw, -0.5rem);
-    width: min(34vw, 16rem);
+    left: auto;
+    bottom: auto;
+    width: min(28vw, 14rem);
+  }
+
+  .edit__merch-wrist {
+    top: auto;
+    bottom: clamp(-0.75rem, -1.5vw, 0.25rem);
+    left: clamp(-1rem, -2vw, 0.25rem);
+    right: auto;
+    width: min(18vw, 11rem);
   }
 }
 
