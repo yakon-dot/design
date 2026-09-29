@@ -205,8 +205,8 @@
 
 .about-hero__wordmark {
   display: block;
-  /* Match visual height of “Hi, I’m”; width follows artwork ratio */
-  height: 1em;
+  /* Slightly over 1em so the brush fills optically match the type */
+  height: 1.12em;
   width: auto;
   max-width: none;
   background: transparent;
