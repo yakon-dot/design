@@ -3,9 +3,10 @@
 
 :root {
   --accent: #f4c542;
-  --plate-boochos: #e92689;
-  --plate-soot: #c9aef9;
-  --plate-food: #19d5da;
+  /* Match supplied artwork edge tones so panels read as one continuous field */
+  --plate-boochos: #c5357a;
+  --plate-soot: #a7a1d7;
+  --plate-food: #43c1d4;
   --plate-punkt: #fee103;
   --edit-radius: 14px;
 }
@@ -225,6 +226,12 @@
   color: #fcea94;
 }
 
+.panel--boochos .panel__art,
+.panel--boochos .panel__stage,
+.panel--boochos .panel__art picture {
+  background: var(--plate-boochos);
+}
+
 .panel--boochos .panel__tags {
   color: #fcea94;
   opacity: 1;
@@ -250,8 +257,9 @@
 
 .panel--boochos .panel__art--boochos-hero picture {
   display: block;
-  width: 128vw;
-  margin-left: calc(50% - 64vw);
+  width: 132vw;
+  margin-left: calc(50% - 66vw);
+  background: var(--plate-boochos);
 }
 
 .panel--boochos .panel__art--boochos-hero img {
@@ -260,23 +268,26 @@
   height: auto;
 }
 
-/* Secondary Boochos sign — connected, not a second project */
+/* Secondary Boochos sign — connected architectural application */
 .panel--boochos .panel__art--boochos-sign {
-  width: min(78vw, 22rem);
-  margin-left: auto;
-  margin-right: var(--pad-x);
-  margin-top: clamp(0.35rem, 2vw, 0.85rem);
+  width: 100%;
+  margin: clamp(0.65rem, 2.5vw, 1.1rem) 0 0;
 }
 
 .panel--boochos .panel__art--boochos-sign img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 0;
 }
 
 .panel--soot {
   background: var(--plate-soot);
   color: #f54e20;
+}
+
+.panel--soot .panel__art,
+.panel--soot .panel__art picture {
+  background: var(--plate-soot);
 }
 
 .panel--soot .panel__tags {
@@ -321,7 +332,7 @@
 }
 
 .panel__stage--food {
-  padding-bottom: clamp(3.5rem, 14vw, 5rem);
+  padding-bottom: clamp(4.25rem, 17vw, 5.75rem);
 }
 
 .panel__stage--food .panel__art--vehicle {
@@ -347,15 +358,15 @@
 }
 
 .panel__float--cups {
-  right: clamp(0.35rem, 3vw, 1.25rem);
-  bottom: 0;
-  width: min(46vw, 13.5rem);
+  left: clamp(0.25rem, 2vw, 0.75rem);
+  right: auto;
+  bottom: clamp(-0.35rem, -1vw, 0.35rem);
+  width: min(58vw, 17.5rem);
   z-index: 2;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
 }
 
 .panel__stage--punkt {
-  padding-bottom: clamp(2.75rem, 10vw, 4rem);
+  padding-bottom: clamp(4.5rem, 18vw, 6.5rem);
 }
 
 .panel__stage--punkt .panel__art--punkt-hero {
@@ -363,16 +374,23 @@
 }
 
 .panel__float--tote {
-  left: clamp(0.5rem, 4vw, 1.75rem);
-  bottom: 0;
-  width: min(38vw, 11rem);
+  left: clamp(0.25rem, 3vw, 1rem);
+  right: auto;
+  bottom: clamp(-0.25rem, -1vw, 0.5rem);
+  width: min(68vw, 20rem);
   z-index: 2;
-  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.22));
 }
 
 .panel--food {
   background: var(--plate-food);
   color: #fcef07;
+}
+
+.panel--food .panel__stage,
+.panel--food .panel__art,
+.panel--food .panel__art picture,
+.panel--food .panel__float {
+  background: transparent;
 }
 
 .panel--food .panel__tags {
@@ -383,6 +401,12 @@
 .panel--punkt {
   background: var(--plate-punkt);
   color: #007c83;
+}
+
+.panel--punkt .panel__stage,
+.panel--punkt .panel__art,
+.panel--punkt .panel__art picture {
+  background: var(--plate-punkt);
 }
 
 .panel--punkt .panel__tags {
@@ -422,29 +446,33 @@
 
 /* Botanic — packaging dominant + card supporting */
 .edit--botanic {
-  width: calc(100vw - (var(--pad-x) * 1.6));
-  max-width: 40rem;
-  margin-inline: auto;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
+}
+
+.edit--botanic .meta {
+  padding-inline: var(--pad-x);
 }
 
 .edit__pair--botanic {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
-  gap: clamp(0.65rem, 2.5vw, 1rem);
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.35rem, 5vw, 2rem);
 }
 
 .edit__pair--botanic .edit__dominant img {
-  border-radius: var(--edit-radius);
+  border-radius: 0;
 }
 
 .edit__pair--botanic .edit__support {
-  margin-bottom: clamp(0.75rem, 4vw, 1.75rem);
+  width: calc(100vw - (var(--pad-x) * 2));
+  margin: 0 auto;
 }
 
 .edit__pair--botanic .edit__support img {
-  border-radius: calc(var(--edit-radius) - 2px);
+  border-radius: var(--edit-radius);
 }
 
 .edit--wicked {
@@ -470,17 +498,19 @@
 /* Retail POS cluster — cut-out + campaign relate on black */
 .edit-cluster--retail {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: clamp(0.75rem, 4vw, 1.5rem);
-  width: calc(100vw - (var(--pad-x) * 1.5));
-  margin-inline: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(2rem, 7vw, 2.75rem);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
   padding-inline: 0;
 }
 
 .edit--bts {
-  width: min(42vw, 11.5rem);
+  width: min(88vw, 24rem);
   flex: 0 0 auto;
+  margin-inline: var(--pad-x);
 }
 
 .edit--bts .meta {
@@ -488,10 +518,10 @@
 }
 
 .edit--bperfect {
-  width: min(40vw, 11rem);
+  width: min(54vw, 13.5rem);
   flex: 0 0 auto;
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: var(--pad-x);
 }
 
 .edit--bperfect .meta {
@@ -500,31 +530,44 @@
   text-align: left;
 }
 
-/* Flink merch — sweatshirt + wristband as one application set */
+/* Flink merch — lanyard base + floating sweatshirt */
 .edit--merch {
   width: calc(100vw - (var(--pad-x) * 2));
-  max-width: 28rem;
-  margin-left: var(--pad-x);
-  margin-right: auto;
+  max-width: none;
+  margin-inline: auto;
 }
 
 .edit__merch {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: clamp(0.5rem, 2vw, 0.85rem);
-  align-items: center;
+  display: block;
+  width: 100%;
+  padding-bottom: clamp(1.5rem, 6vw, 2.5rem);
+}
+
+.edit__merch-lanyard {
+  display: block;
+  width: 100%;
+}
+
+.edit__merch-lanyard img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.edit__merch-sweat {
+  position: absolute;
+  top: clamp(-0.5rem, -2vw, 0.75rem);
+  right: clamp(-0.35rem, -2vw, 0.5rem);
+  width: min(72vw, 20rem);
+  z-index: 2;
 }
 
 .edit__merch-sweat img {
+  display: block;
   width: 100%;
   height: auto;
-}
-
-.edit__merch-band img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--edit-radius);
 }
 
 .edit--motion:empty {
@@ -659,9 +702,9 @@
   }
 
   .panel--boochos .panel__art--boochos-sign {
-    width: min(34vw, 22rem);
-    margin-right: 0;
+    width: min(42vw, 26rem);
     margin-left: auto;
+    margin-right: 0;
   }
 
   /* Alternating copy/art rhythm on wider screens without breaking mobile poster feel */
@@ -700,6 +743,7 @@
   }
 
   .panel__float--cups {
+    left: auto;
     right: clamp(1rem, 4vw, 3rem);
     bottom: clamp(0.25rem, 1vw, 0.75rem);
     width: min(22vw, 15rem);
@@ -713,7 +757,7 @@
 
   .panel__float--tote {
     left: clamp(1.5rem, 5vw, 3.5rem);
-    width: min(18vw, 12.5rem);
+    width: min(22vw, 14rem);
   }
 
   .editorial {
@@ -727,9 +771,24 @@
     margin-right: auto;
   }
 
+  .edit--botanic .meta {
+    padding-inline: 0;
+  }
+
   .edit__pair--botanic {
+    display: grid;
     grid-template-columns: 1.45fr 0.9fr;
     gap: 1.15rem;
+    align-items: end;
+  }
+
+  .edit__pair--botanic .edit__dominant img {
+    border-radius: var(--edit-radius);
+  }
+
+  .edit__pair--botanic .edit__support {
+    width: auto;
+    margin: 0 0 clamp(0.75rem, 2vw, 1.25rem);
   }
 
   .edit--wicked {
@@ -752,6 +811,9 @@
   }
 
   .edit-cluster--retail {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
     width: min(72vw, 48rem);
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
@@ -759,17 +821,30 @@
   }
 
   .edit--bts {
-    width: min(18vw, 12.5rem);
+    width: min(22vw, 15rem);
+    margin-inline: 0;
   }
 
   .edit--bperfect {
     width: min(16vw, 12rem);
     max-width: none;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .edit--merch {
-    width: min(42vw, 28rem);
+    width: min(46vw, 30rem);
     margin-left: clamp(3rem, 12vw, 8rem);
+  }
+
+  .edit__merch-lanyard img {
+    border-radius: var(--edit-radius);
+  }
+
+  .edit__merch-sweat {
+    top: clamp(-1rem, -2vw, 0.5rem);
+    right: clamp(-1.5rem, -3vw, -0.5rem);
+    width: min(34vw, 16rem);
   }
 }
 
