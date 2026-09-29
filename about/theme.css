@@ -177,8 +177,13 @@
   }
 }
 
-.about-hero__hello {
-  margin: 0 0 clamp(0.4rem, 1.6vw, 0.65rem);
+.about-hero__intro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.28em;
+  margin: 0 0 clamp(1rem, 3.5vw, 1.35rem);
   font-size: clamp(2.75rem, 13vw, 4rem);
   font-weight: 600;
   letter-spacing: -0.045em;
@@ -186,22 +191,24 @@
   color: var(--about-ink);
 }
 
-.about-hero__name {
-  margin: 0 0 clamp(1.15rem, 4vw, 1.65rem);
-  line-height: 0;
+.about-hero__hello {
+  margin: 0;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
-.about-hero__name picture {
+.about-hero__mark {
   display: block;
+  flex: 0 0 auto;
   line-height: 0;
 }
 
 .about-hero__wordmark {
   display: block;
-  /* ~45–50% of prior hero scale — personal signature, not hero graphic */
-  width: min(37vw, 9.5rem);
-  max-width: 100%;
-  height: auto;
+  /* Match visual height of “Hi, I’m”; width follows artwork ratio */
+  height: 1em;
+  width: auto;
+  max-width: none;
   background: transparent;
 }
 
@@ -615,10 +622,6 @@
 
   .about-hero__copy {
     padding-bottom: 0.75rem;
-  }
-
-  .about-hero__wordmark {
-    width: min(100%, 11rem);
   }
 
   .snapshot-grid {
