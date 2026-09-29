@@ -615,6 +615,21 @@
 /* ——— Mobile composition cleanup ——— */
 
 @media (max-width: 767px) {
+  /*
+    Coloured project blocks — one shared ink on every plate.
+    Backgrounds stay project-coloured; type stays navy/charcoal.
+  */
+  .panel--boochos,
+  .panel--boochos .panel__tags,
+  .panel--soot,
+  .panel--soot .panel__tags,
+  .panel--food,
+  .panel--food .panel__tags,
+  .panel--punkt,
+  .panel--punkt .panel__tags {
+    color: var(--flink-ink);
+  }
+
   /* Boochos — trailer fits viewport; sign ends flush with Soot Away */
   .panel--boochos {
     padding-bottom: 0;
