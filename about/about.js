@@ -71,7 +71,7 @@
           for (const entry of entries) {
             if (!entry.isIntersecting) continue;
             observer.disconnect();
-            // Hold ~1s before the fade/rise begins
+            // Hold 1s before the fade/rise begins
             window.setTimeout(enter, 1000);
             break;
           }
