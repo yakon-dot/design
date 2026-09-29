@@ -616,18 +616,33 @@
 
 @media (max-width: 767px) {
   /*
-    Coloured project blocks — one shared ink on every plate.
-    Backgrounds stay project-coloured; type stays navy/charcoal.
+    Coloured project blocks — accent titles, shared navy supporting copy.
   */
-  .panel--boochos,
+  .panel--boochos .panel__desc,
   .panel--boochos .panel__tags,
-  .panel--soot,
+  .panel--soot .panel__desc,
   .panel--soot .panel__tags,
-  .panel--food,
+  .panel--food .panel__desc,
   .panel--food .panel__tags,
-  .panel--punkt,
+  .panel--punkt .panel__desc,
   .panel--punkt .panel__tags {
     color: var(--flink-ink);
+  }
+
+  .panel--boochos .panel__name {
+    color: #fcea94;
+  }
+
+  .panel--soot .panel__name {
+    color: #f54e20;
+  }
+
+  .panel--food .panel__name {
+    color: #fcef07;
+  }
+
+  .panel--punkt .panel__name {
+    color: #007c83;
   }
 
   /* Boochos — trailer fits viewport; sign ends flush with Soot Away */
@@ -770,7 +785,7 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     line-height: 1.15;
-    color: var(--flink-ink);
+    color: var(--accent);
   }
 
   .edit--merch .meta__desc {
