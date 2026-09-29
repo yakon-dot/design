@@ -692,9 +692,9 @@
   }
 
   /*
-    Van artwork has ~30% empty cyan above the car.
-    Crop that dead space visually (no source edits) so the
-    car+cups group sits closer under the heading.
+    Van artwork has empty cyan above the car (~30% of frame).
+    Crop only part of that dead space so the FULL car (roof included)
+    stays visible with a small breathing room under the heading.
   */
   .panel--food .panel__art--vehicle {
     overflow: hidden;
@@ -703,7 +703,8 @@
 
   .panel--food .panel__art--vehicle picture {
     display: block;
-    margin-top: -36%;
+    /* Car roof begins ~30% into the frame — crop only soft empty cyan above */
+    margin-top: -12%;
   }
 
   .panel--food .panel__art--vehicle img {
@@ -754,10 +755,10 @@
 
   .edit__merch-sweat {
     top: auto;
-    bottom: 8%;
-    left: clamp(0.4rem, 2vw, 0.75rem);
-    right: auto;
-    width: min(28vw, 7.25rem);
+    bottom: 6%;
+    left: auto;
+    right: clamp(0.5rem, 3vw, 1rem);
+    width: min(36vw, 9.5rem);
   }
 
   /* Botanic — both images edge-to-edge */
