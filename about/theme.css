@@ -8,11 +8,6 @@
   --about-soft: #c4beb4;
 }
 
-.page-about .site-mark[aria-current="page"] {
-  cursor: default;
-  pointer-events: none;
-}
-
 .about-wrap {
   width: 100%;
   max-width: 42rem;

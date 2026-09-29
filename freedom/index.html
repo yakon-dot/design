@@ -14,22 +14,22 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=nav-1" />
+    <link rel="stylesheet" href="styles.css?v=nav-2" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
+        <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-mark" href="../">
+        <a class="site-mark" href="/design/">
           <picture>
             <source
-              srcset="images/dot-wordmark.webp?v=nav-1"
+              srcset="images/dot-wordmark.webp?v=nav-2"
               type="image/webp"
             />
             <img
               class="site-mark__img"
-              src="images/dot-wordmark.png?v=nav-1"
+              src="images/dot-wordmark.png?v=nav-2"
               alt="Dot."
               width="396"
               height="254"
@@ -50,19 +50,16 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary" aria-hidden="true">
         <ul class="site-nav__list">
           <li>
-            <a class="site-nav__link" href="../">Work</a>
+            <a class="site-nav__link" href="/design/freedom/" aria-current="page">Freedom</a>
           </li>
           <li>
-            <a class="site-nav__link" href="./" aria-current="page">Freedom</a>
+            <a class="site-nav__link" href="/design/navi/">Navi</a>
           </li>
           <li>
-            <a class="site-nav__link" href="../navi/">Navi</a>
+            <a class="site-nav__link" href="/design/selected-work/">Selected Work</a>
           </li>
           <li>
-            <a class="site-nav__link" href="../selected-work/">Selected Work</a>
-          </li>
-          <li>
-            <a class="site-nav__link" href="../about/">About</a>
+            <a class="site-nav__link" href="/design/">About</a>
           </li>
         </ul>
       </nav>
@@ -523,12 +520,23 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="section__inner">
-        <p class="site-footer__note">Freedom</p>
-      </div>
-    </footer>
+        <nav class="site-end-nav" aria-label="Site">
+      <ul class="site-end-nav__list">
+        <li>
+          <a class="site-end-nav__link is-current" href="/design/freedom/" aria-current="page">Freedom</a>
+        </li>
+        <li>
+          <a class="site-end-nav__link" href="/design/navi/">Navi</a>
+        </li>
+        <li>
+          <a class="site-end-nav__link" href="/design/selected-work/">Selected Work</a>
+        </li>
+        <li>
+          <a class="site-end-nav__link" href="/design/">About</a>
+        </li>
+      </ul>
+    </nav>
 
-    <script src="main.js?v=nav-1" defer></script>
+    <script src="main.js?v=nav-2" defer></script>
   </body>
 </html>
