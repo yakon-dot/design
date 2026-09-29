@@ -375,6 +375,29 @@
   text-align: center;
 }
 
+/* One-time quote bubble entrance — whole bubble + text as one unit */
+.about-quote__bubble[data-quote-bubble] {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+}
+
+.about-quote__bubble[data-quote-bubble].is-entered {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-quote__bubble[data-quote-bubble],
+  .about-quote__bubble[data-quote-bubble].is-entered {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Lower-right speech-bubble tail — hollow outline, no fill */
 .about-quote__bubble::after {
   content: "";

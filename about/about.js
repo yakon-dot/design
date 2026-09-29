@@ -52,35 +52,40 @@
     }
   }
 
-  // One-time “Hi, I’m .dot” lockup entrance
-  const lockup = document.querySelector("[data-intro-lockup]");
-  if (lockup) {
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  // Shared delayed entrance (lockup + quote bubble)
+  const reduceMotionEnter = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const observeDelayedEnter = (el) => {
+    if (!el) return;
 
     const enter = () => {
-      lockup.classList.add("is-entered");
+      el.classList.add("is-entered");
     };
 
-    if (reduceMotion || !("IntersectionObserver" in window)) {
+    if (reduceMotionEnter || !("IntersectionObserver" in window)) {
       enter();
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (!entry.isIntersecting) continue;
-            observer.disconnect();
-            // Hold 1s before the fade/rise begins
-            window.setTimeout(enter, 1000);
-            break;
-          }
-        },
-        { threshold: 0.35 }
-      );
-      observer.observe(lockup);
+      return;
     }
-  }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          observer.disconnect();
+          // Hold 1s before the fade/rise begins
+          window.setTimeout(enter, 1000);
+          break;
+        }
+      },
+      { threshold: 0.35 }
+    );
+    observer.observe(el);
+  };
+
+  observeDelayedEnter(document.querySelector("[data-intro-lockup]"));
+  observeDelayedEnter(document.querySelector("[data-quote-bubble]"));
 
   // Occasional pocket-monster peek — stationary most of the time
   const monster = document.querySelector("[data-pocket-monster]");
