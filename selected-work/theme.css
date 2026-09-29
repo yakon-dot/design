@@ -718,14 +718,15 @@
     gap: clamp(1.35rem, 4.5vw, 2rem);
   }
 
-  /* Flink — one continuous pink artboard: heading → full composite */
+  /* Flink — one continuous pink artboard: heading → artwork → pink breath */
   .edit--merch {
     width: 100vw;
     max-width: none;
     margin-left: calc(50% - 50vw);
     margin-right: 0;
     margin-bottom: 0;
-    padding: clamp(2rem, 7vw, 2.75rem) 0 0;
+    /* ~50–70px pink breathing room under the artwork (same artboard) */
+    padding: clamp(2rem, 7vw, 2.75rem) 0 clamp(3.125rem, 14vw, 4.375rem);
     gap: clamp(1.35rem, 5vw, 2rem);
     background: var(--plate-flink);
     display: flex;
@@ -799,9 +800,13 @@
     object-position: center top;
   }
 
-  /* Botanic — both images edge-to-edge */
+  /* Botanic — both images edge-to-edge; card/wood first, then packaging */
   .edit__pair--botanic {
     gap: 0;
+  }
+
+  .edit__pair--botanic .edit__support {
+    order: -1;
   }
 
   .edit__pair--botanic .edit__dominant,
@@ -814,6 +819,7 @@
   .edit__pair--botanic .edit__dominant img,
   .edit__pair--botanic .edit__support img {
     width: 100%;
+    height: auto;
     border-radius: 0;
   }
 
