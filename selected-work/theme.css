@@ -682,19 +682,57 @@
     overflow: hidden;
   }
 
-  /* Punkt → Flink → Botanic — normal editorial rhythm */
-  .editorial {
-    padding-top: clamp(1.5rem, 5vw, 2rem);
-    gap: clamp(1.5rem, 5vw, 2.25rem);
+  /* Food Delivery — pull car + cups closer to heading */
+  .panel--food .panel__inner {
+    gap: clamp(0.55rem, 2.2vw, 0.85rem);
   }
 
-  /* Flink — lanyard base + overlapping sweatshirt, large on mobile */
+  .panel--food {
+    padding-top: clamp(1.65rem, 5.5vw, 2.25rem);
+  }
+
+  /*
+    Van artwork has ~30% empty cyan above the car.
+    Crop that dead space visually (no source edits) so the
+    car+cups group sits closer under the heading.
+  */
+  .panel--food .panel__art--vehicle {
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .panel--food .panel__art--vehicle picture {
+    display: block;
+    margin-top: -36%;
+  }
+
+  .panel--food .panel__art--vehicle img {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .panel__stage--food {
+    padding-bottom: clamp(3.5rem, 14vw, 4.75rem);
+  }
+
+  /* Punkt → Flink — no black gap; keep yellow under tote overhang */
+  .panel--punkt {
+    padding-bottom: 0.35rem;
+  }
+
+  .editorial {
+    padding-top: 0;
+    gap: clamp(1.35rem, 4.5vw, 2rem);
+  }
+
+  /* Flink — wristband dominant; sweatshirt secondary overlap */
   .edit--merch {
     width: 100vw;
     max-width: none;
     margin-left: calc(50% - 50vw);
     margin-right: 0;
-    margin-bottom: clamp(1.75rem, 8vw, 2.75rem);
+    margin-bottom: 0;
+    gap: 0.4rem;
   }
 
   .edit--merch .meta {
@@ -703,17 +741,70 @@
 
   .edit__merch {
     min-height: 0;
-    padding-bottom: clamp(4.25rem, 20vw, 6.25rem);
+    padding-bottom: 0;
   }
 
   .edit__merch-lanyard {
     width: 100%;
   }
 
+  .edit__merch-lanyard img {
+    border-radius: 0;
+  }
+
   .edit__merch-sweat {
-    top: clamp(-0.5rem, -1.5vw, 0.15rem);
-    left: clamp(24%, 30vw, 32%);
-    width: min(76vw, 21.5rem);
+    top: auto;
+    bottom: 8%;
+    left: clamp(0.4rem, 2vw, 0.75rem);
+    right: auto;
+    width: min(28vw, 7.25rem);
+  }
+
+  /* Botanic — both images edge-to-edge */
+  .edit__pair--botanic {
+    gap: 0;
+  }
+
+  .edit__pair--botanic .edit__dominant,
+  .edit__pair--botanic .edit__support {
+    width: 100vw;
+    max-width: none;
+    margin: 0;
+  }
+
+  .edit__pair--botanic .edit__dominant img,
+  .edit__pair--botanic .edit__support img {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  /*
+    Card artwork has soft anti-aliased edges; black behind them
+    reads as an inset/rounded card. Match the studio grey so
+    the full-bleed frame reads continuous.
+  */
+  .edit__pair--botanic .edit__support,
+  .edit__pair--botanic .edit__support img {
+    background: #cdcdcd;
+  }
+
+  /* Landscape showcase images — edge-to-edge */
+  .edit--wicked,
+  .edit--derma {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: 0;
+  }
+
+  .edit--wicked img,
+  .edit--derma img {
+    border-radius: 0;
+  }
+
+  .edit--wicked .meta,
+  .edit--derma .meta {
+    padding-inline: var(--pad-x);
   }
 }
 
