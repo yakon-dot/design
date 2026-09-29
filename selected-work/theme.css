@@ -5,8 +5,8 @@
   --accent: #f4c542;
   /* Match supplied artwork edge tones so panels read as one continuous field */
   --plate-boochos: #c5357a;
-  --plate-soot: #a7a1d7;
-  --plate-food: #43c1d4;
+  --plate-soot: #aca7d9;
+  --plate-food: #46c2d4;
   --plate-punkt: #fee103;
   --edit-radius: 14px;
 }
@@ -252,13 +252,14 @@
   width: 100%;
   max-width: none;
   margin-inline: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .panel--boochos .panel__art--boochos-hero picture {
   display: block;
-  width: 132vw;
-  margin-left: calc(50% - 66vw);
+  width: 95vw;
+  max-width: 100%;
+  margin-inline: auto;
   background: var(--plate-boochos);
 }
 
@@ -272,12 +273,15 @@
 .panel--boochos .panel__art--boochos-sign {
   width: 100%;
   margin: clamp(0.65rem, 2.5vw, 1.1rem) 0 0;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .panel--boochos .panel__art--boochos-sign img {
   width: 100%;
   height: auto;
   border-radius: 0;
+  vertical-align: bottom;
 }
 
 .panel--soot {
@@ -285,8 +289,10 @@
   color: #f54e20;
 }
 
+.panel--soot .panel__inner,
 .panel--soot .panel__art,
-.panel--soot .panel__art picture {
+.panel--soot .panel__art picture,
+.panel--soot .panel__art img {
   background: var(--plate-soot);
 }
 
@@ -314,7 +320,6 @@
   width: 100%;
   max-width: none;
   margin-inline: 0;
-  background: transparent;
 }
 
 .panel--soot .panel__art img,
@@ -322,7 +327,6 @@
 .panel--punkt .panel__art img {
   width: 100%;
   max-width: none;
-  background: transparent;
 }
 
 /* Staged compositions — vehicle/hero + floating application */
@@ -387,10 +391,10 @@
 }
 
 .panel--food .panel__stage,
-.panel--food .panel__art,
-.panel--food .panel__art picture,
-.panel--food .panel__float {
-  background: transparent;
+.panel--food .panel__art--vehicle,
+.panel--food .panel__art--vehicle picture,
+.panel--food .panel__art--vehicle img {
+  background: var(--plate-food);
 }
 
 .panel--food .panel__tags {
@@ -541,7 +545,6 @@
   position: relative;
   display: block;
   width: 100%;
-  padding-bottom: clamp(1.5rem, 6vw, 2.5rem);
 }
 
 .edit__merch-lanyard {
@@ -554,14 +557,14 @@
   width: 100%;
   height: auto;
   border-radius: 0;
+  background: transparent;
 }
 
 .edit__merch-sweat {
   position: absolute;
-  top: clamp(-0.5rem, -2vw, 0.75rem);
-  right: clamp(-0.35rem, -2vw, 0.5rem);
-  width: min(72vw, 20rem);
   z-index: 2;
+  pointer-events: none;
+  user-select: none;
 }
 
 .edit__merch-sweat img {
@@ -629,6 +632,89 @@
 
 .section--summary .section-title {
   max-width: 14ch;
+}
+
+/* ——— Mobile composition cleanup ——— */
+
+@media (max-width: 767px) {
+  /* Boochos — trailer fits viewport; sign ends flush with Soot Away */
+  .panel--boochos {
+    padding-bottom: 0;
+  }
+
+  .panel--boochos .panel__art--boochos-hero picture {
+    width: 95vw;
+  }
+
+  .panel--boochos .panel__art--boochos-sign {
+    margin: clamp(0.65rem, 2.5vw, 1.1rem) 0 0;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .panel--boochos .panel__art--boochos-sign img {
+    margin-bottom: 0;
+  }
+
+  /* Soot / Food — one continuous plate behind artwork */
+  .panel--soot,
+  .panel--soot .panel__inner,
+  .panel--soot .panel__art,
+  .panel--soot .panel__art picture,
+  .panel--soot .panel__art img {
+    background: var(--plate-soot);
+  }
+
+  .panel--soot .panel__art {
+    overflow: hidden;
+  }
+
+  .panel--food,
+  .panel--food .panel__inner,
+  .panel--food .panel__stage,
+  .panel--food .panel__art--vehicle,
+  .panel--food .panel__art--vehicle picture,
+  .panel--food .panel__art--vehicle img {
+    background: var(--plate-food);
+  }
+
+  .panel--food .panel__art--vehicle {
+    overflow: hidden;
+  }
+
+  /* Punkt → Flink → Botanic — normal editorial rhythm */
+  .editorial {
+    padding-top: clamp(1.5rem, 5vw, 2rem);
+    gap: clamp(1.5rem, 5vw, 2.25rem);
+  }
+
+  /* Flink — lanyard base + overlapping sweatshirt, large on mobile */
+  .edit--merch {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: 0;
+    margin-bottom: clamp(1.75rem, 8vw, 2.75rem);
+  }
+
+  .edit--merch .meta {
+    padding-inline: var(--pad-x);
+  }
+
+  .edit__merch {
+    min-height: 0;
+    padding-bottom: clamp(4.25rem, 20vw, 6.25rem);
+  }
+
+  .edit__merch-lanyard {
+    width: 100%;
+  }
+
+  .edit__merch-sweat {
+    top: clamp(-0.5rem, -1.5vw, 0.15rem);
+    left: clamp(24%, 30vw, 32%);
+    width: min(76vw, 21.5rem);
+  }
 }
 
 /* ——— Desktop ——— */
