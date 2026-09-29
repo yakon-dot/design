@@ -317,10 +317,14 @@
 .about-quote__bubble {
   position: relative;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 26rem;
   margin: 0 auto;
-  padding: 2.85rem 2.65rem 2.65rem;
+  padding: 2.75rem 2.65rem;
   border: 1.5px solid var(--accent);
   border-radius: 1.35rem;
   background: transparent;
@@ -344,8 +348,8 @@
 
 .about-quote__mark {
   position: absolute;
-  top: 1.25rem;
-  left: 1.5rem;
+  top: 1.15rem;
+  left: 1.4rem;
   margin: 0;
   font-size: clamp(4.75rem, 20vw, 5.65rem);
   font-weight: 600;
@@ -358,7 +362,7 @@
 
 .about-quote__body {
   margin: 0;
-  padding: 3.65rem 0.25rem 0.25rem;
+  padding: 0.35rem 0.25rem;
   border: 0;
 }
 
@@ -381,8 +385,8 @@
 }
 
 .about-quote__punch {
-  color: var(--accent);
-  font-weight: 500;
+  color: inherit;
+  font-weight: inherit;
 }
 
 /* ——— 05 Career / timeline ——— */
@@ -625,7 +629,7 @@
 
   .about-quote__bubble {
     max-width: 28rem;
-    padding: 3rem 3rem 2.85rem;
+    padding: 3rem;
   }
 
   .about-quote__mark {
