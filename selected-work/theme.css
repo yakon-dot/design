@@ -590,7 +590,7 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  gap: 0.65rem;
+  gap: 1.3rem; /* was 0.65rem — doubled */
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
@@ -617,8 +617,9 @@
 }
 
 .screen-motion__item {
-  flex: 0 0 82vw;
-  max-width: 22.5rem;
+  /* ~70% of prior 82vw / 22.5rem rail cards */
+  flex: 0 0 57vw;
+  max-width: 15.75rem;
   aspect-ratio: 9 / 16;
   margin: 0;
   scroll-snap-align: start;
@@ -626,6 +627,7 @@
   background: transparent;
   overflow: hidden;
   position: relative;
+  border-radius: 0.85rem;
 }
 
 .screen-motion__item picture,
@@ -638,7 +640,7 @@
   object-position: center center;
   background: transparent;
   border: 0;
-  border-radius: 0;
+  border-radius: 0.85rem;
 }
 
 .screen-motion__item video {
