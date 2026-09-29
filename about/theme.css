@@ -212,39 +212,23 @@
   background: transparent;
 }
 
-/* One-time lockup entrance — hello then .dot mark (single asset) */
-.js-ready .about-hero__intro[data-intro-lockup] .about-hero__hello {
+/* One-time lockup entrance — whole “Hi, I’m .dot” line as one unit */
+.js-ready .about-hero__intro[data-intro-lockup] {
   opacity: 0;
-  transform: translate3d(0, 8px, 0);
+  transform: translate3d(0, 10px, 0);
 }
 
-.js-ready .about-hero__intro[data-intro-lockup] .about-hero__mark {
-  opacity: 0;
-  transform: scale(0.94);
-  transform-origin: 50% 50%;
-}
-
-.js-ready .about-hero__intro[data-intro-lockup].is-entered .about-hero__hello {
+.js-ready .about-hero__intro[data-intro-lockup].is-entered {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   transition:
-    opacity 550ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.js-ready .about-hero__intro[data-intro-lockup].is-entered .about-hero__mark {
-  opacity: 1;
-  transform: scale(1);
-  transition:
-    opacity 550ms cubic-bezier(0.22, 1, 0.36, 1) 180ms,
-    transform 550ms cubic-bezier(0.22, 1, 0.36, 1) 180ms;
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js-ready .about-hero__intro[data-intro-lockup] .about-hero__hello,
-  .js-ready .about-hero__intro[data-intro-lockup] .about-hero__mark,
-  .js-ready .about-hero__intro[data-intro-lockup].is-entered .about-hero__hello,
-  .js-ready .about-hero__intro[data-intro-lockup].is-entered .about-hero__mark {
+  .js-ready .about-hero__intro[data-intro-lockup],
+  .js-ready .about-hero__intro[data-intro-lockup].is-entered {
     opacity: 1;
     transform: none;
     transition: none;
