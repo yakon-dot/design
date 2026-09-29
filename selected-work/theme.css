@@ -10,6 +10,7 @@
   --plate-punkt: #fee103;
   --plate-flink: #f9a7be;
   --flink-ink: #1a2744;
+  --flink-coral: #e03a42;
   --edit-radius: 14px;
 }
 
@@ -616,32 +617,26 @@
 
 @media (max-width: 767px) {
   /*
-    Coloured project blocks — accent titles, shared navy supporting copy.
+    Coloured project blocks — one accent per plate for title,
+    description, and category line (no navy supporting copy).
   */
-  .panel--boochos .panel__desc,
-  .panel--boochos .panel__tags,
-  .panel--soot .panel__desc,
-  .panel--soot .panel__tags,
-  .panel--food .panel__desc,
-  .panel--food .panel__tags,
-  .panel--punkt .panel__desc,
-  .panel--punkt .panel__tags {
-    color: var(--flink-ink);
-  }
-
-  .panel--boochos .panel__name {
+  .panel--boochos,
+  .panel--boochos .panel__tags {
     color: #fcea94;
   }
 
-  .panel--soot .panel__name {
+  .panel--soot,
+  .panel--soot .panel__tags {
     color: #f54e20;
   }
 
-  .panel--food .panel__name {
+  .panel--food,
+  .panel--food .panel__tags {
     color: #fcef07;
   }
 
-  .panel--punkt .panel__name {
+  .panel--punkt,
+  .panel--punkt .panel__tags {
     color: #007c83;
   }
 
@@ -785,22 +780,22 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     line-height: 1.15;
-    color: var(--accent);
+    color: var(--flink-coral);
   }
 
   .edit--merch .meta__desc {
     font-size: 1rem;
     line-height: 1.4;
     letter-spacing: -0.015em;
-    color: var(--flink-ink);
+    color: var(--flink-coral);
   }
 
   .edit--merch .meta__tags {
     font-size: 0.75rem;
     line-height: 1.4;
     letter-spacing: -0.01em;
-    color: var(--flink-ink);
-    opacity: 0.78;
+    color: var(--flink-coral);
+    opacity: 1;
   }
 
   .edit--merch picture {
