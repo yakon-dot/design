@@ -5,74 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Dot. — selected product and visual design work."
+      content="Dot. — design professional with 15+ years across branding, digital products and visual communication."
     />
-    <title>Dot. — Portfolio</title>
-    <link rel="canonical" href="./" />
+    <title>Dot. — About</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="freedom/styles.css?v=nav-1" />
-    <style>
-      /* Dot. personal accent on the portfolio home only */
-      .page-home {
-        --accent: #f4c542;
-      }
-
-      .page-home .section--home {
-        padding-top: clamp(2.5rem, 10vw, 4rem);
-        padding-bottom: clamp(4rem, 14vw, 6rem);
-        min-height: calc(100svh - var(--header-h));
-      }
-
-      .page-home .home-intro {
-        max-width: 22rem;
-        margin: 0 0 clamp(2.75rem, 10vw, 4rem);
-      }
-
-      .page-home .home-projects {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: clamp(1.1rem, 4vw, 1.5rem);
-      }
-
-      .page-home .home-projects a {
-        display: inline-block;
-        font-size: clamp(1.85rem, 8vw, 2.75rem);
-        font-weight: 600;
-        letter-spacing: -0.035em;
-        line-height: 1.1;
-        color: var(--text);
-        transition: color 0.2s var(--ease-out);
-      }
-
-      .page-home .home-projects a:hover,
-      .page-home .home-projects a:focus-visible {
-        color: var(--accent);
-        outline: none;
-      }
-    </style>
+    <link rel="stylesheet" href="freedom/styles.css?v=about-35" />
+    <link rel="stylesheet" href="about/theme.css?v=about-35" />
   </head>
-  <body class="page-home">
+  <body class="page-about">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-mark" href="./" aria-current="page">
+        <a class="site-mark" href="/design/" aria-current="page">
           <picture>
             <source
-              srcset="freedom/images/dot-wordmark.webp?v=nav-1"
+              srcset="freedom/images/dot-wordmark.webp?v=nav-2"
               type="image/webp"
             />
             <img
               class="site-mark__img"
-              src="freedom/images/dot-wordmark.png?v=nav-1"
+              src="freedom/images/dot-wordmark.png?v=nav-2"
               alt="Dot."
               width="396"
               height="254"
@@ -93,49 +51,611 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary" aria-hidden="true">
         <ul class="site-nav__list">
           <li>
-            <a class="site-nav__link" href="./" aria-current="page">Work</a>
+            <a class="site-nav__link" href="/design/freedom/">Freedom</a>
           </li>
           <li>
-            <a class="site-nav__link" href="freedom/">Freedom</a>
+            <a class="site-nav__link" href="/design/navi/">Navi</a>
           </li>
           <li>
-            <a class="site-nav__link" href="navi/">Navi</a>
+            <a class="site-nav__link" href="/design/selected-work/">Selected Work</a>
           </li>
           <li>
-            <a class="site-nav__link" href="selected-work/">Selected Work</a>
-          </li>
-          <li>
-            <a class="site-nav__link" href="about/">About</a>
+            <a class="site-nav__link" href="/design/" aria-current="page">About</a>
           </li>
         </ul>
       </nav>
     </header>
 
     <main id="main">
-      <section class="section section--home" aria-labelledby="home-title">
-        <div class="section__inner">
-          <p class="eyebrow reveal">Portfolio</p>
-          <h1 class="hero__title reveal" id="home-title">Dot.</h1>
-          <p class="lede home-intro reveal">
-            Selected product and visual design work — case studies and a
-            broader run of brand, campaign and applied design.
+      <!-- 01 INTRO -->
+      <section class="about-hero" id="top" aria-labelledby="about-title">
+        <figure class="about-hero__portrait reveal">
+          <div class="portrait-stage">
+            <picture>
+              <source srcset="about/images/dot-portrait.webp" type="image/webp" />
+              <img
+                class="portrait-stage__photo"
+                src="about/images/dot-portrait.png"
+                alt="Dot., black-and-white portrait with a yellow monster peeking from a shirt pocket."
+                width="1174"
+                height="1329"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </picture>
+            <!-- Hides the baked-in monster so the animated overlay can move cleanly -->
+            <img
+              class="portrait-monster-blocker"
+              src="about/images/monster-blocker.webp"
+              alt=""
+              width="1174"
+              height="1329"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false"
+            />
+            <img
+              class="portrait-monster"
+              src="about/images/pocket-monster.webp"
+              alt=""
+              width="96"
+              height="163"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false"
+              data-pocket-monster
+            />
+            <!-- Pocket lip/fabric sits above the monster -->
+            <img
+              class="portrait-pocket"
+              src="about/images/pocket-front.webp"
+              alt=""
+              width="1174"
+              height="1329"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false"
+            />
+          </div>
+        </figure>
+        <div class="about-hero__copy about-wrap">
+          <h1 class="about-hero__intro" id="about-title" data-intro-lockup>
+            <span class="about-hero__hello">Hi, I’m</span>
+            <picture class="about-hero__mark">
+              <source
+                srcset="about/images/dot-wordmark.webp?v=about-33"
+                type="image/webp"
+              />
+              <img
+                class="about-hero__wordmark"
+                src="about/images/dot-wordmark.png?v=about-33"
+                alt="Dot."
+                width="396"
+                height="254"
+                decoding="async"
+              />
+            </picture>
+          </h1>
+          <p class="about-hero__lede reveal">
+            Design professional with 15+ years' experience solving business
+            problems through branding, digital products and visual communication
+            across healthcare, retail and technology.
           </p>
+          <p class="about-hero__body reveal">
+            I combine design, systems thinking and process improvement to
+            simplify complexity and create customer-focused solutions that
+            deliver measurable business value.
+          </p>
+        </div>
+      </section>
 
-          <ul class="home-projects reveal">
-            <li><a href="freedom/">Freedom</a></li>
-            <li><a href="navi/">Navi</a></li>
-            <li><a href="selected-work/">Selected Work</a></li>
+      <!-- 02 SNAPSHOT -->
+      <section
+        class="about-section"
+        aria-labelledby="snapshot-title"
+        id="snapshot"
+      >
+        <div class="about-wrap about-wrap--wide">
+          <h2 class="about-kicker reveal" id="snapshot-title">
+            Professional Snapshot
+          </h2>
+          <span class="about-rule reveal" aria-hidden="true"></span>
+
+          <div class="snapshot-grid">
+            <article class="snapshot-item reveal">
+              <!-- person / profile outline -->
+              <svg class="about-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <circle cx="24" cy="16" r="7.5" />
+                <path d="M10 40c2.4-8.2 8.2-12.5 14-12.5S35.6 31.8 38 40" />
+              </svg>
+              <p class="snapshot-item__stat">15+</p>
+              <p class="snapshot-item__label">
+                years’ experience<br />
+                across healthcare,<br />
+                retail and technology
+              </p>
+            </article>
+
+            <article class="snapshot-item reveal">
+              <!-- medical / healthcare bag with cross -->
+              <svg class="about-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M16 18V14.5a8 8 0 0 1 16 0V18" />
+                <rect x="8" y="18" width="32" height="22" rx="3.5" />
+                <path d="M24 24.5v11M18.5 30h11" />
+              </svg>
+              <p class="snapshot-item__stat">500+</p>
+              <p class="snapshot-item__label">
+                Independent pharmacies<br />
+                supported
+              </p>
+            </article>
+
+            <article class="snapshot-item reveal">
+              <!-- buildings / business -->
+              <svg class="about-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M6 40V18l10-8 10 8v22" />
+                <path d="M16 40V22h10v18" />
+                <path d="M26 40V16l8-6 8 5v25" />
+                <path d="M6 40h36" />
+                <path d="M19.5 26h3M19.5 31h3M31.5 24h3M31.5 29h3" />
+              </svg>
+              <p class="snapshot-item__stat">8</p>
+              <p class="snapshot-item__label">
+                brands &amp; businesses<br />
+                managed across a<br />
+                fast-paced, shared<br />
+                services environment
+              </p>
+            </article>
+
+            <article class="snapshot-item reveal">
+              <!-- CV brain mark (supplied icon) -->
+              <img
+                class="about-icon about-icon--img"
+                src="about/images/brain-icon.webp"
+                alt=""
+                width="48"
+                height="48"
+                decoding="async"
+              />
+              <p class="snapshot-item__stat">AI</p>
+              <p class="snapshot-item__label">
+                as a bridge<br />
+                between human<br />
+                creativity and smarter<br />
+                solutions
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 EXPERTISE -->
+      <section
+        class="about-section"
+        aria-labelledby="expertise-title"
+        id="expertise"
+      >
+        <div class="about-wrap">
+          <h2 class="about-kicker reveal" id="expertise-title">
+            Areas of Expertise
+          </h2>
+          <span class="about-rule reveal" aria-hidden="true"></span>
+
+          <div class="expertise-stack">
+            <div class="expertise-block reveal">
+              <!-- person + star -->
+              <svg class="about-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <circle cx="18" cy="15" r="6.5" />
+                <path d="M6 38c2-7.2 7-11 12-11" />
+                <path
+                  d="M33.5 11.5l1.6 3.4 3.7.5-2.7 2.6.7 3.7-3.3-1.8-3.3 1.8.7-3.7-2.7-2.6 3.7-.5z"
+                />
+              </svg>
+              <h3 class="expertise-block__title">
+                Strategy &amp;<br />
+                Leadership
+              </h3>
+              <ul class="expertise-list">
+                <li>Systems thinking</li>
+                <li>Process improvement</li>
+                <li>Stakeholder management</li>
+                <li>Cross-functional collaboration</li>
+                <li>Project delivery</li>
+              </ul>
+            </div>
+
+            <div class="expertise-block reveal">
+              <!-- pencil -->
+              <svg class="about-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M28.5 8.5l11 11L20 39H9V28L28.5 8.5z" />
+                <path d="M24.5 12.5l11 11" />
+                <path d="M9 39l4.5-1.2" />
+              </svg>
+              <h3 class="expertise-block__title">
+                Design &amp;<br />
+                Communication
+              </h3>
+              <ul class="expertise-list">
+                <li>Brand strategy</li>
+                <li>Visual communication</li>
+                <li>UX/UI collaboration</li>
+                <li>Executive presentation design</li>
+                <li>Information architecture</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 PERSONALITY -->
+      <section class="about-quote" aria-label="Personality">
+        <div class="about-wrap">
+          <figure class="about-quote__bubble" data-quote-bubble>
+            <span class="about-quote__mark" aria-hidden="true">“</span>
+            <blockquote class="about-quote__body">
+              <p class="about-quote__lead">
+                Some days<br />
+                I amaze myself.
+              </p>
+              <p class="about-quote__aside">
+                Other days<br />
+                I put my keys in the<br />
+                <span class="about-quote__punch">fridge.</span>
+              </p>
+            </blockquote>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 05 CAREER -->
+      <section
+        class="about-section"
+        aria-labelledby="career-title"
+        id="career"
+      >
+        <div class="about-wrap">
+          <h2 class="about-kicker reveal" id="career-title">
+            Career Experience
+          </h2>
+          <span class="about-rule reveal" aria-hidden="true"></span>
+
+          <div class="career-timeline" data-career-timeline>
+            <div class="career-timeline__rail" aria-hidden="true"></div>
+            <div class="career-timeline__dot" aria-hidden="true"></div>
+
+            <article class="career-entry reveal">
+              <p class="career-entry__dates">2020 – Present</p>
+              <h3 class="career-entry__role">
+                Design Manager | NAVI Group | Dublin
+              </h3>
+              <p class="career-entry__summary">
+                Provide strategic creative support across multiple healthcare,
+                retail and technology businesses within the NAVI Group,
+                balancing competing priorities while maintaining consistent
+                brand standards and delivering commercially focused design
+                solutions.
+              </p>
+              <ul class="career-entry__list">
+                <li>
+                  Support integrated campaigns across hundreds of independent
+                  pharmacies.
+                </li>
+                <li>
+                  Maintain brand consistency across CarePlus Pharmacy, StayWell
+                  Pharmacy, Axium Buying Group, ScreenVend, DispenSense and
+                  Thera Pharmaceuticals.
+                </li>
+                <li>
+                  Produce strategic presentations and communications for An
+                  Post, Pfizer, Brown Thomas, Dunnes Stores, Arnotts and
+                  Uniphar.
+                </li>
+                <li>
+                  Develop concepts from initial brief through production while
+                  maintaining exceptional quality and attention to detail.
+                </li>
+                <li>
+                  Lead branding, marketing campaigns, packaging, digital
+                  communications and customer-facing creative projects.
+                </li>
+                <li>
+                  Manage mobile applications, touchscreen interfaces, ordering
+                  platforms and executive presentations.
+                </li>
+                <li>
+                  Partner with commercial, marketing, software development and
+                  senior leadership teams to translate business requirements
+                  into practical visual solutions.
+                </li>
+                <li>
+                  Introduce structured creative workflows that strengthen
+                  collaboration and reduce rework.
+                </li>
+              </ul>
+            </article>
+
+            <article class="career-entry reveal">
+              <p class="career-entry__dates">2018 – 2020</p>
+              <h3 class="career-entry__role">
+                Senior Graphic Designer | NAVI Group | Dublin
+              </h3>
+              <ul class="career-entry__list">
+                <li>
+                  Delivered integrated print, digital and experiential
+                  campaigns across multiple organisations.
+                </li>
+                <li>
+                  Produced executive presentations, conference branding,
+                  exhibition graphics, promotional materials and advertising
+                  campaigns.
+                </li>
+                <li>
+                  Maintained brand standards, design systems and visual
+                  consistency across multiple organisations.
+                </li>
+                <li>
+                  Collaborated with UX, marketing and commercial teams to
+                  improve customer experience and campaign effectiveness.
+                </li>
+                <li>
+                  Supported annual conferences through stage concepts,
+                  invitations, signage, awards, sponsorship materials and
+                  presentations.
+                </li>
+              </ul>
+            </article>
+
+            <article class="career-entry reveal">
+              <p class="career-entry__dates">2016 – 2018</p>
+              <h3 class="career-entry__role">
+                Graphic Designer | CarePlus Pharmacy, Axium Buying Group &amp;
+                Thera Pharmaceuticals | Dublin
+              </h3>
+              <ul class="career-entry__list">
+                <li>
+                  Managed monthly promotional campaigns across print and digital
+                  platforms.
+                </li>
+                <li>
+                  Designed catalogues, POS, vehicle graphics, seasonal
+                  campaigns, online banners and customer communications.
+                </li>
+                <li>
+                  Worked closely with commercial and marketing teams to support
+                  sales objectives and strengthen brand awareness.
+                </li>
+                <li>
+                  Balanced multiple projects while ensuring consistency,
+                  accuracy and on-time delivery.
+                </li>
+              </ul>
+            </article>
+
+            <article class="career-entry career-entry--freelance reveal">
+              <p class="career-entry__dates">Freelance</p>
+              <h3 class="career-entry__role">
+                Brand &amp; Design Consultant
+              </h3>
+              <p class="career-entry__summary">
+                Worked directly with business owners to understand their goals
+                before developing brands and visual communication that supported
+                their business. The freedom to work closely with clients allowed
+                me to challenge ideas, simplify complexity and create practical
+                design solutions rather than simply responding to a brief.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 EDUCATION -->
+      <section
+        class="about-section"
+        aria-labelledby="education-title"
+        id="education"
+      >
+        <div class="about-wrap">
+          <h2 class="about-kicker reveal" id="education-title">Education</h2>
+          <span class="about-rule reveal" aria-hidden="true"></span>
+          <p class="edu-title reveal">Bachelor of Design (Honours)</p>
+          <p class="edu-meta reveal">
+            Visual Communication<br />
+            National College of Art &amp; Design (NCAD), Dublin
+          </p>
+          <p class="edu-dates reveal">2005–2009</p>
+        </div>
+      </section>
+
+      <!-- 08 AI PHILOSOPHY -->
+      <section
+        class="about-section about-section--tight"
+        aria-labelledby="ai-title"
+        id="ai"
+      >
+        <div class="about-wrap">
+          <h2 class="about-kicker reveal" id="ai-title">AI Philosophy</h2>
+          <span class="about-rule reveal" aria-hidden="true"></span>
+          <p class="ai-copy reveal">
+            AI doesn't replace good design - it amplifies good thinking. I use
+            it to research, challenge assumptions, organise information,
+            accelerate production and bridge the gap between business problems
+            and creative solutions.
+            <strong
+              >The thinking, judgement and decisions remain human.</strong
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- 09 CV SKILL ICONS (traced from CV icon row) -->
+      <section
+        class="about-section about-section--tight about-section--apps"
+        aria-label="Applications"
+        id="apps"
+      >
+        <div class="about-wrap">
+          <ul class="app-icons reveal">
+            <li>
+              <svg class="app-icon" viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="3.2" y="3.2" width="33.6" height="33.6" rx="8.2" />
+                <text x="20" y="26.8" text-anchor="middle" class="app-icon__mark">
+                  Ai
+                </text>
+              </svg>
+              <span class="visually-hidden">Adobe Illustrator</span>
+            </li>
+            <li>
+              <svg class="app-icon" viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="3.2" y="3.2" width="33.6" height="33.6" rx="8.2" />
+                <text x="20" y="26.8" text-anchor="middle" class="app-icon__mark">
+                  Id
+                </text>
+              </svg>
+              <span class="visually-hidden">Adobe InDesign</span>
+            </li>
+            <li>
+              <svg class="app-icon" viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="3.2" y="3.2" width="33.6" height="33.6" rx="8.2" />
+                <text x="20" y="26.8" text-anchor="middle" class="app-icon__mark">
+                  Ps
+                </text>
+              </svg>
+              <span class="visually-hidden">Adobe Photoshop</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/fi-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Fi</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/tilda-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Tilda</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/figma-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Figma</span>
+            </li>
+            <li>
+              <svg class="app-icon" viewBox="0 0 40 40" aria-hidden="true">
+                <g transform="translate(20,20)">
+                  <path
+                    d="M-1.6-3.4C-1.6-8.5-4.8-12.2-8.6-12.2C-12.4-12.2-14.8-8.8-14.8-5.2C-14.8-1.2-11.2 1.6-7.2 3.4C-4.2 4.8-1.6 4.2-1.6 1.2"
+                  />
+                  <path
+                    d="M-1.6-3.4C-1.6-8.5-4.8-12.2-8.6-12.2C-12.4-12.2-14.8-8.8-14.8-5.2C-14.8-1.2-11.2 1.6-7.2 3.4C-4.2 4.8-1.6 4.2-1.6 1.2"
+                    transform="rotate(60)"
+                  />
+                  <path
+                    d="M-1.6-3.4C-1.6-8.5-4.8-12.2-8.6-12.2C-12.4-12.2-14.8-8.8-14.8-5.2C-14.8-1.2-11.2 1.6-7.2 3.4C-4.2 4.8-1.6 4.2-1.6 1.2"
+                    transform="rotate(120)"
+                  />
+                  <path
+                    d="M-1.6-3.4C-1.6-8.5-4.8-12.2-8.6-12.2C-12.4-12.2-14.8-8.8-14.8-5.2C-14.8-1.2-11.2 1.6-7.2 3.4C-4.2 4.8-1.6 4.2-1.6 1.2"
+                    transform="rotate(180)"
+                  />
+                  <path
+                    d="M-1.6-3.4C-1.6-8.5-4.8-12.2-8.6-12.2C-12.4-12.2-14.8-8.8-14.8-5.2C-14.8-1.2-11.2 1.6-7.2 3.4C-4.2 4.8-1.6 4.2-1.6 1.2"
+                    transform="rotate(240)"
+                  />
+                  <path
+                    d="M-1.6-3.4C-1.6-8.5-4.8-12.2-8.6-12.2C-12.4-12.2-14.8-8.8-14.8-5.2C-14.8-1.2-11.2 1.6-7.2 3.4C-4.2 4.8-1.6 4.2-1.6 1.2"
+                    transform="rotate(300)"
+                  />
+                  <polygon
+                    points="0,-2.6 2.25,-1.3 2.25,1.3 0,2.6 -2.25,1.3 -2.25,-1.3"
+                  />
+                </g>
+              </svg>
+              <span class="visually-hidden">ChatGPT / OpenAI</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/claude-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Claude</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/cursor-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Cursor</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/codecrafters-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Codecrafters</span>
+            </li>
+            <li>
+              <img
+                class="app-icon app-icon--img"
+                src="about/images/brain-icon.webp"
+                alt=""
+                width="40"
+                height="40"
+                decoding="async"
+              />
+              <span class="visually-hidden">Thinking</span>
+            </li>
           </ul>
         </div>
       </section>
-    </main>
+</main>
 
-    <footer class="site-footer">
-      <div class="section__inner">
-        <p class="site-footer__note">Dot.</p>
-      </div>
-    </footer>
+    <nav class="site-end-nav" aria-label="Site">
+      <ul class="site-end-nav__list">
+        <li>
+          <a class="site-end-nav__link" href="/design/freedom/">Freedom</a>
+        </li>
+        <li>
+          <a class="site-end-nav__link" href="/design/navi/">Navi</a>
+        </li>
+        <li>
+          <a class="site-end-nav__link" href="/design/selected-work/">Selected Work</a>
+        </li>
+        <li>
+          <a class="site-end-nav__link is-current" href="/design/" aria-current="page">About</a>
+        </li>
+      </ul>
+    </nav>
 
-    <script src="freedom/main.js?v=nav-1" defer></script>
+    <script src="freedom/main.js?v=about-35" defer></script>
+    <script src="about/about.js?v=about-35" defer></script>
   </body>
 </html>
