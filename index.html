@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Dot. — selected product and visual design work."
+    />
+    <title>Dot. — Portfolio</title>
+    <link rel="canonical" href="./" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="freedom/styles.css?v=nav-1" />
+    <style>
+      /* Dot. personal accent on the portfolio home only */
+      .page-home {
+        --accent: #f4c542;
+      }
+
+      .page-home .section--home {
+        padding-top: clamp(2.5rem, 10vw, 4rem);
+        padding-bottom: clamp(4rem, 14vw, 6rem);
+        min-height: calc(100svh - var(--header-h));
+      }
+
+      .page-home .home-intro {
+        max-width: 22rem;
+        margin: 0 0 clamp(2.75rem, 10vw, 4rem);
+      }
+
+      .page-home .home-projects {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.1rem, 4vw, 1.5rem);
+      }
+
+      .page-home .home-projects a {
+        display: inline-block;
+        font-size: clamp(1.85rem, 8vw, 2.75rem);
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: 1.1;
+        color: var(--text);
+        transition: color 0.2s var(--ease-out);
+      }
+
+      .page-home .home-projects a:hover,
+      .page-home .home-projects a:focus-visible {
+        color: var(--accent);
+        outline: none;
+      }
+    </style>
+  </head>
+  <body class="page-home">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-mark" href="./" aria-current="page">
+          <picture>
+            <source
+              srcset="freedom/images/dot-wordmark.webp?v=nav-1"
+              type="image/webp"
+            />
+            <img
+              class="site-mark__img"
+              src="freedom/images/dot-wordmark.png?v=nav-1"
+              alt="Dot."
+              width="396"
+              height="254"
+            />
+          </picture>
+        </a>
+        <button
+          class="menu-button"
+          type="button"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span class="menu-button__line" aria-hidden="true"></span>
+          <span class="menu-button__line" aria-hidden="true"></span>
+        </button>
+      </div>
+      <nav id="site-nav" class="site-nav" aria-label="Primary" aria-hidden="true">
+        <ul class="site-nav__list">
+          <li>
+            <a class="site-nav__link" href="./" aria-current="page">Work</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="freedom/">Freedom</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="navi/">Navi</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="selected-work/">Selected Work</a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="about/">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="section section--home" aria-labelledby="home-title">
+        <div class="section__inner">
+          <p class="eyebrow reveal">Portfolio</p>
+          <h1 class="hero__title reveal" id="home-title">Dot.</h1>
+          <p class="lede home-intro reveal">
+            Selected product and visual design work — case studies and a
+            broader run of brand, campaign and applied design.
+          </p>
+
+          <ul class="home-projects reveal">
+            <li><a href="freedom/">Freedom</a></li>
+            <li><a href="navi/">Navi</a></li>
+            <li><a href="selected-work/">Selected Work</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section__inner">
+        <p class="site-footer__note">Dot.</p>
+      </div>
+    </footer>
+
+    <script src="freedom/main.js?v=nav-1" defer></script>
+  </body>
+</html>

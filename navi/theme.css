@@ -1,0 +1,100 @@
+/* Navi case study — accent + page-specific helpers.
+   Base system: ../freedom/styles.css (unchanged for Freedom). */
+
+:root {
+  --accent: #35d9e6;
+}
+
+/* Full-bleed major imagery — same mobile breakout as Freedom Overview */
+.visual--bleed {
+  width: 100vw;
+  max-width: none;
+  margin-top: var(--visual-gap);
+  margin-inline: calc(50% - 50vw);
+}
+
+.visual--bleed img {
+  width: 100%;
+  height: auto;
+  background: var(--bg);
+}
+
+/* Opening: breathing room between lede and first image */
+.section--hero .visual--bleed {
+  margin-top: clamp(3.5rem, 12vw, 5.5rem);
+}
+
+.visual-caption {
+  margin: 0.9rem auto 0;
+  padding-inline: var(--pad-x);
+  max-width: 36rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.meta-line {
+  margin: clamp(2.25rem, 7vw, 3rem) 0 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.section-title--stack {
+  max-width: 14ch;
+}
+
+/*
+  Match Freedom Part Two section rhythm (half section-gap top + bottom).
+  Without this, base .section keeps full --section-gap on top, so
+  image → next label was ~1.5× Freedom (~164–221px vs ~109px).
+*/
+.section--challenge,
+.section--pair,
+.section--tools,
+.section--day,
+.section--role {
+  padding-top: calc(var(--section-gap) / 2);
+  padding-bottom: calc(var(--section-gap) / 2);
+}
+
+/* Copy→image pairing within a section (not section-to-section) */
+.section--pair .visual--bleed {
+  margin-top: clamp(2rem, 6vw, 2.75rem);
+}
+
+.section--tools .subhead {
+  margin-top: clamp(2.5rem, 8vw, 3.5rem);
+}
+
+.section--tools .section__inner .body-copy + .body-copy {
+  margin-top: 1.25rem;
+}
+
+/* Desktop: large editorial moments, not full browser stretch.
+   Sized near Freedom’s portrait mockups (patricia / companions). */
+@media (min-width: 768px) {
+  .visual--bleed {
+    width: min(48vw, 28rem);
+    margin-inline: auto;
+  }
+
+  .visual--bleed-wide {
+    width: min(52vw, 30rem);
+  }
+}
+
+@media (min-width: 1100px) {
+  .visual--bleed {
+    width: min(36vw, 30rem);
+  }
+
+  .visual--bleed-wide {
+    width: min(40vw, 32rem);
+  }
+}

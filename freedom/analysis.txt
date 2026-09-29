@@ -1,0 +1,97 @@
+FREEDOM 50 — MOCKUP vs CURRENT BUILD
+Analysis only. No code changes.
+
+------------------------------------
+1. MAIN VISUAL DIFFERENCES
+------------------------------------
+
+OVERALL READ
+- Mockup: Cinematic portfolio. Product sits inside atmosphere, light, and environment. Sections feel like scenes.
+- Current: Clean editorial article. Type on flat near-black, then large raw screenshots. Structurally right, visually thinner.
+
+HERO
+- Mockup: Art-directed lifestyle / product moment (phone in a warm interior, plant, wooden surface). Product is presented.
+- Current: Large raw welcome screenshot with rounded corners on black. Product is pasted.
+
+ATMOSPHERE
+- Mockup: Photographic environments continue under/behind sections (moonlit landscape behind problem thoughts; warm blur behind the Idea phone).
+- Current: Flat #080B0C end to end. No environmental depth between sections.
+
+PROBLEM FRAGMENTS
+- Mockup: Thoughts sit as dark rounded bubbles over atmospheric photography. Object-like, cinematic.
+- Current: Italic type fragments on flat black, staggered L/R, with a hairline rule. Editorial, but not art-directed.
+
+PRODUCT PRESENTATION (IDEA / JOURNEY)
+- Mockup: Phone as an object in a composed scene (device presence + environmental backdrop).
+- Current: Full-bleed-ish raw UI screenshots stacked with small captions (OVERVIEW, etc.). Accurate UI, bare presentation.
+
+SECTION 03 / PATRICIA
+- Mockup: Richer focal moment. Elevated card/composition with glow and atmosphere. Reads as a designed beat.
+- Current: Full original Patricia screenshot, flat on black. Correct UI, quieter presentation.
+
+CHROME / BRAND MOMENTS
+- Mockup: Stronger portfolio mark (Dot.), warmer gold accent language, hero CTA pill (View project).
+- Current: Peach dot + two-line menu only. No hero CTA. More restrained brand signal.
+
+PACING AND HIERARCHY
+- Mockup: Bigger swings. Type, then a big product moment, then type again. Negative space frames scenes.
+- Current: More even headline to body to screenshot rhythm. Hierarchy is clear but less dramatic.
+
+------------------------------------
+2. WHAT LAYOUT / CSS CAN CORRECT
+   (no new assets)
+------------------------------------
+
+- Vertical pacing and section breathing room (closer to mockup scene rhythm)
+- Type scale / tracking / weight between labels, headlines, body
+- Header mark treatment if Dot. is typeset (not a custom logo file)
+- Softening the article feel: less hairline/caption chrome, more scene-like spacing
+- Restyling emotional fragments toward rounded bubble objects (shape, padding, surface). Still incomplete without atmosphere behind them.
+- Subtle radius / shadow / framing refinements on existing screenshots (limited polish only)
+- Accent colour temperature toward the mockup warmer gold/peach
+- Hero CTA styling if you later want that control (content change — not doing now)
+
+These improve polish and hierarchy, but will not alone make it match the mockup cinematic product moments.
+
+------------------------------------
+3. WHAT NEEDS ASSETS FROM YOU
+------------------------------------
+
+HERO
+- Final cinematic / lifestyle hero presentation
+- Already flagged. Do not fake with CSS.
+
+01 — PROBLEM
+- Atmospheric background for the fragment field
+- Moonlit landscape / equivalent, composed for mobile full-bleed
+
+02 — IDEA
+- Art-directed product presentation(s) for Overview
+- And Journey/Goals if those beats should match the mockup
+- Phone-in-environment or equivalent composites
+- Original UI screenshots remain the source of truth for interface content
+
+03 — PATRICIA
+- Either a presentation crop/composite of the Patricia moment
+- Or an atmospheric plate to sit behind/around the original screenshot
+
+OPTIONAL
+- Dot. wordmark if it is a designed logo rather than type
+
+KEEP USING
+- The original Freedom screenshots for all real UI
+- Mockup = presentation art direction only
+
+------------------------------------
+BOTTOM LINE
+------------------------------------
+
+The build has the right skeleton.
+The gap is mostly presentation language:
+mockup sells Freedom through cinematic product moments and atmosphere;
+the live page still shows raw UI on black.
+
+CSS can tighten hierarchy and pacing.
+Matching the approved art direction needs:
+- the hero presentation asset
+- atmospheric / framed product plates for Problem, Idea, and Patricia
