@@ -14,8 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../freedom/styles.css?v=site-1" />
-    <link rel="stylesheet" href="theme.css?v=site-1" />
+    <link rel="stylesheet" href="../freedom/styles.css?v=site-2" />
+    <link rel="stylesheet" href="theme.css?v=site-2" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -98,7 +98,7 @@
                 Identity · Illustration · Menus · Packaging · Food wraps
               </p>
             </div>
-            <div class="panel__art">
+            <div class="panel__art panel__art--boochos-hero">
               <picture>
                 <source
                   srcset="images/selected-boochos-hero.webp"
@@ -107,10 +107,26 @@
                 <img
                   src="images/selected-boochos-hero.png"
                   alt="Boochos food trailer with sugar-skull livery."
-                  width="1672"
-                  height="941"
+                  width="1600"
+                  height="1200"
                   decoding="async"
                   fetchpriority="high"
+                />
+              </picture>
+            </div>
+            <div class="panel__art panel__art--boochos-sign">
+              <picture>
+                <source
+                  srcset="images/selected-boochos-sign.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/selected-boochos-sign.png"
+                  alt="Boochos exterior projecting sign with sugar-skull graphic."
+                  width="1320"
+                  height="990"
+                  loading="lazy"
+                  decoding="async"
                 />
               </picture>
             </div>
@@ -136,8 +152,8 @@
                 <img
                   src="images/selected-soot-away-van.png"
                   alt="SootAway chimney services van wrap."
-                  width="1610"
-                  height="977"
+                  width="2000"
+                  height="1500"
                   loading="lazy"
                   decoding="async"
                 />
@@ -146,26 +162,43 @@
           </div>
         </section>
 
-        <!-- FOOD DELIVERY -->
+        <!-- FOOD DELIVERY / ON WHEELS -->
         <section class="panel panel--food" aria-labelledby="food-name">
           <div class="panel__inner">
             <div class="panel__copy">
               <h2 class="panel__name" id="food-name">Food Delivery</h2>
-              <p class="panel__desc">Vehicle graphics</p>
+              <p class="panel__desc">Vehicle graphics · On Wheels</p>
             </div>
-            <div class="panel__art">
-              <picture>
+            <div class="panel__stage panel__stage--food">
+              <div class="panel__art panel__art--vehicle">
+                <picture>
+                  <source
+                    srcset="images/selected-food-delivery-van.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="images/selected-food-delivery-van.png"
+                    alt="On Wheels food delivery vehicle wrap."
+                    width="2000"
+                    height="1500"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+              <picture class="panel__float panel__float--cups">
                 <source
-                  srcset="images/selected-food-delivery-van.webp"
+                  srcset="images/selected-food-cups.webp"
                   type="image/webp"
                 />
                 <img
-                  src="images/selected-food-delivery-van.png"
-                  alt="On Wheels food delivery vehicle wrap."
-                  width="1598"
-                  height="984"
+                  src="images/selected-food-cups.png"
+                  alt=""
+                  width="2000"
+                  height="1500"
                   loading="lazy"
                   decoding="async"
+                  aria-hidden="true"
                 />
               </picture>
             </div>
@@ -182,19 +215,36 @@
               </p>
               <p class="panel__tags">Identity · Logo · Merchandise</p>
             </div>
-            <div class="panel__art">
-              <picture>
+            <div class="panel__stage panel__stage--punkt">
+              <div class="panel__art panel__art--punkt-hero">
+                <picture>
+                  <source
+                    srcset="images/selected-punkt-hoodie.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="images/selected-punkt-hoodie.png"
+                    alt="Punkt creative space hoodie on yellow."
+                    width="1563"
+                    height="1006"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+              <picture class="panel__float panel__float--tote">
                 <source
-                  srcset="images/selected-punkt-hoodie.webp"
+                  srcset="images/selected-punkt-tote.webp"
                   type="image/webp"
                 />
                 <img
-                  src="images/selected-punkt-hoodie.png"
-                  alt="Punkt creative space hoodie on yellow."
-                  width="1563"
-                  height="1006"
+                  src="images/selected-punkt-tote.png"
+                  alt=""
+                  width="2000"
+                  height="1942"
                   loading="lazy"
                   decoding="async"
+                  aria-hidden="true"
                 />
               </picture>
             </div>
@@ -205,20 +255,36 @@
       <!-- BLACK EDITORIAL -->
       <section class="editorial" aria-label="Further selected work">
         <figure class="edit edit--botanic reveal">
-          <picture>
-            <source
-              srcset="images/selected-botanic-packaging.webp"
-              type="image/webp"
-            />
-            <img
-              src="images/selected-botanic-packaging.png"
-              alt="Botanic Co. let it glow packaging."
-              width="845"
-              height="511"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+          <div class="edit__pair edit__pair--botanic">
+            <picture class="edit__dominant">
+              <source
+                srcset="images/selected-botanic-packaging.webp"
+                type="image/webp"
+              />
+              <img
+                src="images/selected-botanic-packaging.png"
+                alt="Botanic Co. let it glow packaging."
+                width="845"
+                height="511"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <picture class="edit__support">
+              <source
+                srcset="images/selected-botanic-card.webp"
+                type="image/webp"
+              />
+              <img
+                src="images/selected-botanic-card.png"
+                alt="Botanic Co. business card on driftwood."
+                width="1500"
+                height="1046"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
           <figcaption class="meta">
             <span class="meta__name">Botanic Co.</span>
             <span class="meta__desc"
@@ -239,8 +305,8 @@
             <img
               src="images/selected-wicked-bun-cups.png"
               alt="Wicked Bun cups with running burger illustration."
-              width="1448"
-              height="1086"
+              width="2000"
+              height="1500"
               loading="lazy"
               decoding="async"
             />
@@ -273,24 +339,87 @@
           </figcaption>
         </figure>
 
-        <figure class="edit edit--bperfect reveal">
-          <picture>
-            <source
-              srcset="images/selected-bperfect-campaign.webp"
-              type="image/webp"
-            />
-            <img
-              src="images/selected-bperfect-campaign.png"
-              alt="BPerfect Cosmetics free gift campaign graphic."
-              width="945"
-              height="1665"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+        <div class="edit-cluster edit-cluster--retail reveal">
+          <figure class="edit edit--bts">
+            <picture>
+              <source
+                srcset="images/selected-back-to-school.webp"
+                type="image/webp"
+              />
+              <img
+                class="edit__cutout"
+                src="images/selected-back-to-school.png"
+                alt="Back to School life-size retail cut-out with promotional sign."
+                width="1040"
+                height="1820"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <figcaption class="meta">
+              <span class="meta__name">Back to School</span>
+              <span class="meta__desc">Retail · POS</span>
+            </figcaption>
+          </figure>
+
+          <figure class="edit edit--bperfect">
+            <picture>
+              <source
+                srcset="images/selected-bperfect-campaign.webp"
+                type="image/webp"
+              />
+              <img
+                src="images/selected-bperfect-campaign.png"
+                alt="BPerfect Cosmetics free gift campaign graphic."
+                width="945"
+                height="1665"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <figcaption class="meta">
+              <span class="meta__name">BPerfect</span>
+              <span class="meta__desc">Campaign creative</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <figure class="edit edit--merch reveal">
+          <div class="edit__merch">
+            <picture class="edit__merch-sweat">
+              <source
+                srcset="images/selected-flink-sweatshirt.webp"
+                type="image/webp"
+              />
+              <img
+                class="edit__cutout"
+                src="images/selected-flink-sweatshirt.png"
+                alt="Flink gradient sweatshirt with F mark."
+                width="2000"
+                height="1808"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <picture class="edit__merch-band">
+              <source
+                srcset="images/selected-wristband.webp"
+                type="image/webp"
+              />
+              <img
+                src="images/selected-wristband.png"
+                alt="Flink wristband and lanyard merchandise."
+                width="1598"
+                height="984"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
           <figcaption class="meta">
-            <span class="meta__name">BPerfect</span>
-            <span class="meta__desc">Campaign creative</span>
+            <span class="meta__name">Flink</span>
+            <span class="meta__desc">Merchandise · Application</span>
+            <span class="meta__tags">Identity · Merch</span>
           </figcaption>
         </figure>
 
@@ -348,7 +477,7 @@
       </div>
     </footer>
 
-    <script src="../freedom/main.js?v=site-1" defer></script>
-    <script src="hero.js?v=site-1" defer></script>
+    <script src="../freedom/main.js?v=site-2" defer></script>
+    <script src="hero.js?v=site-2" defer></script>
   </body>
 </html>

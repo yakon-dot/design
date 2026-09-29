@@ -230,33 +230,48 @@
   opacity: 1;
 }
 
-/* Boochos trailer — enlarge the object itself (~90vw), not just the frame.
-   Artwork has ~66% trailer / magenta margins; scale image ~136vw and clip. */
+/* Boochos trailer — enlarge the object itself so details read clearly.
+   New artwork trailer spans ~77% of frame; zoom so it fills most of the width. */
 .panel--boochos .panel__inner {
   padding-inline: 0;
+  gap: clamp(1.1rem, 3.5vw, 1.6rem);
 }
 
 .panel--boochos .panel__copy {
   padding-inline: var(--pad-x);
 }
 
-.panel--boochos .panel__art {
+.panel--boochos .panel__art--boochos-hero {
   width: 100%;
   max-width: none;
   margin-inline: 0;
   overflow: hidden;
 }
 
-.panel--boochos .panel__art picture {
+.panel--boochos .panel__art--boochos-hero picture {
   display: block;
-  width: 136vw;
-  margin-left: calc(50% - 68vw);
+  width: 128vw;
+  margin-left: calc(50% - 64vw);
 }
 
-.panel--boochos .panel__art img {
+.panel--boochos .panel__art--boochos-hero img {
   width: 100%;
   max-width: none;
   height: auto;
+}
+
+/* Secondary Boochos sign — connected, not a second project */
+.panel--boochos .panel__art--boochos-sign {
+  width: min(78vw, 22rem);
+  margin-left: auto;
+  margin-right: var(--pad-x);
+  margin-top: clamp(0.35rem, 2vw, 0.85rem);
+}
+
+.panel--boochos .panel__art--boochos-sign img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .panel--soot {
@@ -297,6 +312,62 @@
   width: 100%;
   max-width: none;
   background: transparent;
+}
+
+/* Staged compositions — vehicle/hero + floating application */
+.panel__stage {
+  position: relative;
+  width: 100%;
+}
+
+.panel__stage--food {
+  padding-bottom: clamp(3.5rem, 14vw, 5rem);
+}
+
+.panel__stage--food .panel__art--vehicle {
+  width: 100%;
+}
+
+.panel__float {
+  position: absolute;
+  display: block;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  background: transparent;
+  z-index: 2;
+}
+
+.panel__float img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  border: 0;
+}
+
+.panel__float--cups {
+  right: clamp(0.35rem, 3vw, 1.25rem);
+  bottom: 0;
+  width: min(46vw, 13.5rem);
+  z-index: 2;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+}
+
+.panel__stage--punkt {
+  padding-bottom: clamp(2.75rem, 10vw, 4rem);
+}
+
+.panel__stage--punkt .panel__art--punkt-hero {
+  width: 100%;
+}
+
+.panel__float--tote {
+  left: clamp(0.5rem, 4vw, 1.75rem);
+  bottom: 0;
+  width: min(38vw, 11rem);
+  z-index: 2;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.22));
 }
 
 .panel--food {
@@ -344,14 +415,43 @@
   background: var(--bg);
 }
 
+.edit__cutout {
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* Botanic — packaging dominant + card supporting */
 .edit--botanic {
-  width: calc(100vw - (var(--pad-x) * 2.4));
+  width: calc(100vw - (var(--pad-x) * 1.6));
+  max-width: 40rem;
   margin-inline: auto;
 }
 
+.edit__pair--botanic {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: clamp(0.65rem, 2.5vw, 1rem);
+  align-items: end;
+}
+
+.edit__pair--botanic .edit__dominant img {
+  border-radius: var(--edit-radius);
+}
+
+.edit__pair--botanic .edit__support {
+  margin-bottom: clamp(0.75rem, 4vw, 1.75rem);
+}
+
+.edit__pair--botanic .edit__support img {
+  border-radius: calc(var(--edit-radius) - 2px);
+}
+
 .edit--wicked {
-  width: calc(100vw - (var(--pad-x) * 2));
-  margin-inline: auto;
+  width: calc(100vw - (var(--pad-x) * 2.4));
+  max-width: 24rem;
+  margin-left: auto;
+  margin-right: var(--pad-x);
 }
 
 .edit--derma {
@@ -367,17 +467,64 @@
   padding-inline: 0;
 }
 
+/* Retail POS cluster — cut-out + campaign relate on black */
+.edit-cluster--retail {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(0.75rem, 4vw, 1.5rem);
+  width: calc(100vw - (var(--pad-x) * 1.5));
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.edit--bts {
+  width: min(42vw, 11.5rem);
+  flex: 0 0 auto;
+}
+
+.edit--bts .meta {
+  max-width: none;
+}
+
 .edit--bperfect {
-  width: 54vw;
-  max-width: 13.5rem;
-  margin-left: auto;
-  margin-right: var(--pad-x);
+  width: min(40vw, 11rem);
+  flex: 0 0 auto;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .edit--bperfect .meta {
   width: 100%;
   max-width: none;
   text-align: left;
+}
+
+/* Flink merch — sweatshirt + wristband as one application set */
+.edit--merch {
+  width: calc(100vw - (var(--pad-x) * 2));
+  max-width: 28rem;
+  margin-left: var(--pad-x);
+  margin-right: auto;
+}
+
+.edit__merch {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(0.5rem, 2vw, 0.85rem);
+  align-items: center;
+}
+
+.edit__merch-sweat img {
+  width: 100%;
+  height: auto;
+}
+
+.edit__merch-band img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--edit-radius);
 }
 
 .edit--motion:empty {
@@ -499,16 +646,22 @@
     padding-inline: 0;
   }
 
-  .panel--boochos .panel__art {
+  .panel--boochos .panel__art--boochos-hero {
     width: 100%;
     overflow: visible;
   }
 
-  .panel--boochos .panel__art picture {
+  .panel--boochos .panel__art--boochos-hero picture {
     width: 100%;
-    max-width: 56rem;
+    max-width: 64rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .panel--boochos .panel__art--boochos-sign {
+    width: min(34vw, 22rem);
+    margin-right: 0;
+    margin-left: auto;
   }
 
   /* Alternating copy/art rhythm on wider screens without breaking mobile poster feel */
@@ -540,19 +693,47 @@
     width: 100%;
   }
 
+  .panel__stage--food {
+    padding-bottom: clamp(2rem, 4vw, 3.25rem);
+    max-width: 64rem;
+    margin-inline: auto;
+  }
+
+  .panel__float--cups {
+    right: clamp(1rem, 4vw, 3rem);
+    bottom: clamp(0.25rem, 1vw, 0.75rem);
+    width: min(22vw, 15rem);
+  }
+
+  .panel__stage--punkt {
+    padding-bottom: clamp(1.5rem, 3vw, 2.75rem);
+    max-width: 64rem;
+    margin-inline: auto;
+  }
+
+  .panel__float--tote {
+    left: clamp(1.5rem, 5vw, 3.5rem);
+    width: min(18vw, 12.5rem);
+  }
+
   .editorial {
     gap: clamp(3.5rem, 7vw, 5.5rem);
     padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem);
   }
 
   .edit--botanic {
-    width: min(48vw, 28rem);
-    margin-left: clamp(3rem, 12vw, 8rem);
+    width: min(62vw, 40rem);
+    margin-left: clamp(3rem, 10vw, 7rem);
     margin-right: auto;
   }
 
+  .edit__pair--botanic {
+    grid-template-columns: 1.45fr 0.9fr;
+    gap: 1.15rem;
+  }
+
   .edit--wicked {
-    width: min(52vw, 32rem);
+    width: min(38vw, 24rem);
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
   }
@@ -570,11 +751,25 @@
     padding-inline: 0;
   }
 
-  .edit--bperfect {
-    width: min(16vw, 13rem);
-    max-width: none;
+  .edit-cluster--retail {
+    width: min(72vw, 48rem);
     margin-left: auto;
     margin-right: clamp(3rem, 10vw, 7rem);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .edit--bts {
+    width: min(18vw, 12.5rem);
+  }
+
+  .edit--bperfect {
+    width: min(16vw, 12rem);
+    max-width: none;
+  }
+
+  .edit--merch {
+    width: min(42vw, 28rem);
+    margin-left: clamp(3rem, 12vw, 8rem);
   }
 }
 
