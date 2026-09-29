@@ -52,6 +52,35 @@
     }
   }
 
+  // One-time “Hi, I’m .dot” lockup entrance
+  const lockup = document.querySelector("[data-intro-lockup]");
+  if (lockup) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const enter = () => {
+      lockup.classList.add("is-entered");
+    };
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      enter();
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            enter();
+            observer.disconnect();
+            break;
+          }
+        },
+        { threshold: 0.35 }
+      );
+      observer.observe(lockup);
+    }
+  }
+
   // Occasional pocket-monster peek — stationary most of the time
   const monster = document.querySelector("[data-pocket-monster]");
   if (!monster) return;
@@ -61,14 +90,13 @@
   ).matches;
   if (reduceMotion) return;
 
-  let timer = 0;
   let first = true;
 
   const schedule = () => {
     // First peek ~1s after load so it’s obvious; then every 5–8s
     const delay = first ? 1000 : 5000 + Math.random() * 3000;
     first = false;
-    timer = window.setTimeout(peek, delay);
+    window.setTimeout(peek, delay);
   };
 
   const peek = () => {
