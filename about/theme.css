@@ -82,8 +82,8 @@
 /* ——— 01 Hero ——— */
 
 .about-hero {
-  padding-top: clamp(1.25rem, 5vw, 2rem);
-  padding-bottom: clamp(2.5rem, 9vw, 4rem);
+  padding-top: clamp(1.5rem, 6vw, 2.5rem);
+  padding-bottom: clamp(3.5rem, 12vw, 5.5rem);
 }
 
 .about-hero__portrait {
@@ -178,8 +178,8 @@
 }
 
 .about-hero__hello {
-  margin: 0 0 0.15rem;
-  font-size: clamp(2.6rem, 12vw, 3.75rem);
+  margin: 0 0 clamp(0.85rem, 3vw, 1.25rem);
+  font-size: clamp(2.75rem, 13vw, 4rem);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.02;
@@ -187,22 +187,21 @@
 }
 
 .about-hero__name {
-  margin: 0 0 clamp(1.35rem, 5vw, 1.85rem);
-  font-size: clamp(2.6rem, 12vw, 3.75rem);
-  font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 1.02;
-  color: var(--about-ink);
+  margin: 0 0 clamp(2.25rem, 8vw, 3.25rem);
+  line-height: 0;
 }
 
-.about-hero__name .dot-word {
-  white-space: nowrap;
+.about-hero__name picture {
+  display: block;
+  line-height: 0;
 }
 
-.about-hero__name .dot-period {
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: -0.08em;
+.about-hero__wordmark {
+  display: block;
+  width: min(78vw, 20rem);
+  max-width: 100%;
+  height: auto;
+  background: transparent;
 }
 
 .about-hero__lede {
@@ -614,7 +613,11 @@
   }
 
   .about-hero__copy {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .about-hero__wordmark {
+    width: min(100%, 22rem);
   }
 
   .snapshot-grid {
