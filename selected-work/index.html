@@ -378,57 +378,127 @@
           </figcaption>
         </figure>
 
-        <div class="edit-cluster edit-cluster--retail reveal">
-          <figure class="edit edit--bts">
-            <picture>
-              <source
-                srcset="images/selected-back-to-school.webp"
-                type="image/webp"
-              />
-              <img
-                class="edit__cutout"
-                src="images/selected-back-to-school.png"
-                alt="Back to School life-size retail cut-out with promotional sign."
-                width="1040"
-                height="1820"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-            <figcaption class="meta">
-              <span class="meta__name">Back to School</span>
-              <span class="meta__desc">Retail · POS</span>
-            </figcaption>
-          </figure>
+        <figure class="edit edit--bts reveal">
+          <picture>
+            <source
+              srcset="images/selected-back-to-school.webp"
+              type="image/webp"
+            />
+            <img
+              class="edit__cutout"
+              src="images/selected-back-to-school.png"
+              alt="Back to School life-size retail cut-out with promotional sign."
+              width="1040"
+              height="1820"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <figcaption class="meta">
+            <span class="meta__name">Back to School</span>
+            <span class="meta__desc">Retail · POS</span>
+          </figcaption>
+        </figure>
 
-          <figure class="edit edit--bperfect">
-            <picture>
-              <source
-                srcset="images/selected-bperfect-campaign.webp"
-                type="image/webp"
-              />
-              <img
-                src="images/selected-bperfect-campaign.png"
-                alt="BPerfect Cosmetics free gift campaign graphic."
-                width="945"
-                height="1665"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-            <figcaption class="meta">
-              <span class="meta__name">BPerfect</span>
-              <span class="meta__desc">Campaign creative</span>
-            </figcaption>
-          </figure>
-        </div>
+        <!-- SCREEN & MOTION — portrait digital / motion rail -->
+        <section
+          class="screen-motion reveal"
+          aria-labelledby="screen-motion-title"
+        >
+          <header class="screen-motion__intro">
+            <h2 class="screen-motion__title" id="screen-motion-title">
+              Screen &amp; Motion
+            </h2>
+            <p class="screen-motion__desc">
+              Digital display · Campaign · Motion
+            </p>
+          </header>
 
-        <!-- Motion slots — hidden until files exist -->
-        <figure class="edit edit--motion" data-motion="rocket"></figure>
-        <figure
-          class="edit edit--motion edit--motion-offset"
-          data-motion="education"
-        ></figure>
+          <div
+            class="screen-motion__rail"
+            data-screen-rail
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Screen and motion portrait work"
+            tabindex="0"
+          >
+            <!-- 1. Static — BPerfect -->
+            <figure class="screen-motion__item" data-media-type="image">
+              <picture>
+                <source
+                  srcset="images/selected-bperfect-campaign.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/selected-bperfect-campaign.png"
+                  alt="BPerfect Cosmetics free gift campaign graphic."
+                  width="1080"
+                  height="1920"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </figure>
+
+            <!--
+              2. Animated MP4 — add when file is ready:
+              <figure class="screen-motion__item" data-media-type="video">
+                <video
+                  src="images/screen-motion-02.mp4"
+                  width="1080"
+                  height="1920"
+                  muted
+                  loop
+                  playsinline
+                  autoplay
+                  preload="metadata"
+                  aria-label="Screen and motion piece 2"
+                ></video>
+              </figure>
+            -->
+
+            <!--
+              3. Static artwork — add when file is ready:
+              <figure class="screen-motion__item" data-media-type="image">
+                <picture>
+                  <source srcset="images/screen-motion-03.webp" type="image/webp" />
+                  <img
+                    src="images/screen-motion-03.png"
+                    alt="Screen and motion piece 3"
+                    width="1080"
+                    height="1920"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </figure>
+            -->
+
+            <!--
+              4. Animated MP4 — add when file is ready:
+              <figure class="screen-motion__item" data-media-type="video">
+                <video
+                  src="images/screen-motion-04.mp4"
+                  width="1080"
+                  height="1920"
+                  muted
+                  loop
+                  playsinline
+                  autoplay
+                  preload="metadata"
+                  aria-label="Screen and motion piece 4"
+                ></video>
+              </figure>
+            -->
+          </div>
+
+          <div
+            class="screen-motion__pager"
+            data-screen-pager
+            role="tablist"
+            aria-label="Screen and motion pieces"
+          ></div>
+        </section>
       </section>
 
       <!-- SUMMARY -->
@@ -477,7 +547,8 @@
       </div>
     </footer>
 
-    <script src="../freedom/main.js?v=site-16" defer></script>
-    <script src="hero.js?v=site-16" defer></script>
+    <script src="../freedom/main.js?v=site-17" defer></script>
+    <script src="hero.js?v=site-17" defer></script>
+    <script src="screen-motion.js?v=site-17" defer></script>
   </body>
 </html>
