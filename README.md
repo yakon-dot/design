@@ -1,25 +1,39 @@
-# Freedom 50 — Case Study (first half)
+# Dot. — Portfolio
 
-Mobile-first case study page for the Freedom 50 product design work.
+Static multi-page portfolio site (HTML / CSS / JS). No build step.
 
-## View locally
+## Site structure
 
-Open `freedom/index.html` in a browser, or serve the folder:
+| Path | Page |
+|------|------|
+| `/` (`index.html`) | Work / home — project listing |
+| `/freedom/` | Freedom case study |
+| `/freedom-50/` | Redirect alias → `/freedom/` |
+| `/navi/` | Navi case study |
+| `/selected-work/` | Selected Work |
+| `/about/` | About |
+
+There are no separate Contact or CV pages in this project yet.
+
+## Local preview
+
+Serve the **repository root** (not a subfolder):
 
 ```bash
-cd freedom && python3 -m http.server 8080
+python3 -m http.server 8080
 ```
 
-Then visit `http://localhost:8080`.
+Then open `http://localhost:8080/`.
 
-## Scope
+## GitHub Pages
 
-This build covers:
+This is a plain static site. Recommended setup:
 
-- Header
-- Hero
-- 01 — The Problem
-- 02 — The Idea
-- 03 — Two Sides of the Same Journey
+1. Push this repository to GitHub.
+2. Settings → Pages → Build and deployment → **Deploy from a branch**.
+3. Branch: your default branch; folder: **/ (root)**.
+4. `.nojekyll` is included so GitHub does not run Jekyll on the files.
 
-Later sections (companion, Demo Mode, privacy, process, credits) are intentionally omitted.
+Project URLs such as `https://USERNAME.github.io/REPO/` work with the existing **relative** links and asset paths (no root-absolute `/…` paths).
+
+No npm/build tooling is required.
