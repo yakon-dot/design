@@ -14,14 +14,28 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=site-1" />
+    <link rel="stylesheet" href="styles.css?v=nav-1" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-mark" href="../about/">Dot.</a>
+        <a class="site-mark" href="../about/">
+          <picture>
+            <source
+              srcset="images/dot-wordmark.webp?v=nav-1"
+              type="image/webp"
+            />
+            <img
+              class="site-mark__img"
+              src="images/dot-wordmark.png?v=nav-1"
+              alt="Dot."
+              width="396"
+              height="254"
+            />
+          </picture>
+        </a>
         <button
           class="menu-button"
           type="button"
@@ -509,6 +523,6 @@
       </div>
     </footer>
 
-    <script src="main.js?v=site-1" defer></script>
+    <script src="main.js?v=nav-1" defer></script>
   </body>
 </html>
