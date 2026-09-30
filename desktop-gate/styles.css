@@ -94,7 +94,7 @@
     pointer-events: none;
   }
 
-  /* Scratch / QR — one shared outer card for before + after */
+  /* Scratch / QR — centred under “Designed to be held.” */
   .desktop-gate__qr-unit {
     position: absolute;
     left: 35.8%;
@@ -105,10 +105,12 @@
   }
 
   .scratch-card {
+    /* Same displayed width as before; height from scratch-card-2 natural ratio */
     --scratch-w: clamp(6.75rem, 12.3vw, 9rem);
-    /* Compact soft-square — matches restored overlay aspect (~1.16) */
-    --scratch-ratio: 1.08;
-    --scratch-radius: 1.05rem;
+    --scratch-ratio: 855 / 757;
+    /* Matches previous pink ring thickness (~5.5% of card width) */
+    --scratch-stroke: calc(var(--scratch-w) * 0.055);
+    --scratch-radius: 1.35rem;
     position: relative;
     width: var(--scratch-w);
     height: calc(var(--scratch-w) * var(--scratch-ratio));
@@ -117,17 +119,28 @@
     outline: none;
     padding: 0;
     margin: 0;
-    border-radius: var(--scratch-radius);
-    overflow: hidden;
-    box-shadow: 0 10px 22px rgba(60, 5, 30, 0.18);
+    /* No CSS radius/overflow — PNG carries corners + glass glow */
+    border-radius: 0;
+    overflow: visible;
+    /* Subtle soft shadow only; follows card alpha, no white halo */
+    filter: drop-shadow(0 8px 16px rgba(60, 5, 30, 0.16));
+    box-shadow: none;
   }
 
-  /* White QR reveal — same outer wrapper; slightly inset so it never
-     shows through the PNG’s soft translucent rim as white side lines. */
+  /*
+    White QR reveal — aligned to the opaque body of scratch-card-2
+    (full PNG keeps transparent padding; face sits under the card only).
+    Former pink page-gap stroke → identical-thickness WHITE border so
+    outer footprint / radius stay the same with no pink outline.
+  */
   .scratch-card__face {
     position: absolute;
     z-index: 0;
-    inset: 5.5%;
+    /* Opaque content bbox of scratch-card-2 @ 757×855 */
+    top: 7.84%;
+    right: 10.57%;
+    bottom: 8.65%;
+    left: 10.83%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,9 +150,9 @@
     margin: 0;
     gap: 0.22em;
     background: #ffffff;
-    border: 0;
+    border: var(--scratch-stroke) solid #ffffff;
     outline: none;
-    border-radius: calc(var(--scratch-radius) - 0.28rem);
+    border-radius: var(--scratch-radius);
     box-shadow: none;
   }
 
@@ -181,9 +194,12 @@
     outline: none;
     padding: 0;
     margin: 0;
-    border-radius: inherit;
+    border-radius: 0;
     filter: none;
     box-shadow: none;
+    /* No mix-blend / opacity — draw PNG alpha as-is */
+    mix-blend-mode: normal;
+    opacity: 1;
   }
 
   .scratch-card__canvas.is-done {

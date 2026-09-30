@@ -1,10 +1,11 @@
 /**
  * Desktop gate — scratch-to-reveal QR.
- * Scratch layer is the supplied scratch-card-overlay.png drawn on canvas.
+ * Scratch layer is the supplied scratch-card-2.png drawn on canvas
+ * with object-fit: contain (no stretch / crop / CSS frost).
  */
 (function () {
   const REVEAL_THRESHOLD = 0.45;
-  const OVERLAY_SRC = "desktop-gate/images/scratch-card-overlay.png";
+  const OVERLAY_SRC = "desktop-gate/images/scratch-card-2.png";
 
   function prefersDesktop() {
     return window.matchMedia("(min-width: 768px)").matches;
@@ -51,8 +52,15 @@
       ctx.globalCompositeOperation = "source-over";
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      // Supplied frosted overlay PNG (smooth frost + solid black script)
-      ctx.drawImage(overlayImg, 0, 0, cssW, cssH);
+      // object-fit: contain — preserve natural proportions + full alpha
+      const iw = overlayImg.naturalWidth || overlayImg.width || 1;
+      const ih = overlayImg.naturalHeight || overlayImg.height || 1;
+      const scale = Math.min(cssW / iw, cssH / ih);
+      const dw = iw * scale;
+      const dh = ih * scale;
+      const dx = (cssW - dw) / 2;
+      const dy = (cssH - dh) / 2;
+      ctx.drawImage(overlayImg, dx, dy, dw, dh);
       initialAlpha = ctx.getImageData(0, 0, canvas.width, canvas.height).data.slice();
     }
 
