@@ -87,38 +87,60 @@
     pointer-events: none;
   }
 
-  /* QR + copy unit — lower-left empty area */
+  /* Scratch / QR card — centred under “Designed to be held.” */
   .desktop-gate__qr-unit {
     position: absolute;
-    left: 6.2%;
+    left: 32.4%;
     top: 62.5%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: clamp(0.85rem, 1.6vw, 1.35rem);
     z-index: 2;
+    transform: translateX(-50%);
   }
 
   .scratch-card {
+    --scratch-w: clamp(4.3rem, 8.6vw, 5.8rem);
     position: relative;
-    width: clamp(5.75rem, 11.5vw, 7.75rem);
-    height: clamp(5.75rem, 11.5vw, 7.75rem);
-    flex-shrink: 0;
-    border-radius: 0.35rem;
+    width: var(--scratch-w);
+    height: calc(var(--scratch-w) * 1.22);
+    border-radius: 0.7rem;
     overflow: hidden;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    box-shadow:
+      0 6px 18px rgba(80, 8, 40, 0.14),
+      0 1px 2px rgba(80, 8, 40, 0.08);
+  }
+
+  .scratch-card__face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 11% 11% 10%;
+    background: #ffffff;
   }
 
   .scratch-card__qr {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 1;
     object-fit: contain;
-    background: #fff;
-    padding: 6%;
-    box-sizing: border-box;
     pointer-events: none;
     user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .scratch-card__label {
+    margin: 0.45em 0 0;
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-size: clamp(0.62rem, 1.05vw, 0.78rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: #111111;
+    text-align: center;
   }
 
   .scratch-card__canvas {
@@ -133,17 +155,5 @@
 
   .scratch-card__canvas.is-done {
     pointer-events: none;
-  }
-
-  .desktop-gate__scan-copy {
-    margin: 0;
-    max-width: 9.5em;
-    font-family: "Instrument Sans", system-ui, sans-serif;
-    font-size: clamp(0.95rem, 1.55vw, 1.2rem);
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    color: #1a1a1a;
-    text-align: left;
   }
 }
