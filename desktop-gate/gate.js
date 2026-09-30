@@ -1,67 +1,13 @@
 /**
  * Desktop gate — scratch-to-reveal QR.
- * Active only when the desktop gate is shown (≥768px).
+ * Scratch layer is the supplied scratch-card-overlay.png drawn on canvas.
  */
 (function () {
   const REVEAL_THRESHOLD = 0.45;
+  const OVERLAY_SRC = "desktop-gate/images/scratch-card-overlay.png";
 
   function prefersDesktop() {
     return window.matchMedia("(min-width: 768px)").matches;
-  }
-
-  function fillOverlay(ctx, width, height) {
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    const dpr = ctx.canvas.width / width;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    // Frosted / glass-like translucent pink
-    ctx.globalCompositeOperation = "source-over";
-    const base = ctx.createLinearGradient(0, 0, width, height);
-    base.addColorStop(0, "rgba(255, 200, 225, 0.92)");
-    base.addColorStop(0.4, "rgba(246, 130, 190, 0.9)");
-    base.addColorStop(1, "rgba(236, 78, 155, 0.92)");
-    ctx.fillStyle = base;
-    ctx.fillRect(0, 0, width, height);
-
-    // Soft glass sheen
-    const sheen = ctx.createLinearGradient(0, 0, 0, height);
-    sheen.addColorStop(0, "rgba(255, 255, 255, 0.42)");
-    sheen.addColorStop(0.35, "rgba(255, 255, 255, 0.14)");
-    sheen.addColorStop(0.7, "rgba(255, 255, 255, 0.05)");
-    sheen.addColorStop(1, "rgba(120, 20, 70, 0.12)");
-    ctx.fillStyle = sheen;
-    ctx.fillRect(0, 0, width, height);
-
-    // Fine frosted grain
-    ctx.save();
-    for (let i = 0; i < Math.floor(width * height * 0.06); i += 1) {
-      const x = Math.random() * width;
-      const y = Math.random() * height;
-      const a = 0.03 + Math.random() * 0.08;
-      ctx.fillStyle =
-        Math.random() > 0.5
-          ? "rgba(255, 255, 255, " + a + ")"
-          : "rgba(90, 15, 50, " + a + ")";
-      ctx.fillRect(x, y, 1, 1);
-    }
-    ctx.restore();
-
-    // Inner edge hint (glass rim)
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.35)";
-    ctx.lineWidth = 1.25;
-    ctx.strokeRect(0.75, 0.75, width - 1.5, height - 1.5);
-
-    // “Scratch / me” — handwritten, restrained
-    ctx.fillStyle = "#111111";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    const size = Math.max(15, Math.min(width, height) * 0.175);
-    ctx.font = '600 ' + size + 'px "Caveat", "Segoe Print", cursive';
-    const lineGap = size * 0.92;
-    const cy = height / 2;
-    ctx.fillText("Scratch", width / 2, cy - lineGap * 0.45);
-    ctx.fillText("me", width / 2, cy + lineGap * 0.55);
   }
 
   function clearRatio(ctx, pixelW, pixelH) {
@@ -78,7 +24,7 @@
     return total ? clear / total : 0;
   }
 
-  function initScratch(canvas) {
+  function initScratch(canvas, overlayImg) {
     const wrap = canvas.closest(".scratch-card");
     if (!wrap) return;
 
@@ -88,6 +34,15 @@
     let cssW = 0;
     let cssH = 0;
     let dpr = 1;
+    let lastX = 0;
+    let lastY = 0;
+
+    function paintOverlay() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.globalCompositeOperation = "source-over";
+      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.drawImage(overlayImg, 0, 0, cssW, cssH);
+    }
 
     function syncSize() {
       const rect = wrap.getBoundingClientRect();
@@ -98,10 +53,10 @@
       canvas.height = Math.round(cssH * dpr);
       canvas.style.width = cssW + "px";
       canvas.style.height = cssH + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (!revealed) {
-        fillOverlay(ctx, cssW, cssH);
+        paintOverlay();
       } else {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, cssW, cssH);
         canvas.style.opacity = "0";
       }
@@ -137,9 +92,6 @@
         ctx.clearRect(0, 0, cssW, cssH);
       }, 480);
     }
-
-    let lastX = 0;
-    let lastY = 0;
 
     function onDown(event) {
       if (revealed) return;
@@ -193,18 +145,15 @@
     const canvas = document.querySelector("[data-scratch-canvas]");
     if (!canvas) return;
 
-    function start() {
-      initScratch(canvas);
-    }
-
-    if (document.fonts && document.fonts.load) {
-      document.fonts
-        .load('600 24px "Caveat"')
-        .then(start)
-        .catch(start);
-    } else {
-      start();
-    }
+    const img = new Image();
+    img.decoding = "async";
+    img.onload = function () {
+      initScratch(canvas, img);
+    };
+    img.onerror = function () {
+      initScratch(canvas, img);
+    };
+    img.src = OVERLAY_SRC;
   }
 
   if (document.readyState === "loading") {
