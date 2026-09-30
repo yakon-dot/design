@@ -1,0 +1,149 @@
+/* Desktop-only mobile handoff gate.
+   Mobile (<768px): hidden — portfolio renders normally.
+   Desktop (≥768px): full-viewport gate; portfolio chrome hidden. */
+
+.desktop-gate {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  body.page-about {
+    overflow: hidden;
+    background: #fb2fa3;
+  }
+
+  body.page-about > .skip-link,
+  body.page-about > .site-header,
+  body.page-about > main,
+  body.page-about > .site-end-nav {
+    display: none !important;
+  }
+
+  .desktop-gate {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    box-sizing: border-box;
+    padding: clamp(1.25rem, 3.5vw, 3rem);
+    background: #fb2fa3;
+  }
+
+  .desktop-gate__stage {
+    position: relative;
+    width: min(
+      100%,
+      72rem,
+      calc((100vh - 2 * clamp(1.25rem, 3.5vw, 3rem)) * 1672 / 941)
+    );
+    aspect-ratio: 1672 / 941;
+    max-height: calc(100vh - 2 * clamp(1.25rem, 3.5vw, 3rem));
+  }
+
+  .desktop-gate__bg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Phone display — percentages from desktop-mobile-gate-bg.png (1672×941) */
+  .desktop-gate__screen {
+    position: absolute;
+    left: 60.7057%;
+    top: 14.559%;
+    width: 18.5407%;
+    height: 66.419%;
+    overflow: hidden;
+    border-radius: 12% / 6%;
+    background: #000;
+    pointer-events: none;
+  }
+
+  .desktop-gate__screen-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: none;
+  }
+
+  /* Restore Dynamic Island over the screenshot */
+  .desktop-gate__island {
+    position: absolute;
+    left: 50%;
+    top: 1.85%;
+    width: 36%;
+    height: 3.4%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #050505;
+    pointer-events: none;
+  }
+
+  /* QR + copy unit — lower-left empty area */
+  .desktop-gate__qr-unit {
+    position: absolute;
+    left: 6.2%;
+    top: 62.5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(0.85rem, 1.6vw, 1.35rem);
+    z-index: 2;
+  }
+
+  .scratch-card {
+    position: relative;
+    width: clamp(5.75rem, 11.5vw, 7.75rem);
+    height: clamp(5.75rem, 11.5vw, 7.75rem);
+    flex-shrink: 0;
+    border-radius: 0.35rem;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .scratch-card__qr {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #fff;
+    padding: 6%;
+    box-sizing: border-box;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .scratch-card__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: crosshair;
+    border-radius: inherit;
+  }
+
+  .scratch-card__canvas.is-done {
+    pointer-events: none;
+  }
+
+  .desktop-gate__scan-copy {
+    margin: 0;
+    max-width: 9.5em;
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-size: clamp(0.95rem, 1.55vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+    text-align: left;
+  }
+}
