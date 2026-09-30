@@ -16,8 +16,55 @@
     />
     <link rel="stylesheet" href="freedom/styles.css?v=about-42" />
     <link rel="stylesheet" href="about/theme.css?v=about-37" />
+    <link rel="stylesheet" href="desktop-gate/styles.css?v=gate-1" />
   </head>
   <body class="page-about">
+    <div class="desktop-gate" aria-label="Open this portfolio on your phone">
+      <div class="desktop-gate__stage">
+        <img
+          class="desktop-gate__bg"
+          src="desktop-gate/images/desktop-mobile-gate-bg.png"
+          alt=""
+          width="1672"
+          height="941"
+          decoding="async"
+        />
+        <div class="desktop-gate__screen" aria-hidden="true">
+          <img
+            class="desktop-gate__screen-img"
+            src="desktop-gate/images/about-phone-screen.png"
+            alt=""
+            width="924"
+            height="2000"
+            decoding="async"
+          />
+          <span class="desktop-gate__island"></span>
+        </div>
+        <div class="desktop-gate__qr-unit">
+          <div class="scratch-card">
+            <img
+              class="scratch-card__qr"
+              src="desktop-gate/images/qr-design.png"
+              alt="QR code — scan to open the portfolio on your phone"
+              width="396"
+              height="396"
+              decoding="async"
+            />
+            <canvas
+              class="scratch-card__canvas"
+              data-scratch-canvas
+              role="img"
+              aria-label="Scratch to reveal the QR code"
+            ></canvas>
+          </div>
+          <p class="desktop-gate__scan-copy">
+            Scan to open<br />
+            on your phone.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
@@ -657,5 +704,6 @@
 
     <script src="freedom/main.js?v=about-37" defer></script>
     <script src="about/about.js?v=about-37" defer></script>
+    <script src="desktop-gate/gate.js?v=gate-1" defer></script>
   </body>
 </html>
