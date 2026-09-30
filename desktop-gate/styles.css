@@ -164,12 +164,17 @@
     border-radius: 12% / 5.8%;
     background: #000;
     pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .desktop-gate__screen-img {
     display: block;
-    width: 100%;
-    height: 100%;
+    /* Slightly inset so About content has black side margins like a real phone */
+    width: 91%;
+    height: 98%;
+    margin-top: 1%;
     object-fit: cover;
     object-position: top center;
     filter: none;
