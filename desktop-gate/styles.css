@@ -105,9 +105,9 @@
   }
 
   .scratch-card {
-    /* Same displayed width as before; height from scratch-card-2 natural ratio */
+    /* Same displayed width as before; height from current scratch-card-2 natural ratio */
     --scratch-w: clamp(6.75rem, 12.3vw, 9rem);
-    --scratch-ratio: 855 / 757;
+    --scratch-ratio: 1402 / 1122;
     /* Matches previous pink ring thickness (~5.5% of card width) */
     --scratch-stroke: calc(var(--scratch-w) * 0.055);
     --scratch-radius: 1.35rem;
@@ -123,21 +123,14 @@
     border-radius: 0;
     overflow: visible;
     /* Soft understated lift — tighter + darker (preview) */
-    filter: drop-shadow(0 5px 4px rgba(40, 5, 25, 0.52));
+    filter: none;
     box-shadow: none;
   }
 
-  /* After reveal: matching soft box-shadow on the white card (same recipe) */
-  .scratch-card:has(.scratch-card__canvas.is-done) {
-    filter: none;
-  }
-
-  .scratch-card:has(.scratch-card__canvas.is-done) .scratch-card__face {
-    box-shadow: 0 5px 4px rgba(40, 5, 25, 0.52);
-  }
+  /* Test asset includes baked shadow — no CSS drop shadow */
 
   /*
-    White QR reveal — aligned to the opaque body of scratch-card-2
+    White QR reveal — aligned to the pink card body of scratch-card-2
     (full PNG keeps transparent padding; face sits under the card only).
     Former pink page-gap stroke → identical-thickness WHITE border so
     outer footprint / radius stay the same with no pink outline.
@@ -145,11 +138,11 @@
   .scratch-card__face {
     position: absolute;
     z-index: 0;
-    /* Opaque content bbox of scratch-card-2 @ 757×855 */
-    top: 7.84%;
-    right: 10.57%;
-    bottom: 8.65%;
-    left: 10.83%;
+    /* Pink card body of scratch-card-2 @ 1122×1402 (excl. baked shadow) */
+    top: 14.34%;
+    right: 16.13%;
+    bottom: 15.05%;
+    left: 15.86%;
     display: flex;
     flex-direction: column;
     align-items: center;

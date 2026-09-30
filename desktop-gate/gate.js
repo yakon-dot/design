@@ -1,7 +1,7 @@
 /**
  * Desktop gate — scratch-to-reveal QR.
  * Scratch layer is the supplied scratch-card-2.png drawn on canvas
- * with object-fit: contain (no stretch / crop / CSS frost).
+ * with object-fit: contain (baked shadow in PNG; no CSS drop-shadow).
  */
 (function () {
   const REVEAL_THRESHOLD = 0.45;
