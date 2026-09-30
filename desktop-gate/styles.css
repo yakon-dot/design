@@ -9,7 +9,8 @@
 @media (min-width: 768px) {
   body.page-about {
     overflow: hidden;
-    background: #fb2fa3;
+    /* Single flat pink canvas — matches composition asset pink */
+    background: #f92ea5;
   }
 
   body.page-about > .skip-link,
@@ -20,26 +21,31 @@
   }
 
   .desktop-gate {
-    display: grid;
-    justify-items: center;
-    align-items: end;
+    display: block;
     position: fixed;
     inset: 0;
     z-index: 10000;
     box-sizing: border-box;
-    padding: clamp(1.25rem, 3.5vw, 3rem) clamp(1.25rem, 3.5vw, 3rem) 0;
-    background: #fb2fa3;
+    /* Continuous CSS pink; composition asset sits on top (transparent-ready) */
+    padding: 0;
+    overflow: hidden;
+    background: #f92ea5;
   }
 
+  /*
+    ~50% larger than the previous viewport-fitted stage (~1220×648).
+    Absolutely centred; may exceed the viewport so the forearm still
+    exits through the bottom edge without bottom-anchoring the layout.
+  */
   .desktop-gate__stage {
-    position: relative;
-    width: min(
-      100%,
-      72rem,
-      calc((100vh - clamp(1.25rem, 3.5vw, 3rem)) * 1721 / 914)
-    );
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(120rem, 130vw);
     aspect-ratio: 1721 / 914;
-    max-height: calc(100vh - clamp(1.25rem, 3.5vw, 3rem));
+    max-height: none;
+    background: transparent;
   }
 
   .desktop-gate__bg {
@@ -47,13 +53,14 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: center bottom;
+    object-position: center center;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
+    background: transparent;
   }
 
-  /* Phone display — percentages from new desktop-mobile-gate-bg.png (1721×914) */
+  /* Phone display — percentages from desktop-mobile-gate-bg.png (1721×914) */
   .desktop-gate__screen {
     position: absolute;
     left: 58.745%;
@@ -94,30 +101,45 @@
     top: 58.5%;
     z-index: 2;
     transform: translateX(-50%);
+    background: transparent;
   }
 
   .scratch-card {
-    /* Match scratch-card-overlay.png proportions (~1.395) */
+    /* Match scratch-card-overlay.png proportions */
     --scratch-w: clamp(4.5rem, 8.2vw, 6rem);
     position: relative;
     width: var(--scratch-w);
-    height: calc(var(--scratch-w) * 1.395);
-    border-radius: 18%;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(60, 5, 30, 0.16);
+    height: calc(var(--scratch-w) * 1.381);
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 0;
+    overflow: visible;
+    box-shadow: none;
   }
 
+  /*
+    White QR reveal — sized to the opaque pink card body inside the
+    overlay asset (not the soft glow), so it never shows as a box
+    around the frosted graphic.
+  */
   .scratch-card__face {
     position: absolute;
-    inset: 0;
+    left: 3.75%;
+    right: 3.6%;
+    top: 1%;
+    bottom: 4.75%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: 12% 12% 11%;
+    padding: 11% 11% 10%;
+    margin: 0;
     background: #ffffff;
-    border-radius: inherit;
+    border: 0;
+    border-radius: 18%;
+    box-shadow: 0 10px 24px rgba(60, 5, 30, 0.18);
   }
 
   .scratch-card__qr {
@@ -149,10 +171,15 @@
     height: 100%;
     touch-action: none;
     cursor: crosshair;
-    border-radius: inherit;
+    background: transparent;
+    border: 0;
+    outline: none;
+    /* Soft lift for the frosted overlay graphic itself */
+    filter: drop-shadow(0 8px 16px rgba(60, 5, 30, 0.18));
   }
 
   .scratch-card__canvas.is-done {
     pointer-events: none;
+    filter: none;
   }
 }
