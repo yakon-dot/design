@@ -10,25 +10,33 @@
     return window.matchMedia("(min-width: 768px)").matches;
   }
 
-  function clearRatio(ctx, pixelW, pixelH) {
+  function clearRatio(ctx, pixelW, pixelH, initialAlpha) {
     const { data } = ctx.getImageData(0, 0, pixelW, pixelH);
     const step = Math.max(1, Math.floor(Math.min(pixelW, pixelH) / 90));
-    let clear = 0;
-    let total = 0;
+    let cleared = 0;
+    let solid = 0;
     for (let y = 0; y < pixelH; y += step) {
       for (let x = 0; x < pixelW; x += step) {
-        total += 1;
-        if (data[(y * pixelW + x) * 4 + 3] < 48) clear += 1;
+        const i = (y * pixelW + x) * 4 + 3;
+        // Only measure pixels that started as part of the opaque card
+        if (!initialAlpha || initialAlpha[i] < 200) continue;
+        solid += 1;
+        if (data[i] < 48) cleared += 1;
       }
     }
-    return total ? clear / total : 0;
+    return solid ? cleared / solid : 0;
   }
 
   function initScratch(canvas, overlayImg) {
     const wrap = canvas.closest(".scratch-card");
     if (!wrap) return;
 
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    const ctx = canvas.getContext("2d", {
+      alpha: true,
+      willReadFrequently: true,
+    });
+    // Ensure the bitmap starts fully transparent (no opaque default buffer)
+    ctx.clearRect(0, 0, canvas.width || 1, canvas.height || 1);
     let drawing = false;
     let revealed = false;
     let cssW = 0;
@@ -36,12 +44,16 @@
     let dpr = 1;
     let lastX = 0;
     let lastY = 0;
+    let initialAlpha = null;
 
     function paintOverlay() {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.globalCompositeOperation = "source-over";
-      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Draw the supplied PNG with its alpha intact — no fill behind it
       ctx.drawImage(overlayImg, 0, 0, cssW, cssH);
+      initialAlpha = ctx.getImageData(0, 0, canvas.width, canvas.height).data.slice();
     }
 
     function syncSize() {
@@ -82,7 +94,7 @@
 
     function maybeReveal() {
       if (revealed) return;
-      if (clearRatio(ctx, canvas.width, canvas.height) < REVEAL_THRESHOLD) return;
+      if (clearRatio(ctx, canvas.width, canvas.height, initialAlpha) < REVEAL_THRESHOLD) return;
       revealed = true;
       canvas.classList.add("is-done");
       canvas.style.transition = "opacity 0.45s ease";
