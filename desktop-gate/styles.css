@@ -41,7 +41,9 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    /* ~80% scale → more top/side padding in the viewport */
+    transform: translate(-50%, -50%) scale(0.8);
+    transform-origin: center center;
     width: min(120rem, 130vw);
     aspect-ratio: 1721 / 914;
     max-height: none;
