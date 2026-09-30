@@ -122,8 +122,8 @@
     /* No CSS radius/overflow — PNG carries corners + glass glow */
     border-radius: 0;
     overflow: visible;
-    /* Soft understated lift — follows frosted PNG alpha (pre-scratch) */
-    filter: drop-shadow(0 10px 18px rgba(40, 5, 25, 0.2));
+    /* Soft understated lift — tighter + darker (preview) */
+    filter: drop-shadow(0 5px 4px rgba(40, 5, 25, 0.52));
     box-shadow: none;
   }
 
@@ -133,7 +133,7 @@
   }
 
   .scratch-card:has(.scratch-card__canvas.is-done) .scratch-card__face {
-    box-shadow: 0 10px 18px rgba(40, 5, 25, 0.2);
+    box-shadow: 0 5px 4px rgba(40, 5, 25, 0.52);
   }
 
   /*
