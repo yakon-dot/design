@@ -94,7 +94,7 @@
     pointer-events: none;
   }
 
-  /* Scratch / QR — centred under “Designed to be held.” */
+  /* Scratch / QR — one shared outer card for before + after */
   .desktop-gate__qr-unit {
     position: absolute;
     left: 35.8%;
@@ -105,60 +105,60 @@
   }
 
   .scratch-card {
-    /* ~150% of prior clamp(4.5rem, 8.2vw, 6rem); aspect from overlay PNG */
     --scratch-w: clamp(6.75rem, 12.3vw, 9rem);
+    /* Compact soft-square — matches restored overlay aspect (~1.16) */
+    --scratch-ratio: 1.08;
+    --scratch-radius: 1.05rem;
     position: relative;
     width: var(--scratch-w);
-    height: calc(var(--scratch-w) * 1.379);
-    background: transparent !important;
-    border: 0 !important;
-    outline: none !important;
-    padding: 0 !important;
+    height: calc(var(--scratch-w) * var(--scratch-ratio));
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 0;
     margin: 0;
-    overflow: visible;
-    box-shadow: none !important;
+    border-radius: var(--scratch-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 22px rgba(60, 5, 30, 0.18);
   }
 
-  /*
-    White QR reveal — strictly inset to the opaque card body so it
-    cannot show through the PNG’s transparent glow / rounded corners.
-  */
+  /* White QR reveal — same outer footprint as the scratch overlay */
   .scratch-card__face {
     position: absolute;
     z-index: 0;
-    left: 4.2%;
-    right: 4.1%;
-    top: 1.35%;
-    bottom: 5.3%;
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: 11% 11% 10%;
+    padding: 7% 8% 5%;
     margin: 0;
+    gap: 0.22em;
     background: #ffffff;
     border: 0;
     outline: none;
-    border-radius: 22%;
+    border-radius: inherit;
     box-shadow: none;
   }
 
   .scratch-card__qr {
     display: block;
-    width: 100%;
+    width: 80%;
     height: auto;
     aspect-ratio: 1;
     object-fit: contain;
+    flex-shrink: 0;
+    margin-top: 0;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
   }
 
   .scratch-card__label {
-    margin: 0.45em 0 0;
+    margin: 0;
     font-family: "Instrument Sans", system-ui, sans-serif;
-    font-size: clamp(0.72rem, 1.2vw, 0.95rem);
+    font-size: clamp(0.7rem, 1.15vw, 0.9rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1;
@@ -175,12 +175,12 @@
     display: block;
     touch-action: none;
     cursor: crosshair;
-    background: transparent !important;
-    border: 0 !important;
-    outline: none !important;
+    background: transparent;
+    border: 0;
+    outline: none;
     padding: 0;
     margin: 0;
-    /* PNG already includes its own soft shadow — no CSS glow/halo */
+    border-radius: inherit;
     filter: none;
     box-shadow: none;
   }
