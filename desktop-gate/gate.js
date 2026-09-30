@@ -65,14 +65,15 @@
     }
 
     function syncSize() {
-      const rect = wrap.getBoundingClientRect();
-      cssW = Math.max(1, Math.round(rect.width));
-      cssH = Math.max(1, Math.round(rect.height));
+      // Use layout size (offset*), not getBoundingClientRect — parent
+      // stage scale() would otherwise shrink the canvas vs the white face.
+      cssW = Math.max(1, Math.round(wrap.offsetWidth));
+      cssH = Math.max(1, Math.round(wrap.offsetHeight));
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.round(cssW * dpr);
       canvas.height = Math.round(cssH * dpr);
-      canvas.style.width = cssW + "px";
-      canvas.style.height = cssH + "px";
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
       if (!revealed) {
         paintOverlay();
       } else {
