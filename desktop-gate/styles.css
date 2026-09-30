@@ -40,10 +40,11 @@
   .desktop-gate__stage {
     position: absolute;
     left: 50%;
-    top: 50%;
-    /* ~80% scale → more top/side padding in the viewport */
-    transform: translate(-50%, -50%) scale(0.8);
-    transform-origin: center center;
+    /* Pin arm to the bottom edge; keep ~80% scale for top padding */
+    bottom: 0;
+    top: auto;
+    transform: translateX(-50%) scale(0.8);
+    transform-origin: bottom center;
     width: min(120rem, 130vw);
     aspect-ratio: 1721 / 914;
     max-height: none;
@@ -232,7 +233,7 @@
     padding: 0;
     margin: 0;
     border-radius: 0;
-    overflow: visible;
+    overflow: hidden;
     /* Matching soft shadow — pre-scratch (follows PNG alpha) */
     filter: drop-shadow(0 5px 4px rgba(40, 5, 25, 0.52));
     box-shadow: none;
@@ -248,16 +249,13 @@
   }
 
   /*
-    White QR reveal — fills the pink area inside the asset’s black border.
-    Sharp corners; QR + Scan Me sized to the proportions reference.
+    White QR reveal — same outer footprint as the pink scratch overlay
+    (no inset peek). Sharp corners; QR + Scan Me from proportions ref.
   */
   .scratch-card__face {
     position: absolute;
     z-index: 0;
-    top: 5.58%;
-    right: 6.91%;
-    bottom: 5.58%;
-    left: 6.91%;
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
