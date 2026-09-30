@@ -94,19 +94,21 @@
     pointer-events: none;
   }
 
-  /* Scratch / QR — centred under “Designed to be held.” */
+  /* Scratch / QR — third line of left composition under headline */
   .desktop-gate__qr-unit {
     position: absolute;
-    left: 35.8%;
-    top: 56.5%;
+    /* Horizontally centred under “Designed / to be held.” text block */
+    left: 34.85%;
+    /* ~28px under headline bottom (~48% of stage) */
+    top: 51.1%;
     z-index: 2;
     transform: translateX(-50%);
     background: transparent;
   }
 
   .scratch-card {
-    /* 75% of prior card width; height from sharp flat asset aspect */
-    --scratch-w: clamp(5.0625rem, 9.225vw, 6.75rem);
+    /* ~12% larger than prior 75%-size card; same aspect */
+    --scratch-w: clamp(5.67rem, 10.332vw, 7.56rem);
     --scratch-ratio: 1739 / 1404;
     --scratch-stroke: calc(var(--scratch-w) * 0.055);
     --scratch-radius: 0;
