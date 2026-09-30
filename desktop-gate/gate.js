@@ -51,8 +51,27 @@
       ctx.globalCompositeOperation = "source-over";
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      // Draw the supplied PNG with its alpha intact — no fill behind it
+      // Frosted card PNG (no baked lettering)
       ctx.drawImage(overlayImg, 0, 0, cssW, cssH);
+
+      // Clean solid-black script only — no stroke, shadow, or duplicate layer
+      const size = Math.max(18, cssW * 0.168);
+      const lineGap = size * 0.92;
+      ctx.fillStyle = "#000000";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = '600 ' + size + 'px "Caveat", "Segoe Script", cursive';
+      // Reset any leftover canvas text effects
+      ctx.shadowColor = "transparent";
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.lineWidth = 0;
+      const cx = cssW / 2;
+      const cy = cssH / 2 - cssH * 0.01;
+      ctx.fillText("Scratch", cx, cy - lineGap * 0.45);
+      ctx.fillText("me", cx, cy + lineGap * 0.55);
+
       initialAlpha = ctx.getImageData(0, 0, canvas.width, canvas.height).data.slice();
     }
 
@@ -157,13 +176,26 @@
     const canvas = document.querySelector("[data-scratch-canvas]");
     if (!canvas) return;
 
+    function start(overlayImg) {
+      initScratch(canvas, overlayImg);
+    }
+
     const img = new Image();
     img.decoding = "async";
     img.onload = function () {
-      initScratch(canvas, img);
+      if (document.fonts && document.fonts.load) {
+        document.fonts
+          .load('600 48px "Caveat"')
+          .catch(function () {})
+          .then(function () {
+            start(img);
+          });
+      } else {
+        start(img);
+      }
     };
     img.onerror = function () {
-      initScratch(canvas, img);
+      start(img);
     };
     img.src = OVERLAY_SRC;
   }
