@@ -162,6 +162,13 @@
 
   function boot() {
     if (!prefersDesktop()) return;
+
+    // Enable scratch after headline + card entrance (~held fade end + card in)
+    window.setTimeout(function () {
+      const unit = document.querySelector(".desktop-gate__qr-unit");
+      if (unit) unit.classList.add("is-visible");
+    }, 3900);
+
     const canvas = document.querySelector("[data-scratch-canvas]");
     if (!canvas) return;
 

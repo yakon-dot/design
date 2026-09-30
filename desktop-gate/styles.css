@@ -60,6 +60,96 @@
     background: transparent;
   }
 
+  /* HTML headline — replaces baked-in PNG text (preview) */
+  .desktop-gate__headline {
+    position: absolute;
+    /* Slightly left + down from last preview; keep large size */
+    left: 19.5%;
+    top: 21%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    color: #111111;
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(4.6rem, 10.2vw, 8.6rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .desktop-gate__line {
+    display: block;
+  }
+
+  .desktop-gate__line--second {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .desktop-gate__word--tobe {
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .desktop-gate__word--held {
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  /* Staggered entrance — page starts with phone only */
+  .desktop-gate__line--designed {
+    opacity: 0;
+    transform: translateY(-1.15em);
+    animation: gateDesignedIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+  }
+
+  .desktop-gate__word--tobe {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-1.4em);
+    animation: gateTobeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
+  }
+
+  .desktop-gate__word--held {
+    display: inline-block;
+    opacity: 0;
+    animation: gateHeldIn 1.35s ease-out 1.65s forwards;
+  }
+
+  @keyframes gateDesignedIn {
+    from {
+      opacity: 0;
+      transform: translateY(-1.15em);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gateTobeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-1.4em);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes gateHeldIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   /* Phone display — percentages from desktop-mobile-gate-bg.png (1721×914) */
   .desktop-gate__screen {
     position: absolute;
@@ -94,16 +184,35 @@
     pointer-events: none;
   }
 
-  /* Scratch / QR — third line of left composition under headline */
+  /* Scratch / QR — directly under the headline (first composition spacing) */
   .desktop-gate__qr-unit {
     position: absolute;
-    /* Horizontally centred under “Designed / to be held.” text block */
-    left: 34.85%;
-    /* ~28px under headline bottom (~48% of stage) */
-    top: 51.1%;
-    z-index: 2;
+    /* Horizontally centred under the headline block */
+    left: 36%;
+    /* ~28px under “to be held.” */
+    top: 48.8%;
+    z-index: 3;
     transform: translateX(-50%);
     background: transparent;
+    /* Appears only after “held.” finishes fading in */
+    opacity: 0;
+    pointer-events: none;
+    animation: gateScratchIn 0.75s ease-out 3.15s forwards;
+  }
+
+  .desktop-gate__qr-unit.is-visible {
+    pointer-events: auto;
+  }
+
+  @keyframes gateScratchIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(0.6rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   }
 
   .scratch-card {
