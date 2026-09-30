@@ -11,12 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="freedom/styles.css?v=about-42" />
     <link rel="stylesheet" href="about/theme.css?v=about-37" />
-    <link rel="stylesheet" href="desktop-gate/styles.css?v=gate-1" />
+    <link rel="stylesheet" href="desktop-gate/styles.css?v=gate-2" />
   </head>
   <body class="page-about">
     <div class="desktop-gate" aria-label="Open this portfolio on your phone">
@@ -42,14 +42,17 @@
         </div>
         <div class="desktop-gate__qr-unit">
           <div class="scratch-card">
-            <img
-              class="scratch-card__qr"
-              src="desktop-gate/images/qr-design.png"
-              alt="QR code — scan to open the portfolio on your phone"
-              width="396"
-              height="396"
-              decoding="async"
-            />
+            <div class="scratch-card__face">
+              <img
+                class="scratch-card__qr"
+                src="desktop-gate/images/qr-design.png"
+                alt="QR code — scan to open the portfolio on your phone"
+                width="396"
+                height="396"
+                decoding="async"
+              />
+              <p class="scratch-card__label">Scan Me</p>
+            </div>
             <canvas
               class="scratch-card__canvas"
               data-scratch-canvas
@@ -57,10 +60,6 @@
               aria-label="Scratch to reveal the QR code"
             ></canvas>
           </div>
-          <p class="desktop-gate__scan-copy">
-            Scan to open<br />
-            on your phone.
-          </p>
         </div>
       </div>
     </div>
@@ -704,6 +703,6 @@
 
     <script src="freedom/main.js?v=about-37" defer></script>
     <script src="about/about.js?v=about-37" defer></script>
-    <script src="desktop-gate/gate.js?v=gate-1" defer></script>
+    <script src="desktop-gate/gate.js?v=gate-2" defer></script>
   </body>
 </html>

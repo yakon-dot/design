@@ -15,38 +15,53 @@
     const dpr = ctx.canvas.width / width;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // Slightly dustier pink than the #fb2fa3 stage background
+    // Frosted / glass-like translucent pink
     ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = "#e84d9a";
+    const base = ctx.createLinearGradient(0, 0, width, height);
+    base.addColorStop(0, "rgba(255, 200, 225, 0.92)");
+    base.addColorStop(0.4, "rgba(246, 130, 190, 0.9)");
+    base.addColorStop(1, "rgba(236, 78, 155, 0.92)");
+    ctx.fillStyle = base;
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle coated-paper grain (drawn as translucent speckles)
-    ctx.save();
-    for (let i = 0; i < Math.floor(width * height * 0.08); i += 1) {
-      const x = Math.random() * width;
-      const y = Math.random() * height;
-      const a = 0.04 + Math.random() * 0.1;
-      const light = Math.random() > 0.5;
-      ctx.fillStyle = light
-        ? "rgba(255, 255, 255, " + a + ")"
-        : "rgba(80, 10, 45, " + a + ")";
-      ctx.fillRect(x, y, 1.1, 1.1);
-    }
-    ctx.restore();
-
-    const sheen = ctx.createLinearGradient(0, 0, width, height);
-    sheen.addColorStop(0, "rgba(255, 255, 255, 0.16)");
-    sheen.addColorStop(0.45, "rgba(255, 255, 255, 0.03)");
-    sheen.addColorStop(1, "rgba(0, 0, 0, 0.07)");
+    // Soft glass sheen
+    const sheen = ctx.createLinearGradient(0, 0, 0, height);
+    sheen.addColorStop(0, "rgba(255, 255, 255, 0.42)");
+    sheen.addColorStop(0.35, "rgba(255, 255, 255, 0.14)");
+    sheen.addColorStop(0.7, "rgba(255, 255, 255, 0.05)");
+    sheen.addColorStop(1, "rgba(120, 20, 70, 0.12)");
     ctx.fillStyle = sheen;
     ctx.fillRect(0, 0, width, height);
 
-    ctx.fillStyle = "rgba(26, 26, 26, 0.72)";
+    // Fine frosted grain
+    ctx.save();
+    for (let i = 0; i < Math.floor(width * height * 0.06); i += 1) {
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      const a = 0.03 + Math.random() * 0.08;
+      ctx.fillStyle =
+        Math.random() > 0.5
+          ? "rgba(255, 255, 255, " + a + ")"
+          : "rgba(90, 15, 50, " + a + ")";
+      ctx.fillRect(x, y, 1, 1);
+    }
+    ctx.restore();
+
+    // Inner edge hint (glass rim)
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.35)";
+    ctx.lineWidth = 1.25;
+    ctx.strokeRect(0.75, 0.75, width - 1.5, height - 1.5);
+
+    // “Scratch / me” — handwritten, restrained
+    ctx.fillStyle = "#111111";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    const size = Math.max(13, Math.min(width, height) * 0.16);
-    ctx.font = '500 ' + size + 'px "Instrument Sans", system-ui, sans-serif';
-    ctx.fillText("Scratch me", width / 2, height / 2);
+    const size = Math.max(15, Math.min(width, height) * 0.175);
+    ctx.font = '600 ' + size + 'px "Caveat", "Segoe Print", cursive';
+    const lineGap = size * 0.92;
+    const cy = height / 2;
+    ctx.fillText("Scratch", width / 2, cy - lineGap * 0.45);
+    ctx.fillText("me", width / 2, cy + lineGap * 0.55);
   }
 
   function clearRatio(ctx, pixelW, pixelH) {
@@ -176,7 +191,20 @@
   function boot() {
     if (!prefersDesktop()) return;
     const canvas = document.querySelector("[data-scratch-canvas]");
-    if (canvas) initScratch(canvas);
+    if (!canvas) return;
+
+    function start() {
+      initScratch(canvas);
+    }
+
+    if (document.fonts && document.fonts.load) {
+      document.fonts
+        .load('600 24px "Caveat"')
+        .then(start)
+        .catch(start);
+    } else {
+      start();
+    }
   }
 
   if (document.readyState === "loading") {
