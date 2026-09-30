@@ -98,37 +98,38 @@
   .desktop-gate__qr-unit {
     position: absolute;
     left: 35.8%;
-    top: 58.5%;
+    top: 56.5%;
     z-index: 2;
     transform: translateX(-50%);
     background: transparent;
   }
 
   .scratch-card {
-    /* Match scratch-card-overlay.png proportions */
-    --scratch-w: clamp(4.5rem, 8.2vw, 6rem);
+    /* ~150% of prior clamp(4.5rem, 8.2vw, 6rem); aspect from overlay PNG */
+    --scratch-w: clamp(6.75rem, 12.3vw, 9rem);
     position: relative;
     width: var(--scratch-w);
-    height: calc(var(--scratch-w) * 1.381);
-    background: transparent;
-    border: 0;
-    outline: none;
-    padding: 0;
+    height: calc(var(--scratch-w) * 1.379);
+    background: transparent !important;
+    border: 0 !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0;
     overflow: visible;
-    box-shadow: none;
+    box-shadow: none !important;
   }
 
   /*
-    White QR reveal — sized to the opaque pink card body inside the
-    overlay asset (not the soft glow), so it never shows as a box
-    around the frosted graphic.
+    White QR reveal — strictly inset to the opaque card body so it
+    cannot show through the PNG’s transparent glow / rounded corners.
   */
   .scratch-card__face {
     position: absolute;
-    left: 3.75%;
-    right: 3.6%;
-    top: 1%;
-    bottom: 4.75%;
+    z-index: 0;
+    left: 4.2%;
+    right: 4.1%;
+    top: 1.35%;
+    bottom: 5.3%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,8 +139,9 @@
     margin: 0;
     background: #ffffff;
     border: 0;
-    border-radius: 18%;
-    box-shadow: 0 10px 24px rgba(60, 5, 30, 0.18);
+    outline: none;
+    border-radius: 22%;
+    box-shadow: none;
   }
 
   .scratch-card__qr {
@@ -156,7 +158,7 @@
   .scratch-card__label {
     margin: 0.45em 0 0;
     font-family: "Instrument Sans", system-ui, sans-serif;
-    font-size: clamp(0.62rem, 1.05vw, 0.78rem);
+    font-size: clamp(0.72rem, 1.2vw, 0.95rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1;
@@ -166,20 +168,24 @@
 
   .scratch-card__canvas {
     position: absolute;
+    z-index: 1;
     inset: 0;
     width: 100%;
     height: 100%;
+    display: block;
     touch-action: none;
     cursor: crosshair;
-    background: transparent;
-    border: 0;
-    outline: none;
-    /* Soft lift for the frosted overlay graphic itself */
-    filter: drop-shadow(0 8px 16px rgba(60, 5, 30, 0.18));
+    background: transparent !important;
+    border: 0 !important;
+    outline: none !important;
+    padding: 0;
+    margin: 0;
+    /* PNG already includes its own soft shadow — no CSS glow/halo */
+    filter: none;
+    box-shadow: none;
   }
 
   .scratch-card__canvas.is-done {
     pointer-events: none;
-    filter: none;
   }
 }
