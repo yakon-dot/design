@@ -21,12 +21,13 @@
 
   .desktop-gate {
     display: grid;
-    place-items: center;
+    justify-items: center;
+    align-items: end;
     position: fixed;
     inset: 0;
     z-index: 10000;
     box-sizing: border-box;
-    padding: clamp(1.25rem, 3.5vw, 3rem);
+    padding: clamp(1.25rem, 3.5vw, 3rem) clamp(1.25rem, 3.5vw, 3rem) 0;
     background: #fb2fa3;
   }
 
@@ -35,10 +36,10 @@
     width: min(
       100%,
       72rem,
-      calc((100vh - 2 * clamp(1.25rem, 3.5vw, 3rem)) * 1672 / 941)
+      calc((100vh - clamp(1.25rem, 3.5vw, 3rem)) * 1672 / 941)
     );
     aspect-ratio: 1672 / 941;
-    max-height: calc(100vh - 2 * clamp(1.25rem, 3.5vw, 3rem));
+    max-height: calc(100vh - clamp(1.25rem, 3.5vw, 3rem));
   }
 
   .desktop-gate__bg {
