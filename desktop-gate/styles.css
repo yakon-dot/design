@@ -36,9 +36,9 @@
     width: min(
       100%,
       72rem,
-      calc((100vh - clamp(1.25rem, 3.5vw, 3rem)) * 1672 / 941)
+      calc((100vh - clamp(1.25rem, 3.5vw, 3rem)) * 1721 / 914)
     );
-    aspect-ratio: 1672 / 941;
+    aspect-ratio: 1721 / 914;
     max-height: calc(100vh - clamp(1.25rem, 3.5vw, 3rem));
   }
 
@@ -47,21 +47,21 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: center;
+    object-position: center bottom;
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
   }
 
-  /* Phone display — percentages from desktop-mobile-gate-bg.png (1672×941) */
+  /* Phone display — percentages from new desktop-mobile-gate-bg.png (1721×914) */
   .desktop-gate__screen {
     position: absolute;
-    left: 60.7057%;
-    top: 14.559%;
-    width: 18.5407%;
-    height: 66.419%;
+    left: 58.745%;
+    top: 15.973%;
+    width: 13.248%;
+    height: 51.531%;
     overflow: hidden;
-    border-radius: 12% / 6%;
+    border-radius: 12% / 5.8%;
     background: #000;
     pointer-events: none;
   }
@@ -75,7 +75,6 @@
     filter: none;
   }
 
-  /* Restore Dynamic Island over the screenshot */
   .desktop-gate__island {
     position: absolute;
     left: 50%;
@@ -88,26 +87,24 @@
     pointer-events: none;
   }
 
-  /* Scratch / QR card — centred under “Designed to be held.” */
+  /* Scratch / QR — centred under “Designed to be held.” */
   .desktop-gate__qr-unit {
     position: absolute;
-    left: 32.4%;
-    top: 62.5%;
+    left: 35.8%;
+    top: 58.5%;
     z-index: 2;
     transform: translateX(-50%);
   }
 
   .scratch-card {
-    --scratch-w: clamp(4.3rem, 8.6vw, 5.8rem);
+    /* Match scratch-card-overlay.png proportions (~1.395) */
+    --scratch-w: clamp(4.5rem, 8.2vw, 6rem);
     position: relative;
     width: var(--scratch-w);
-    height: calc(var(--scratch-w) * 1.22);
-    border-radius: 0.7rem;
+    height: calc(var(--scratch-w) * 1.395);
+    border-radius: 18%;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.42);
-    box-shadow:
-      0 6px 18px rgba(80, 8, 40, 0.14),
-      0 1px 2px rgba(80, 8, 40, 0.08);
+    box-shadow: 0 8px 20px rgba(60, 5, 30, 0.16);
   }
 
   .scratch-card__face {
@@ -118,8 +115,9 @@
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: 11% 11% 10%;
+    padding: 12% 12% 11%;
     background: #ffffff;
+    border-radius: inherit;
   }
 
   .scratch-card__qr {
