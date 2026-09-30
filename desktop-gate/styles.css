@@ -122,11 +122,12 @@
     box-shadow: 0 10px 22px rgba(60, 5, 30, 0.18);
   }
 
-  /* White QR reveal — same outer footprint as the scratch overlay */
+  /* White QR reveal — same outer wrapper; slightly inset so it never
+     shows through the PNG’s soft translucent rim as white side lines. */
   .scratch-card__face {
     position: absolute;
     z-index: 0;
-    inset: 0;
+    inset: 5.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,7 +139,7 @@
     background: #ffffff;
     border: 0;
     outline: none;
-    border-radius: inherit;
+    border-radius: calc(var(--scratch-radius) - 0.28rem);
     box-shadow: none;
   }
 
